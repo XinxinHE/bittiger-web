@@ -1,0 +1,37 @@
+/* .sidemenu {
+    height: 100%;
+    width: 250px;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+}
+
+.sidemenu .closebtn {
+    font-size: 36px;
+    margin-left: 50px;
+} */
+
+ng-sidebar-container {
+    height: 100vh;
+}
+
+.side {
+    background: ghostwhite;
+    height: 100%;
+}
+
+/*vh: 1/100th view point height*/
+
+.side-menu {
+    width: 250px;
+}
+
+.side-menu .side-menu-item {
+    list-style-type: none;
+}
+
+.side-menu .side-menu-item a {
+    font-size:18px;
+}
