@@ -25,11 +25,14 @@
       <p>Sidebar contents</p>
 
       <ul class="side-menu">
-        <li class="side-menu-item"><a href="#">week1 demo demo</a></li>
-        <li class="side-menu-item"><a href="#">week2 demo demo</a></li>
-        <li class="side-menu-item"><a href="#">week3 demo demo</a></li>
-        <li class="side-menu-item"><a href="#">week4 demo demo</a></li>
-        <li class="side-menu-item"><a href="#">week5 demo demo</a></li>
+        <li class="side-menu-item" *ngFor="let folder of folders">
+          <a href="#">{{folder.name}}</a>
+          <ul>
+            <li *ngFor="let cid of folder.courses">
+              <a href="#">{{courses[cid - 1].name}}</a>
+            </li>
+          </ul>
+        </li>
       </ul>  
     </div>
   </ng-sidebar>

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { Folder } from 'app/data-structure/folder';
+import { Course } from 'app/data-structure/course'
 
 @Component({
   selector: 'app-side-menu',
@@ -6,20 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./side-menu.component.css']
 })
 export class SideMenuComponent implements OnInit {
+  folders: Folder[];
+  courses: Course[];
+
   private _opened: boolean = true;
   private _mode: string = 'push';
-  constructor() { }
+  constructor(@Inject('data') private dataService) { }
 
   ngOnInit() {
+    this.getCourses();
+    this.getFolders();
   }
 
-  // openSideMenu() {
-  //   document.getElementById('side-menu').style.width = '250px';
-  // }
+  getFolders(): void {
+    this.folders = this.dataService.getFolders(); 
+    console.log(this.folders);
+  }
 
-  // closeSideMenu() {
-  //   document.getElementById('side-menu').style.width = '0px';
-  // }
+  getCourses(): void {
+    this.courses = this.dataService.getCourses();
+  }
 
   private _toggleSidebar() {
     this._opened = !this._opened;
