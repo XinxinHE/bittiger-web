@@ -11,8 +11,8 @@ export class SideMenuComponent implements OnInit {
   folders: Folder[];
   courses: Course[];
 
-  private _opened: boolean = true;
-  private _mode: string = 'push';
+  _opened: boolean = true;
+  _mode: string = 'push';
   constructor(@Inject('data') private dataService) { }
 
   ngOnInit() {
@@ -29,7 +29,7 @@ export class SideMenuComponent implements OnInit {
     this.courses = this.dataService.getCourses();
   }
 
-  private _toggleSidebar() {
+  _toggleSidebar() {
     this._opened = !this._opened;
   }
 
