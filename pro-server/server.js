@@ -4,18 +4,18 @@ var app = express();
 const path = require('path');
 
 const port = 8080;
-
-app.use(express.static(path.join(__dirname, '../pro-client/dist/')));
+app.set('port', (process.env.PORT || port));
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(function(req, res) {
-  res.sendFile('index.html', {root: path.join(__dirname, '../pro-client/dist/')});
+  res.sendFile('index.html', {root: path.join(__dirname, '../public')});
 });
 
 
 const http = require('http');
 
 const server = http.createServer(app);
-server.listen(port);
+server.listen(app.get('port'));
 
 server.on('error', onError);
 server.on('listening', onListening);

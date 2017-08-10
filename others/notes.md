@@ -19,3 +19,33 @@ webpack: Failed to compile.
 
 ## Sidebar npm package
 https://github.com/arkon/ng-sidebar
+
+## connect to ec2
+ssh -i "bittiger.pem" ubuntu@ec2-13-58-104-36.us-east-2.compute.amazonaws.com
+
+## copy file to ecs
+scp -i ~/Practices/bittiger-web/others/bittiger.pem ~/Practices/bittiger-web/bittiger-web.tar.gz ubuntu@ec2-13-58-104-36.us-east-2.compute.amazonaws.com:~/bittiger
+
+scp -i ~/Practices/bittiger-web/others/bittiger.pem ~/Practices/bittiger-web/pro-client.tar.gz ubuntu@ec2-13-58-104-36.us-east-2.compute.amazonaws.com:~/bittiger/pro-client
+
+## If your tar file is compressed using a gzip compressor, use this command to uncompress it.
+
+`$ tar xvzf bittiger-web.tar.gz`
+
+x: This option tells tar to extract the files.
+v: The “v” stands for “verbose.” This option will list all of the files one by one in the archive.
+z: The z option is very important and tells the tar command to uncompress the file (gzip).
+f: This options tells tar that you are going to give it a file name to work with.
+
+A tarball is a group or archive of files that are bundled together using the tar command and have the .tar file extension.
+
+
+## install Putty
+sudo apt-get update
+sudo apt-get install putty
+
+
+sudo npm install -forever
+forever start index.js
+
+REDIRECT --to-port 8080
