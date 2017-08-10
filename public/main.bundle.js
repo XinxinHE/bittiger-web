@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<app-side-menu></app-side-menu>\n\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<app-board></app-board>"
 
 /***/ }),
 
@@ -53,7 +53,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = 'Bittiger';
     }
     return AppComponent;
 }());
@@ -80,6 +79,9 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_data_service__ = __webpack_require__("../../../../../src/app/services/data.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_side_menu_side_menu_component__ = __webpack_require__("../../../../../src/app/components/side-menu/side-menu.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_question_board_question_board_component__ = __webpack_require__("../../../../../src/app/components/question-board/question-board.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_board_board_component__ = __webpack_require__("../../../../../src/app/components/board/board.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_middle_board_middle_board_component__ = __webpack_require__("../../../../../src/app/components/middle-board/middle-board.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -87,6 +89,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
 
 
 
@@ -102,7 +107,10 @@ AppModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
         declarations: [
             __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_5__components_side_menu_side_menu_component__["a" /* SideMenuComponent */]
+            __WEBPACK_IMPORTED_MODULE_5__components_side_menu_side_menu_component__["a" /* SideMenuComponent */],
+            __WEBPACK_IMPORTED_MODULE_6__components_question_board_question_board_component__["a" /* QuestionBoardComponent */],
+            __WEBPACK_IMPORTED_MODULE_7__components_board_board_component__["a" /* BoardComponent */],
+            __WEBPACK_IMPORTED_MODULE_8__components_middle_board_middle_board_component__["a" /* MiddleBoardComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -122,6 +130,234 @@ AppModule = __decorate([
 
 /***/ }),
 
+/***/ "../../../../../src/app/components/board/board.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "ng-sidebar-container {\n    height: 100vh;\n}\n\n/*vh: 1/100th view point height*/\n\n.side {\n    height: 100%;\n    width: 100%;\n}\n\n.btn {\n    background-color: white;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/board/board.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<!-- Container for sidebar(s) + page content -->\n<ng-sidebar-container>\n  \n  <ng-sidebar [(opened)]=\"_leftopened\" [mode]=\"_mode\">\n    <div class=\"side\">\n      <app-side-menu></app-side-menu>\n    </div>\n  </ng-sidebar>\n\n  <!-- left toggle button -->\n  <div ng-sidebar-content>\n    \n    <button type=\"button\" class=\"btn\" aria-label=\"Left Align\" (click)=\"_toggleLeftSidebar()\">\n      <span class=\"glyphicon glyphicon-menu-hamburger\" aria-hidden=\"true\"></span>\n    </button>\n\n    <button type=\"button\" class=\"btn pull-right\" aria-label=\"Right Align\" (click)=\"_toggleRightSidebar()\">\n      <span class=\"glyphicon glyphicon-menu-hamburger\" aria-hidden=\"true\"></span>\n    </button>\n\n    <section>\n      <app-middle-board></app-middle-board>\n    </section>\n\n  </div>\n\n  <ng-sidebar [(opened)]=\"_rightopened\" [mode]=\"_mode\" [position]=\"_position\">\n    <div class=\"side\">\n      <app-question-board></app-question-board>\n    </div>\n  </ng-sidebar>\n\n</ng-sidebar-container>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/board/board.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BoardComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
+var BoardComponent = (function () {
+    function BoardComponent(dataService) {
+        this.dataService = dataService;
+        this._leftopened = false;
+        this._rightopened = true;
+        this._mode = 'push';
+        this._position = 'right';
+    }
+    BoardComponent.prototype.ngOnInit = function () {
+        this.getCourses();
+        this.getFolders();
+    };
+    BoardComponent.prototype.getFolders = function () {
+        this.folders = this.dataService.getFolders();
+        console.log(this.folders);
+    };
+    BoardComponent.prototype.getCourses = function () {
+        this.courses = this.dataService.getCourses();
+    };
+    BoardComponent.prototype._toggleLeftSidebar = function () {
+        this._leftopened = !this._leftopened;
+        if (this._leftopened) {
+            this._rightopened = false;
+        }
+    };
+    BoardComponent.prototype._toggleRightSidebar = function () {
+        this._rightopened = !this._rightopened;
+        if (this._rightopened) {
+            this._leftopened = false;
+        }
+    };
+    return BoardComponent;
+}());
+BoardComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-board',
+        template: __webpack_require__("../../../../../src/app/components/board/board.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/board/board.component.css")]
+    }),
+    __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])('data')),
+    __metadata("design:paramtypes", [Object])
+], BoardComponent);
+
+//# sourceMappingURL=board.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/middle-board/middle-board.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".middle {\n    padding: 5px 50px;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/middle-board/middle-board.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"middle\">\n  <h1>\n    middle-board works!\n  </h1>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/middle-board/middle-board.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MiddleBoardComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var MiddleBoardComponent = (function () {
+    function MiddleBoardComponent() {
+    }
+    MiddleBoardComponent.prototype.ngOnInit = function () {
+    };
+    return MiddleBoardComponent;
+}());
+MiddleBoardComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-middle-board',
+        template: __webpack_require__("../../../../../src/app/components/middle-board/middle-board.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/middle-board/middle-board.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], MiddleBoardComponent);
+
+//# sourceMappingURL=middle-board.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/question-board/question-board.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".side {\n    padding: 10px 15px;\n    max-width: 400px;\n    min-height: 100vh;\n    border-left: solid 1px #e2e2e2;\n}\n\n.side-menu {\n    margin: 0;\n    padding: 0;\n}\n\n.side-menu .side-menu-item {\n    list-style-type: none;\n}\n\n.side-menu .side-menu-item a {\n    font-size:14px;\n}\n\n.question-list {\n    padding: 10px 0;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/question-board/question-board.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container side\">\n  <div class=\"row\">\n    <div class=\"col-xs-3\">\n      <button class=\"btn btn-primary\" type=\"button\">New Post</button>\n    </div>\n\n    <div class=\"col-xs-9\">\n        <div class=\"input-group pull-right\">\n          <input type=\"text\" class=\"form-control\" placeholder=\"Search for...\">\n          <span class=\"input-group-btn\">\n            <button class=\"btn btn-default\" type=\"button\">Go!</button>\n          </span>\n        </div>\n    </div>\n  </div>\n  \n  <div class=\"question-list\">\n    <div class=\"panel panel-default\" *ngFor=\"let question of questions\">\n      <div class=\"panel-heading\">{{question.subject}}</div>\n      <div class=\"panel-body\">{{question.body}}</div>\n    </div>\n  </div>\n\n</div>\n\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/question-board/question-board.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QuestionBoardComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
+var QuestionBoardComponent = (function () {
+    function QuestionBoardComponent(dataService) {
+        this.dataService = dataService;
+        this._opened = true;
+        this._mode = 'push';
+        this._position = 'right';
+    }
+    QuestionBoardComponent.prototype.ngOnInit = function () {
+        this.getQuestions();
+    };
+    QuestionBoardComponent.prototype.getQuestions = function () {
+        this.questions = this.dataService.getQuestions();
+    };
+    QuestionBoardComponent.prototype._toggleSidebar = function () {
+        this._opened = !this._opened;
+    };
+    return QuestionBoardComponent;
+}());
+QuestionBoardComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-question-board',
+        template: __webpack_require__("../../../../../src/app/components/question-board/question-board.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/question-board/question-board.component.css")]
+    }),
+    __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])('data')),
+    __metadata("design:paramtypes", [Object])
+], QuestionBoardComponent);
+
+//# sourceMappingURL=question-board.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/components/side-menu/side-menu.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -130,7 +366,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/* .sidemenu {\n    height: 100%;\n    width: 250px;\n    top: 0;\n    left: 0;\n    overflow-x: hidden;\n    padding-top: 60px;\n    transition: 0.5s;\n}\n\n.sidemenu .closebtn {\n    font-size: 36px;\n    margin-left: 50px;\n} */\n\nng-sidebar-container {\n    height: 100vh;\n}\n\n.side {\n    background: ghostwhite;\n    height: 100%;\n}\n\n/*vh: 1/100th view point height*/\n\n.side-menu .side-menu-item {\n    list-style-type: none;\n}\n\n.side-menu .side-menu-item a {\n    font-size:14px;\n}", ""]);
+exports.push([module.i, ".side {\n    padding: 5px 15px;\n    max-width: 300px;\n    min-height: 100vh;\n    border-right: solid 1px #e2e2e2;\n}\n\n.side-menu {\n    margin: 0;\n    padding: 0;\n}\n\n.side-menu .side-menu-item {\n    list-style-type: none;\n}\n\n.side-menu .side-menu-item a {\n    font-size:14px;\n}", ""]);
 
 // exports
 
@@ -143,7 +379,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/side-menu/side-menu.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <div id=\"side-menu\" class=\"sidemenu\">\n  <a class=\"closebtn\" (click)=\"closeSideMenu()\">&times;</a>\n  <ul class=\"list-group\">\n    \n    <li class=\"list-group-item\">week1</li>\n    <li class=\"list-group-item\">week2</li>\n    <li class=\"list-group-item\">week3</li>\n    <li class=\"list-group-item\">week4</li>\n    <li class=\"list-group-item\">week5</li>\n  </ul>  \n</div>\n\n<button type=\"button\" class=\"btn btn-default\" aria-label=\"Toggle Side Menu\" (click)=\"openSideMenu()\">\n  <span class=\"glyphicon glyphicon-menu-hamburger\" aria-hidden=\"true\"></span>\n</button> -->\n\n<!-- Container for sidebar(s) + page content -->\n\n<ng-sidebar-container>\n\n  <!-- A sidebar -->\n  <ng-sidebar [(opened)]=\"_opened\" [mode]=\"_mode\">\n    <div class=\"side\">\n      <a closeSidebar>Closes the sidebar</a>\n      <p>Sidebar contents</p>\n\n      <ul class=\"side-menu\">\n        <li class=\"side-menu-item\" *ngFor=\"let folder of folders\">\n          <a href=\"#\">{{folder.name}}</a>\n          <ul>\n            <li *ngFor=\"let cid of folder.courses\">\n              <a href=\"#\">{{courses[cid - 1].name}}</a>\n            </li>\n          </ul>\n        </li>\n      </ul>  \n    </div>\n  </ng-sidebar>\n\n  <!-- Page content -->\n  <div ng-sidebar-content>\n    <button type=\"button\" class=\"btn\" aria-label=\"Left Align\" (click)=\"_toggleSidebar()\">\n      <span class=\"glyphicon glyphicon-menu-hamburger\" aria-hidden=\"true\"></span>\n    </button>\n    <h1> Welcome to Bittiger</h1>\n  </div>\n\n</ng-sidebar-container>"
+module.exports = "<aside class=\"side\">\n  <p>Sidebar contents</p>\n\n  <ul class=\"side-menu\">\n    <li class=\"side-menu-item\" *ngFor=\"let folder of folders\">\n      <a href=\"#\">{{folder.name}}</a>\n      <ul>\n        <li *ngFor=\"let cid of folder.courses\">\n          <a href=\"#\">{{courses[cid - 1].name}}</a>\n        </li>\n      </ul>\n    </li>\n  </ul>  \n</aside>"
 
 /***/ }),
 
@@ -171,6 +407,7 @@ var SideMenuComponent = (function () {
         this.dataService = dataService;
         this._opened = true;
         this._mode = 'push';
+        this._position = 'right';
     }
     SideMenuComponent.prototype.ngOnInit = function () {
         this.getCourses();
@@ -178,7 +415,6 @@ var SideMenuComponent = (function () {
     };
     SideMenuComponent.prototype.getFolders = function () {
         this.folders = this.dataService.getFolders();
-        console.log(this.folders);
     };
     SideMenuComponent.prototype.getCourses = function () {
         this.courses = this.dataService.getCourses();
@@ -293,6 +529,59 @@ var FOLDERS = [
 
 /***/ }),
 
+/***/ "../../../../../src/app/mock-data/questionList.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QUESTIONS; });
+var QUESTIONS = [
+    {
+        qid: 1,
+        subject: 'I have a question about the class',
+        body: 'I have an unordered list and for each list item I wish to have text on the left and then a right aligned button. I have tried to use pull-right but this completely messes up the alignment. What am I doing wrong?',
+        folder: 1,
+    },
+    {
+        qid: 2,
+        subject: 'I have a question about the class',
+        body: 'I have an unordered list and for each list item I wish to have text on the left and then a right aligned button. I have tried to use pull-right but this completely messes up the alignment. What am I doing wrong?',
+        folder: 1,
+    },
+    {
+        qid: 3,
+        subject: 'I have a question about the class',
+        body: 'I have an unordered list and for each list item I wish to have text on the left and then a right aligned button. I have tried to use pull-right but this completely messes up the alignment. What am I doing wrong?',
+        folder: 1,
+    },
+    {
+        qid: 4,
+        subject: 'I have a question about the class',
+        body: 'I have an unordered list and for each list item I wish to have text on the left and then a right aligned button. I have tried to use pull-right but this completely messes up the alignment. What am I doing wrong?',
+        folder: 1,
+    },
+    {
+        qid: 5,
+        subject: 'I have a question about the class',
+        body: 'I have an unordered list and for each list item I wish to have text on the left and then a right aligned button. I have tried to use pull-right but this completely messes up the alignment. What am I doing wrong?',
+        folder: 1,
+    },
+    {
+        qid: 6,
+        subject: 'I have a question about the class',
+        body: 'I have an unordered list and for each list item I wish to have text on the left and then a right aligned button. I have tried to use pull-right but this completely messes up the alignment. What am I doing wrong?',
+        folder: 1,
+    },
+    {
+        qid: 7,
+        subject: 'I have a question about the class',
+        body: 'I have an unordered list and for each list item I wish to have text on the left and then a right aligned button. I have tried to use pull-right but this completely messes up the alignment. What am I doing wrong?',
+        folder: 1,
+    }
+];
+//# sourceMappingURL=questionList.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/services/data.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -300,6 +589,7 @@ var FOLDERS = [
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mock_data_folderList__ = __webpack_require__("../../../../../src/app/mock-data/folderList.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mock_data_courseList__ = __webpack_require__("../../../../../src/app/mock-data/courseList.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mock_data_questionList__ = __webpack_require__("../../../../../src/app/mock-data/questionList.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -313,16 +603,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var DataService = (function () {
     function DataService() {
         this.folders = __WEBPACK_IMPORTED_MODULE_1__mock_data_folderList__["a" /* FOLDERS */];
         this.courses = __WEBPACK_IMPORTED_MODULE_2__mock_data_courseList__["a" /* COURSES */];
+        this.questions = __WEBPACK_IMPORTED_MODULE_3__mock_data_questionList__["a" /* QUESTIONS */];
     }
     DataService.prototype.getFolders = function () {
         return this.folders;
     };
     DataService.prototype.getCourses = function () {
         return this.courses;
+    };
+    DataService.prototype.getQuestions = function () {
+        return this.questions;
     };
     return DataService;
 }());

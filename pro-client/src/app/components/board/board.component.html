@@ -1,0 +1,33 @@
+<!-- Container for sidebar(s) + page content -->
+<ng-sidebar-container>
+  
+  <ng-sidebar [(opened)]="_leftopened" [mode]="_mode">
+    <div class="side">
+      <app-side-menu></app-side-menu>
+    </div>
+  </ng-sidebar>
+
+  <!-- left toggle button -->
+  <div ng-sidebar-content>
+    
+    <button type="button" class="btn" aria-label="Left Align" (click)="_toggleLeftSidebar()">
+      <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+    </button>
+
+    <button type="button" class="btn pull-right" aria-label="Right Align" (click)="_toggleRightSidebar()">
+      <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+    </button>
+
+    <section>
+      <app-middle-board></app-middle-board>
+    </section>
+
+  </div>
+
+  <ng-sidebar [(opened)]="_rightopened" [mode]="_mode" [position]="_position">
+    <div class="side">
+      <app-question-board></app-question-board>
+    </div>
+  </ng-sidebar>
+
+</ng-sidebar-container>

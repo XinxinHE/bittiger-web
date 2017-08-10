@@ -1,0 +1,25 @@
+<div class="container side">
+  <div class="row">
+    <div class="col-xs-3">
+      <button class="btn btn-primary" type="button">New Post</button>
+    </div>
+
+    <div class="col-xs-9">
+        <div class="input-group pull-right">
+          <input type="text" class="form-control" placeholder="Search for...">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">Go!</button>
+          </span>
+        </div>
+    </div>
+  </div>
+  
+  <div class="question-list">
+    <div class="panel panel-default" *ngFor="let question of questions">
+      <div class="panel-heading">{{question.subject}}</div>
+      <div class="panel-body">{{question.body}}</div>
+    </div>
+  </div>
+
+</div>
+

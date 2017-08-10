@@ -1,0 +1,14 @@
+ng-sidebar-container {
+    height: 100vh;
+}
+
+/*vh: 1/100th view point height*/
+
+.side {
+    height: 100%;
+    width: 100%;
+}
+
+.btn {
+    background-color: white;
+}

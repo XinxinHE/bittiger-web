@@ -6,11 +6,17 @@ import { DataService } from './services/data.service'
 
 import { AppComponent } from './app.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
+import { QuestionBoardComponent } from './components/question-board/question-board.component';
+import { BoardComponent } from './components/board/board.component';
+import { MiddleBoardComponent } from './components/middle-board/middle-board.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    QuestionBoardComponent,
+    BoardComponent,
+    MiddleBoardComponent
   ],
   imports: [
     BrowserModule,

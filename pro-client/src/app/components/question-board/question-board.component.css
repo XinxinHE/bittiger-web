@@ -1,8 +1,8 @@
 .side {
-    padding: 5px 15px;
-    max-width: 300px;
+    padding: 10px 15px;
+    max-width: 400px;
     min-height: 100vh;
-    border-right: solid 1px #e2e2e2;
+    border-left: solid 1px #e2e2e2;
 }
 
 .side-menu {
@@ -16,4 +16,8 @@
 
 .side-menu .side-menu-item a {
     font-size:14px;
+}
+
+.question-list {
+    padding: 10px 0;
 }

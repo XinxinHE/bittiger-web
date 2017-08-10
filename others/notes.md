@@ -44,8 +44,13 @@ A tarball is a group or archive of files that are bundled together using the tar
 sudo apt-get update
 sudo apt-get install putty
 
-
-sudo npm install -forever
+## forever serve
+sudo npm install forever
 forever start index.js
 
+
 REDIRECT --to-port 8080
+
+ng g component new-cmp
+
+http://ec2-13-58-104-36.us-east-2.compute.amazonaws.com:8080/
