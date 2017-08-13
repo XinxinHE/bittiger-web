@@ -27,4 +27,8 @@ export class DataService {
   getQuestions(): Question[] {
     return this.questions;
   }
+
+  getCourse(id: number): Course {
+    return this.courses.filter(course => course.cid === id)[0];
+  }
 }

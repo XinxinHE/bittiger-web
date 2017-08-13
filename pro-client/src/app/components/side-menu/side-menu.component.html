@@ -3,10 +3,10 @@
 
   <ul class="side-menu">
     <li class="side-menu-item" *ngFor="let folder of folders">
-      <a href="#">{{folder.name}}</a>
+      <span>{{folder.name}}</span>
       <ul>
-        <li *ngFor="let cid of folder.courses">
-          <a href="#">{{courses[cid - 1].name}}</a>
+        <li *ngFor="let course of (courses | selectedCourse: folder.courses)">
+          <a [routerLink]="['/courses', course.cid]">{{course.name}}</a>
         </li>
       </ul>
     </li>

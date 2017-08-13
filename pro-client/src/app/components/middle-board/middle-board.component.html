@@ -1,5 +1,4 @@
-<div class="middle">
-  <h1>
-    middle-board works!
-  </h1>
+<div class="middle" *ngIf="course">
+  <h1>{{course.name}}</h1>
+  <p>{{course.teacher}}</p>
 </div>

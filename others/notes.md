@@ -54,3 +54,8 @@ REDIRECT --to-port 8080
 ng g component new-cmp
 
 http://ec2-13-58-104-36.us-east-2.compute.amazonaws.com:8080/
+
+
+## install mongoDB
+
+https://www.howtoforge.com/tutorial/install-mongodb-on-ubuntu-16.04/

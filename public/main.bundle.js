@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<app-board></app-board>"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<router-outlet></router-outlet>"
 
 /***/ }),
 
@@ -74,14 +74,17 @@ AppComponent = __decorate([
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng_sidebar__ = __webpack_require__("../../../../ng-sidebar/lib/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng_sidebar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_ng_sidebar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_data_service__ = __webpack_require__("../../../../../src/app/services/data.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_side_menu_side_menu_component__ = __webpack_require__("../../../../../src/app/components/side-menu/side-menu.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_question_board_question_board_component__ = __webpack_require__("../../../../../src/app/components/question-board/question-board.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_board_board_component__ = __webpack_require__("../../../../../src/app/components/board/board.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_middle_board_middle_board_component__ = __webpack_require__("../../../../../src/app/components/middle-board/middle-board.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng_sidebar__ = __webpack_require__("../../../../ng-sidebar/lib/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng_sidebar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_ng_sidebar__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_data_service__ = __webpack_require__("../../../../../src/app/services/data.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_routes__ = __webpack_require__("../../../../../src/app/app.routes.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_side_menu_side_menu_component__ = __webpack_require__("../../../../../src/app/components/side-menu/side-menu.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_question_board_question_board_component__ = __webpack_require__("../../../../../src/app/components/question-board/question-board.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_board_board_component__ = __webpack_require__("../../../../../src/app/components/board/board.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_middle_board_middle_board_component__ = __webpack_require__("../../../../../src/app/components/middle-board/middle-board.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_side_menu_side_menu_pipe__ = __webpack_require__("../../../../../src/app/components/side-menu/side-menu.pipe.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -89,6 +92,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
 
 
 
@@ -106,27 +112,71 @@ var AppModule = (function () {
 AppModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_5__components_side_menu_side_menu_component__["a" /* SideMenuComponent */],
-            __WEBPACK_IMPORTED_MODULE_6__components_question_board_question_board_component__["a" /* QuestionBoardComponent */],
-            __WEBPACK_IMPORTED_MODULE_7__components_board_board_component__["a" /* BoardComponent */],
-            __WEBPACK_IMPORTED_MODULE_8__components_middle_board_middle_board_component__["a" /* MiddleBoardComponent */]
+            __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_7__components_side_menu_side_menu_component__["a" /* SideMenuComponent */],
+            __WEBPACK_IMPORTED_MODULE_8__components_question_board_question_board_component__["a" /* QuestionBoardComponent */],
+            __WEBPACK_IMPORTED_MODULE_9__components_board_board_component__["a" /* BoardComponent */],
+            __WEBPACK_IMPORTED_MODULE_10__components_middle_board_middle_board_component__["a" /* MiddleBoardComponent */],
+            __WEBPACK_IMPORTED_MODULE_11__components_side_menu_side_menu_pipe__["a" /* SelectedCoursePipe */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_2_ng_sidebar__["SidebarModule"].forRoot()
+            __WEBPACK_IMPORTED_MODULE_3_ng_sidebar__["SidebarModule"].forRoot(),
+            __WEBPACK_IMPORTED_MODULE_5__app_routes__["a" /* routing */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* HttpModule */]
         ],
         providers: [
             {
                 provide: 'data',
-                useClass: __WEBPACK_IMPORTED_MODULE_3__services_data_service__["a" /* DataService */]
+                useClass: __WEBPACK_IMPORTED_MODULE_4__services_data_service__["a" /* DataService */]
             }
         ],
-        bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]]
+        bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
 
 //# sourceMappingURL=app.module.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/app.routes.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_board_board_component__ = __webpack_require__("../../../../../src/app/components/board/board.component.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return routing; });
+
+
+var routes = [
+    {
+        path: '',
+        redirectTo: 'courses',
+        pathMatch: 'full'
+    },
+    {
+        path: 'courses',
+        component: __WEBPACK_IMPORTED_MODULE_1__components_board_board_component__["a" /* BoardComponent */],
+    },
+    {
+        path: 'courses/:id',
+        component: __WEBPACK_IMPORTED_MODULE_1__components_board_board_component__["a" /* BoardComponent */],
+    },
+    {
+        path: 'questions',
+        component: __WEBPACK_IMPORTED_MODULE_1__components_board_board_component__["a" /* BoardComponent */]
+    },
+    {
+        path: 'questions/:id',
+        component: __WEBPACK_IMPORTED_MODULE_1__components_board_board_component__["a" /* BoardComponent */]
+    },
+    {
+        path: '**',
+        redirectTo: 'courses'
+    }
+];
+var routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["a" /* RouterModule */].forRoot(routes);
+//# sourceMappingURL=app.routes.js.map
 
 /***/ }),
 
@@ -242,7 +292,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/middle-board/middle-board.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"middle\">\n  <h1>\n    middle-board works!\n  </h1>\n</div>\n"
+module.exports = "<div class=\"middle\" *ngIf=\"course\">\n  <h1>{{course.name}}</h1>\n  <p>{{course.teacher}}</p>\n</div>\n"
 
 /***/ }),
 
@@ -251,6 +301,7 @@ module.exports = "<div class=\"middle\">\n  <h1>\n    middle-board works!\n  </h
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MiddleBoardComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -261,11 +312,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
 
 var MiddleBoardComponent = (function () {
-    function MiddleBoardComponent() {
+    function MiddleBoardComponent(route, data) {
+        this.route = route;
+        this.data = data;
     }
     MiddleBoardComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.params.subscribe(function (params) {
+            // get course id from the activated router params
+            _this.course = _this.data.getCourse(+params['id']);
+        });
     };
     return MiddleBoardComponent;
 }());
@@ -275,9 +337,11 @@ MiddleBoardComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/components/middle-board/middle-board.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/middle-board/middle-board.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __param(1, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])('data')),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _a || Object, Object])
 ], MiddleBoardComponent);
 
+var _a;
 //# sourceMappingURL=middle-board.component.js.map
 
 /***/ }),
@@ -379,7 +443,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/side-menu/side-menu.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<aside class=\"side\">\n  <p>Sidebar contents</p>\n\n  <ul class=\"side-menu\">\n    <li class=\"side-menu-item\" *ngFor=\"let folder of folders\">\n      <a href=\"#\">{{folder.name}}</a>\n      <ul>\n        <li *ngFor=\"let cid of folder.courses\">\n          <a href=\"#\">{{courses[cid - 1].name}}</a>\n        </li>\n      </ul>\n    </li>\n  </ul>  \n</aside>"
+module.exports = "<aside class=\"side\">\n  <p>Sidebar contents</p>\n\n  <ul class=\"side-menu\">\n    <li class=\"side-menu-item\" *ngFor=\"let folder of folders\">\n      <span>{{folder.name}}</span>\n      <ul>\n        <li *ngFor=\"let course of (courses | selectedCourse: folder.courses)\">\n          <a [routerLink]=\"['/courses', course.cid]\">{{course.name}}</a>\n        </li>\n      </ul>\n    </li>\n  </ul>  \n</aside>"
 
 /***/ }),
 
@@ -419,6 +483,9 @@ var SideMenuComponent = (function () {
     SideMenuComponent.prototype.getCourses = function () {
         this.courses = this.dataService.getCourses();
     };
+    SideMenuComponent.prototype.getCourse = function (id) {
+        return this.course = this.dataService.getCourse(id);
+    };
     SideMenuComponent.prototype._toggleSidebar = function () {
         this._opened = !this._opened;
     };
@@ -438,6 +505,52 @@ SideMenuComponent = __decorate([
 
 /***/ }),
 
+/***/ "../../../../../src/app/components/side-menu/side-menu.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SelectedCoursePipe; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+/*
+ * Raise the value exponentially
+ * Takes an exponent argument that defaults to 1.
+ * Usage:
+ *   value | exponentialStrength:exponent
+ * Example:
+ *   {{ 2 | exponentialStrength:10 }}
+ *   formats to: 1024
+*/
+var SelectedCoursePipe = (function () {
+    function SelectedCoursePipe() {
+    }
+    SelectedCoursePipe.prototype.transform = function (allCourses, cids) {
+        var selectedCourses = [];
+        for (var _i = 0, allCourses_1 = allCourses; _i < allCourses_1.length; _i++) {
+            var course = allCourses_1[_i];
+            if (cids.indexOf(course.cid) >= 0) {
+                console.log(course.cid);
+                selectedCourses.push(course);
+            }
+        }
+        return selectedCourses;
+    };
+    return SelectedCoursePipe;
+}());
+SelectedCoursePipe = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({ name: 'selectedCourse' })
+], SelectedCoursePipe);
+
+//# sourceMappingURL=side-menu.pipe.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/mock-data/courseList.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -446,49 +559,49 @@ SideMenuComponent = __decorate([
 var COURSES = [
     {
         cid: 1,
-        name: 'Intro to Project Manager Class',
+        name: 'Intro to Project Manager Class 1',
         week: 1,
         desc: 'This course introduces the basic concepts of PM',
         teacher: 'Payson Wu'
     },
     {
         cid: 2,
-        name: 'Intro to Project Manager Class',
+        name: 'Intro to Project Manager Class 2',
         week: 1,
         desc: 'This course introduces the basic concepts of PM',
         teacher: 'Payson Wu'
     },
     {
         cid: 3,
-        name: 'Intro to Project Manager Class',
+        name: 'Intro to Project Manager Class 3',
         week: 2,
         desc: 'This course introduces the basic concepts of PM',
         teacher: 'Payson Wu'
     },
     {
         cid: 4,
-        name: 'Intro to Project Manager Class',
+        name: 'Intro to Project Manager Class 4',
         week: 3,
         desc: 'This course introduces the basic concepts of PM',
         teacher: 'Payson Wu'
     },
     {
         cid: 5,
-        name: 'Intro to Project Manager Class',
+        name: 'Intro to Project Manager Class 5',
         week: 3,
         desc: 'This course introduces the basic concepts of PM',
         teacher: 'Payson Wu'
     },
     {
         cid: 6,
-        name: 'Intro to Project Manager Class',
+        name: 'Intro to Project Manager Class 6',
         week: 3,
         desc: 'This course introduces the basic concepts of PM',
         teacher: 'Payson Wu'
     },
     {
         cid: 7,
-        name: 'Intro to Project Manager Class',
+        name: 'Intro to Project Manager Class 7',
         week: 4,
         desc: 'This course introduces the basic concepts of PM',
         teacher: 'Payson Wu'
@@ -618,6 +731,9 @@ var DataService = (function () {
     };
     DataService.prototype.getQuestions = function () {
         return this.questions;
+    };
+    DataService.prototype.getCourse = function (id) {
+        return this.courses.filter(function (course) { return course.cid === id; })[0];
     };
     return DataService;
 }());

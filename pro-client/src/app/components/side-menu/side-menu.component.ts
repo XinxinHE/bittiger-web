@@ -1,15 +1,17 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Pipe, PipeTransform } from '@angular/core';
 import { Folder } from 'app/data-structure/folder';
-import { Course } from 'app/data-structure/course'
+import { Course } from 'app/data-structure/course';
 
 @Component({
   selector: 'app-side-menu',
   templateUrl: './side-menu.component.html',
   styleUrls: ['./side-menu.component.css']
 })
+
 export class SideMenuComponent implements OnInit {
   folders: Folder[];
   courses: Course[];
+  course: Course;
 
   _opened: boolean = true;
   _mode: string = 'push';
@@ -28,6 +30,10 @@ export class SideMenuComponent implements OnInit {
 
   getCourses(): void {
     this.courses = this.dataService.getCourses();
+  }
+
+  getCourse(id: number): Course {
+    return this.course = this.dataService.getCourse(id);
   }
 
   _toggleSidebar() {
