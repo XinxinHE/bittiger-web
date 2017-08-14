@@ -1,7 +1,7 @@
 export class Course {
     cid: number;
     name: string;
-    week: number;
+    folder: number;
     desc: string;
     teacher: string;
 }

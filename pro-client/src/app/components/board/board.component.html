@@ -19,14 +19,14 @@
     </button>
 
     <section>
-      <app-middle-board></app-middle-board>
+      <router-outlet name="courseBoard"></router-outlet>
     </section>
 
   </div>
 
   <ng-sidebar [(opened)]="_rightopened" [mode]="_mode" [position]="_position">
     <div class="side">
-      <app-question-board></app-question-board>
+      <router-outlet name="questionBoard"></router-outlet>
     </div>
   </ng-sidebar>
 

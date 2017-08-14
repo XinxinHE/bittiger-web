@@ -55,6 +55,10 @@ ng g component new-cmp
 
 http://ec2-13-58-104-36.us-east-2.compute.amazonaws.com:8080/
 
+## install quill
+npm install quill --save (? hold)
+
+npm install ngx-quill-editor --save
 
 ## install mongoDB
 

@@ -75,16 +75,20 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng_sidebar__ = __webpack_require__("../../../../ng-sidebar/lib/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng_sidebar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_ng_sidebar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_data_service__ = __webpack_require__("../../../../../src/app/services/data.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_routes__ = __webpack_require__("../../../../../src/app/app.routes.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_side_menu_side_menu_component__ = __webpack_require__("../../../../../src/app/components/side-menu/side-menu.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_question_board_question_board_component__ = __webpack_require__("../../../../../src/app/components/question-board/question-board.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_board_board_component__ = __webpack_require__("../../../../../src/app/components/board/board.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_middle_board_middle_board_component__ = __webpack_require__("../../../../../src/app/components/middle-board/middle-board.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_side_menu_side_menu_pipe__ = __webpack_require__("../../../../../src/app/components/side-menu/side-menu.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ng_sidebar__ = __webpack_require__("../../../../ng-sidebar/lib/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ng_sidebar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_ng_sidebar__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_quill_editor__ = __webpack_require__("../../../../ngx-quill-editor/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_data_service__ = __webpack_require__("../../../../../src/app/services/data.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_routes__ = __webpack_require__("../../../../../src/app/app.routes.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_side_menu_side_menu_component__ = __webpack_require__("../../../../../src/app/components/side-menu/side-menu.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_board_board_component__ = __webpack_require__("../../../../../src/app/components/board/board.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_middle_board_middle_board_component__ = __webpack_require__("../../../../../src/app/components/middle-board/middle-board.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_side_menu_side_menu_pipe__ = __webpack_require__("../../../../../src/app/components/side-menu/side-menu.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_question_list_question_list_pipe__ = __webpack_require__("../../../../../src/app/components/question-list/question-list.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_question_new_question_new_component__ = __webpack_require__("../../../../../src/app/components/question-new/question-new.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_question_list_question_list_component__ = __webpack_require__("../../../../../src/app/components/question-list/question-list.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -92,6 +96,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
+
 
 
 
@@ -112,26 +120,30 @@ var AppModule = (function () {
 AppModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_7__components_side_menu_side_menu_component__["a" /* SideMenuComponent */],
-            __WEBPACK_IMPORTED_MODULE_8__components_question_board_question_board_component__["a" /* QuestionBoardComponent */],
-            __WEBPACK_IMPORTED_MODULE_9__components_board_board_component__["a" /* BoardComponent */],
-            __WEBPACK_IMPORTED_MODULE_10__components_middle_board_middle_board_component__["a" /* MiddleBoardComponent */],
-            __WEBPACK_IMPORTED_MODULE_11__components_side_menu_side_menu_pipe__["a" /* SelectedCoursePipe */]
+            __WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_9__components_side_menu_side_menu_component__["a" /* SideMenuComponent */],
+            __WEBPACK_IMPORTED_MODULE_10__components_board_board_component__["a" /* BoardComponent */],
+            __WEBPACK_IMPORTED_MODULE_11__components_middle_board_middle_board_component__["a" /* MiddleBoardComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__components_side_menu_side_menu_pipe__["a" /* SelectedCoursePipe */],
+            __WEBPACK_IMPORTED_MODULE_13__components_question_list_question_list_pipe__["a" /* SelectedQuestionPipe */],
+            __WEBPACK_IMPORTED_MODULE_14__components_question_new_question_new_component__["a" /* QuestionNewComponent */],
+            __WEBPACK_IMPORTED_MODULE_15__components_question_list_question_list_component__["a" /* QuestionListComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_3_ng_sidebar__["SidebarModule"].forRoot(),
-            __WEBPACK_IMPORTED_MODULE_5__app_routes__["a" /* routing */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* HttpModule */]
+            __WEBPACK_IMPORTED_MODULE_4_ng_sidebar__["SidebarModule"].forRoot(),
+            __WEBPACK_IMPORTED_MODULE_7__app_routes__["a" /* routing */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* HttpModule */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormsModule */],
+            __WEBPACK_IMPORTED_MODULE_5_ngx_quill_editor__["a" /* QuillEditorModule */]
         ],
         providers: [
             {
                 provide: 'data',
-                useClass: __WEBPACK_IMPORTED_MODULE_4__services_data_service__["a" /* DataService */]
+                useClass: __WEBPACK_IMPORTED_MODULE_6__services_data_service__["a" /* DataService */]
             }
         ],
-        bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
+        bootstrap: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
 
@@ -145,30 +157,29 @@ AppModule = __decorate([
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_board_board_component__ = __webpack_require__("../../../../../src/app/components/board/board.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_middle_board_middle_board_component__ = __webpack_require__("../../../../../src/app/components/middle-board/middle-board.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_question_list_question_list_component__ = __webpack_require__("../../../../../src/app/components/question-list/question-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_question_new_question_new_component__ = __webpack_require__("../../../../../src/app/components/question-new/question-new.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return routing; });
+
+
+
 
 
 var routes = [
     {
         path: '',
-        redirectTo: 'courses',
+        redirectTo: 'home',
         pathMatch: 'full'
     },
     {
-        path: 'courses',
+        path: 'home',
         component: __WEBPACK_IMPORTED_MODULE_1__components_board_board_component__["a" /* BoardComponent */],
-    },
-    {
-        path: 'courses/:id',
-        component: __WEBPACK_IMPORTED_MODULE_1__components_board_board_component__["a" /* BoardComponent */],
-    },
-    {
-        path: 'questions',
-        component: __WEBPACK_IMPORTED_MODULE_1__components_board_board_component__["a" /* BoardComponent */]
-    },
-    {
-        path: 'questions/:id',
-        component: __WEBPACK_IMPORTED_MODULE_1__components_board_board_component__["a" /* BoardComponent */]
+        children: [
+            { path: 'courses/:id', component: __WEBPACK_IMPORTED_MODULE_2__components_middle_board_middle_board_component__["a" /* MiddleBoardComponent */], outlet: 'courseBoard' },
+            { path: 'questions', component: __WEBPACK_IMPORTED_MODULE_3__components_question_list_question_list_component__["a" /* QuestionListComponent */], outlet: 'questionBoard' },
+            { path: 'new-question', component: __WEBPACK_IMPORTED_MODULE_4__components_question_new_question_new_component__["a" /* QuestionNewComponent */], outlet: 'questionBoard' }
+        ]
     },
     {
         path: '**',
@@ -201,7 +212,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/board/board.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Container for sidebar(s) + page content -->\n<ng-sidebar-container>\n  \n  <ng-sidebar [(opened)]=\"_leftopened\" [mode]=\"_mode\">\n    <div class=\"side\">\n      <app-side-menu></app-side-menu>\n    </div>\n  </ng-sidebar>\n\n  <!-- left toggle button -->\n  <div ng-sidebar-content>\n    \n    <button type=\"button\" class=\"btn\" aria-label=\"Left Align\" (click)=\"_toggleLeftSidebar()\">\n      <span class=\"glyphicon glyphicon-menu-hamburger\" aria-hidden=\"true\"></span>\n    </button>\n\n    <button type=\"button\" class=\"btn pull-right\" aria-label=\"Right Align\" (click)=\"_toggleRightSidebar()\">\n      <span class=\"glyphicon glyphicon-menu-hamburger\" aria-hidden=\"true\"></span>\n    </button>\n\n    <section>\n      <app-middle-board></app-middle-board>\n    </section>\n\n  </div>\n\n  <ng-sidebar [(opened)]=\"_rightopened\" [mode]=\"_mode\" [position]=\"_position\">\n    <div class=\"side\">\n      <app-question-board></app-question-board>\n    </div>\n  </ng-sidebar>\n\n</ng-sidebar-container>"
+module.exports = "<!-- Container for sidebar(s) + page content -->\n<ng-sidebar-container>\n  \n  <ng-sidebar [(opened)]=\"_leftopened\" [mode]=\"_mode\">\n    <div class=\"side\">\n      <app-side-menu></app-side-menu>\n    </div>\n  </ng-sidebar>\n\n  <!-- left toggle button -->\n  <div ng-sidebar-content>\n    \n    <button type=\"button\" class=\"btn\" aria-label=\"Left Align\" (click)=\"_toggleLeftSidebar()\">\n      <span class=\"glyphicon glyphicon-menu-hamburger\" aria-hidden=\"true\"></span>\n    </button>\n\n    <button type=\"button\" class=\"btn pull-right\" aria-label=\"Right Align\" (click)=\"_toggleRightSidebar()\">\n      <span class=\"glyphicon glyphicon-menu-hamburger\" aria-hidden=\"true\"></span>\n    </button>\n\n    <section>\n      <router-outlet name=\"courseBoard\"></router-outlet>\n    </section>\n\n  </div>\n\n  <ng-sidebar [(opened)]=\"_rightopened\" [mode]=\"_mode\" [position]=\"_position\">\n    <div class=\"side\">\n      <router-outlet name=\"questionBoard\"></router-outlet>\n    </div>\n  </ng-sidebar>\n\n</ng-sidebar-container>"
 
 /***/ }),
 
@@ -346,7 +357,7 @@ var _a;
 
 /***/ }),
 
-/***/ "../../../../../src/app/components/question-board/question-board.component.css":
+/***/ "../../../../../src/app/components/question-list/question-list.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -354,7 +365,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".side {\n    padding: 10px 15px;\n    max-width: 400px;\n    min-height: 100vh;\n    border-left: solid 1px #e2e2e2;\n}\n\n.side-menu {\n    margin: 0;\n    padding: 0;\n}\n\n.side-menu .side-menu-item {\n    list-style-type: none;\n}\n\n.side-menu .side-menu-item a {\n    font-size:14px;\n}\n\n.question-list {\n    padding: 10px 0;\n}", ""]);
+exports.push([module.i, ".side {\n    padding: 10px 15px;\n    max-width: 400px;\n    min-height: 100vh;\n    border-left: solid 1px #e2e2e2;\n}\n\n.question-list {\n    padding-top: 10px;\n}", ""]);
 
 // exports
 
@@ -364,19 +375,19 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/components/question-board/question-board.component.html":
+/***/ "../../../../../src/app/components/question-list/question-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container side\">\n  <div class=\"row\">\n    <div class=\"col-xs-3\">\n      <button class=\"btn btn-primary\" type=\"button\">New Post</button>\n    </div>\n\n    <div class=\"col-xs-9\">\n        <div class=\"input-group pull-right\">\n          <input type=\"text\" class=\"form-control\" placeholder=\"Search for...\">\n          <span class=\"input-group-btn\">\n            <button class=\"btn btn-default\" type=\"button\">Go!</button>\n          </span>\n        </div>\n    </div>\n  </div>\n  \n  <div class=\"question-list\">\n    <div class=\"panel panel-default\" *ngFor=\"let question of questions\">\n      <div class=\"panel-heading\">{{question.subject}}</div>\n      <div class=\"panel-body\">{{question.body}}</div>\n    </div>\n  </div>\n\n</div>\n\n"
+module.exports = "<div class=\"container side\">\n  <div class=\"row\">\n    <div class=\"col-xs-3\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['new-question']}}]\" class=\"btn btn-primary\" type=\"button\">New Post</button>\n    </div>\n\n    <div class=\"col-xs-9\">\n        <div class=\"input-group pull-right\">\n          <input type=\"text\" class=\"form-control\" placeholder=\"Search for...\">\n          <span class=\"input-group-btn\">\n            <button class=\"btn btn-default\" type=\"button\">Go!</button>\n          </span>\n        </div>\n    </div>\n  </div>\n\n  <div class=\"quesiton-list\">\n    <div class=\"question-folder\" *ngFor=\"let folder of folders\">\n      <div class=\"question-list\">\n        <div class=\"panel panel-info\">\n          <div class=\"panel-heading\">{{folder.name}}</div>\n        </div>\n\n        <div class=\"panel panel-default\" *ngFor=\"let question of (questions | selectedQuestion: folder.questions)\">\n          <div class=\"panel-heading\">{{question.subject}}</div>\n          <div class=\"panel-body\">{{question.body}}</div>\n        </div>\n      </div>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
-/***/ "../../../../../src/app/components/question-board/question-board.component.ts":
+/***/ "../../../../../src/app/components/question-list/question-list.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QuestionBoardComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QuestionListComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -390,35 +401,170 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 
-var QuestionBoardComponent = (function () {
-    function QuestionBoardComponent(dataService) {
+var QuestionListComponent = (function () {
+    function QuestionListComponent(dataService) {
         this.dataService = dataService;
         this._opened = true;
         this._mode = 'push';
         this._position = 'right';
     }
-    QuestionBoardComponent.prototype.ngOnInit = function () {
+    QuestionListComponent.prototype.ngOnInit = function () {
         this.getQuestions();
+        this.getFolders();
     };
-    QuestionBoardComponent.prototype.getQuestions = function () {
+    QuestionListComponent.prototype.getQuestions = function () {
         this.questions = this.dataService.getQuestions();
     };
-    QuestionBoardComponent.prototype._toggleSidebar = function () {
+    QuestionListComponent.prototype.getFolders = function () {
+        this.folders = this.dataService.getFolders();
+    };
+    QuestionListComponent.prototype._toggleSidebar = function () {
         this._opened = !this._opened;
     };
-    return QuestionBoardComponent;
+    return QuestionListComponent;
 }());
-QuestionBoardComponent = __decorate([
+QuestionListComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-question-board',
-        template: __webpack_require__("../../../../../src/app/components/question-board/question-board.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/components/question-board/question-board.component.css")]
+        selector: 'app-question-list',
+        template: __webpack_require__("../../../../../src/app/components/question-list/question-list.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/question-list/question-list.component.css")]
     }),
     __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])('data')),
     __metadata("design:paramtypes", [Object])
-], QuestionBoardComponent);
+], QuestionListComponent);
 
-//# sourceMappingURL=question-board.component.js.map
+//# sourceMappingURL=question-list.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/question-list/question-list.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SelectedQuestionPipe; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+/*
+ * Raise the value exponentially
+ * Takes an exponent argument that defaults to 1.
+ * Usage:
+ *   value | exponentialStrength:exponent
+ * Example:
+ *   {{ 2 | exponentialStrength:10 }}
+ *   formats to: 1024
+*/
+var SelectedQuestionPipe = (function () {
+    function SelectedQuestionPipe() {
+    }
+    SelectedQuestionPipe.prototype.transform = function (allQuestions, qids) {
+        var selectedQuestions = [];
+        for (var _i = 0, allQuestions_1 = allQuestions; _i < allQuestions_1.length; _i++) {
+            var question = allQuestions_1[_i];
+            if (qids.indexOf(question.qid) >= 0) {
+                console.log(question.qid);
+                selectedQuestions.push(question);
+            }
+        }
+        return selectedQuestions;
+    };
+    return SelectedQuestionPipe;
+}());
+SelectedQuestionPipe = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({ name: 'selectedQuestion' })
+], SelectedQuestionPipe);
+
+//# sourceMappingURL=question-list.pipe.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/question-new/question-new.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".side {\n    padding: 10px 15px;\n    max-width: 400px;\n    min-height: 100vh;\n    border-left: solid 1px #e2e2e2;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/question-new/question-new.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container side\">\n  <div class=\"row\">\n    <div class=\"col-xs-3\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['questions']}}]\" class=\"btn btn-primary\" type=\"button\">Cancel</button>\n    </div>\n\n    <div class=\"col-xs-9\">\n        <div class=\"input-group pull-right\">\n          <input type=\"text\" class=\"form-control\" placeholder=\"Search for...\">\n          <span class=\"input-group-btn\">\n            <button class=\"btn btn-default\" type=\"button\">Go!</button>\n          </span>\n        </div>\n    </div>\n  </div>\n  \n  <div>\n    <h1>New Post</h1>\n\n<quill-editor [(ngModel)]=\"editorContent\"\n                           [options]=\"editorConfig\"\n                           (blur)=\"onEditorBlured($event)\"\n                           (focus)=\"onEditorFocused($event)\"\n                           (ready)=\"onEditorCreated($event)\"\n                           (change)=\"onContentChanged($event)\">\n            </quill-editor>  \n    </div> \n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/question-new/question-new.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QuestionNewComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var QuestionNewComponent = (function () {
+    function QuestionNewComponent() {
+        this.editorContent = "<h3>I am Example content</h3>";
+        this.editorOptions = {
+            placeholder: "insert content..."
+        };
+    }
+    QuestionNewComponent.prototype.onEditorBlured = function (quill) {
+        console.log('editor blur!', quill);
+    };
+    QuestionNewComponent.prototype.onEditorFocused = function (quill) {
+        console.log('editor focus!', quill);
+    };
+    QuestionNewComponent.prototype.onEditorCreated = function (quill) {
+        this.editor = quill;
+        console.log('quill is ready! this is current quill instance object', quill);
+    };
+    QuestionNewComponent.prototype.onContentChanged = function (_a) {
+        var quill = _a.quill, html = _a.html, text = _a.text;
+        console.log('quill content is changed!', quill, html, text);
+    };
+    QuestionNewComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        setTimeout(function () {
+            _this.editorContent = '<h1>content changed!</h1>';
+            console.log('you can use the quill instance object to do something', _this.editor);
+            // this.editor.disable();
+        }, 2800);
+    };
+    return QuestionNewComponent;
+}());
+QuestionNewComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-question-new',
+        template: __webpack_require__("../../../../../src/app/components/question-new/question-new.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/question-new/question-new.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], QuestionNewComponent);
+
+//# sourceMappingURL=question-new.component.js.map
 
 /***/ }),
 
@@ -443,7 +589,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/side-menu/side-menu.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<aside class=\"side\">\n  <p>Sidebar contents</p>\n\n  <ul class=\"side-menu\">\n    <li class=\"side-menu-item\" *ngFor=\"let folder of folders\">\n      <span>{{folder.name}}</span>\n      <ul>\n        <li *ngFor=\"let course of (courses | selectedCourse: folder.courses)\">\n          <a [routerLink]=\"['/courses', course.cid]\">{{course.name}}</a>\n        </li>\n      </ul>\n    </li>\n  </ul>  \n</aside>"
+module.exports = "<aside class=\"side\">\n  <p>Sidebar contents</p>\n\n  <ul class=\"side-menu\">\n    <li class=\"side-menu-item\" *ngFor=\"let folder of folders\">\n      <span>{{folder.name}}</span>\n      <ul>\n        <li *ngFor=\"let course of (courses | selectedCourse: folder.courses)\">\n          <a [routerLink]=\"['/home', {outlets: {'courseBoard':['courses', course.cid], 'questionBoard': ['questions']}}]\">\n            {{course.name}}</a>\n        </li>\n      </ul>\n    </li>\n  </ul>  \n</aside>"
 
 /***/ }),
 
@@ -560,49 +706,49 @@ var COURSES = [
     {
         cid: 1,
         name: 'Intro to Project Manager Class 1',
-        week: 1,
+        folder: 1,
         desc: 'This course introduces the basic concepts of PM',
         teacher: 'Payson Wu'
     },
     {
         cid: 2,
         name: 'Intro to Project Manager Class 2',
-        week: 1,
+        folder: 1,
         desc: 'This course introduces the basic concepts of PM',
         teacher: 'Payson Wu'
     },
     {
         cid: 3,
         name: 'Intro to Project Manager Class 3',
-        week: 2,
+        folder: 2,
         desc: 'This course introduces the basic concepts of PM',
         teacher: 'Payson Wu'
     },
     {
         cid: 4,
         name: 'Intro to Project Manager Class 4',
-        week: 3,
+        folder: 3,
         desc: 'This course introduces the basic concepts of PM',
         teacher: 'Payson Wu'
     },
     {
         cid: 5,
         name: 'Intro to Project Manager Class 5',
-        week: 3,
+        folder: 3,
         desc: 'This course introduces the basic concepts of PM',
         teacher: 'Payson Wu'
     },
     {
         cid: 6,
         name: 'Intro to Project Manager Class 6',
-        week: 3,
+        folder: 3,
         desc: 'This course introduces the basic concepts of PM',
         teacher: 'Payson Wu'
     },
     {
         cid: 7,
         name: 'Intro to Project Manager Class 7',
-        week: 4,
+        folder: 4,
         desc: 'This course introduces the basic concepts of PM',
         teacher: 'Payson Wu'
     }
@@ -620,22 +766,26 @@ var FOLDERS = [
     {
         fid: 1,
         name: 'week1',
-        courses: [1, 2]
+        courses: [1, 2],
+        questions: [1, 2, 3]
     },
     {
         fid: 2,
         name: 'week2',
-        courses: [3]
+        courses: [3],
+        questions: [4, 5]
     },
     {
         fid: 3,
         name: 'week3',
-        courses: [4, 5, 6]
+        courses: [4, 5, 6],
+        questions: [6, 7]
     },
     {
         fid: 4,
         name: 'capstone',
-        courses: [7]
+        courses: [7],
+        questions: []
     }
 ];
 //# sourceMappingURL=folderList.js.map
@@ -670,25 +820,25 @@ var QUESTIONS = [
         qid: 4,
         subject: 'I have a question about the class',
         body: 'I have an unordered list and for each list item I wish to have text on the left and then a right aligned button. I have tried to use pull-right but this completely messes up the alignment. What am I doing wrong?',
-        folder: 1,
+        folder: 2,
     },
     {
         qid: 5,
         subject: 'I have a question about the class',
         body: 'I have an unordered list and for each list item I wish to have text on the left and then a right aligned button. I have tried to use pull-right but this completely messes up the alignment. What am I doing wrong?',
-        folder: 1,
+        folder: 2,
     },
     {
         qid: 6,
         subject: 'I have a question about the class',
         body: 'I have an unordered list and for each list item I wish to have text on the left and then a right aligned button. I have tried to use pull-right but this completely messes up the alignment. What am I doing wrong?',
-        folder: 1,
+        folder: 3,
     },
     {
         qid: 7,
         subject: 'I have a question about the class',
         body: 'I have an unordered list and for each list item I wish to have text on the left and then a right aligned button. I have tried to use pull-right but this completely messes up the alignment. What am I doing wrong?',
-        folder: 1,
+        folder: 3,
     }
 ];
 //# sourceMappingURL=questionList.js.map

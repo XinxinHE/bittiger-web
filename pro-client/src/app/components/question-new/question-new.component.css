@@ -1,0 +1,6 @@
+.side {
+    padding: 10px 15px;
+    max-width: 400px;
+    min-height: 100vh;
+    border-left: solid 1px #e2e2e2;
+}

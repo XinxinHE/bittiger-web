@@ -6,7 +6,8 @@
       <span>{{folder.name}}</span>
       <ul>
         <li *ngFor="let course of (courses | selectedCourse: folder.courses)">
-          <a [routerLink]="['/courses', course.cid]">{{course.name}}</a>
+          <a [routerLink]="['/home', {outlets: {'courseBoard':['courses', course.cid], 'questionBoard': ['questions']}}]">
+            {{course.name}}</a>
         </li>
       </ul>
     </li>
