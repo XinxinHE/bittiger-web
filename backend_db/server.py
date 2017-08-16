@@ -13,12 +13,29 @@ mongo_endpoint = mongo_host + ":" + str(mongo_port)
 
 db = DB()
 
+@app.route('/')
+def hello():
+    return 'hello world'
+
+# get all the questions/folders/courses
+
+@app.route("/<table_type>", methods=["GET"])
+def get_posts(table_type):
+	data = db.readPosts(table_type)
+	if data is None:
+		return jsonify({'error': 'Info not found'}), 404
+
+	return jsonify(data), 200
+
+
+# get question/folder/course by id
+
 @app.route("/<table_type>/<id>", methods=["GET"])
-def get_course(table_type, id):
+def get_post(table_type, id):
 	data = db.readPost(table_type, id)
 	if data is None:
-		return jsonify({'error': 'Course not found'}), 404
-	#print(str(data['_id']))
+		return jsonify({'error': 'Post not found'}), 404
+
 	return jsonify(data), 200
 
 
@@ -50,9 +67,9 @@ def update_data(table_type, id):
 
 @app.route("/<table_type>/<id>", methods=["DELETE"])
 def delete_record(table_type, id):
-	db.deletePost(table_type, id)
-
-	return jsonify({'status': 'success'}), 200
+	response = {}
+	response['status'] = db.deletePost(table_type, id)
+	return jsonify(response), 200
 
 
 if __name__ == "__main__":

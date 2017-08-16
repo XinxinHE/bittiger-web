@@ -1,28 +1,54 @@
 <div class="container side">
+  
   <div class="row">
     <div class="col-xs-3">
       <button [routerLink]="['/home', { outlets: {'questionBoard': ['questions']}}]" class="btn btn-primary" type="button">Cancel</button>
     </div>
-
     <div class="col-xs-9">
-        <div class="input-group pull-right">
-          <input type="text" class="form-control" placeholder="Search for...">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button">Go!</button>
-          </span>
-        </div>
+      <label class="board-head pull-right"><h1>New Post</h1></label>
     </div>
   </div>
   
   <div>
-    <h1>New Post</h1>
+    <form>
+      <div class="form-group">
+        <label for="questionTitle">Title</label>
+        <input type="text" class="form-control" id="questionTitle" placeholder="Input your question title">
+      </div>
 
-<quill-editor [(ngModel)]="editorContent"
-                           [options]="editorConfig"
-                           (blur)="onEditorBlured($event)"
-                           (focus)="onEditorFocused($event)"
-                           (ready)="onEditorCreated($event)"
-                           (change)="onContentChanged($event)">
-            </quill-editor>  
-    </div> 
+      <div class="form-group">
+          <label for="questionBody">Body</label>
+          <quill-editor id="questionBody"
+                        [(ngModel)]="editorContent" 
+                        [ngModelOptions]="{standalone: true}"
+                        [options]="editorConfig"
+                        (blur)="onEditorBlured($event)"
+                        (focus)="onEditorFocused($event)"
+                        (ready)="onEditorCreated($event)"
+                        (change)="onContentChanged($event)">
+          </quill-editor> 
+      </div>
+
+      <div class="form-group">
+        <label for="questionAttachment">Attchment</label>
+        <input type="file" id="questionAttachment">
+        <p class="help-block">Upload the attachment to support your question.</p>
+      </div>
+
+      <div class="form-group">
+        <label for="folderGroup">Folder</label>
+        <div *ngFor="let folder of folders">
+          <div class="radio">
+            <label>
+              <input type="radio" name="folderSelect"> {{folder.name}}
+            </label>
+          </div>         
+        </div>
+
+      </div>
+
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div> 
+
 </div>

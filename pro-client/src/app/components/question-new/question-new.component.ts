@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject} from '@angular/core';
+import { Folder } from '../../data-structure/folder'
 
 @Component({
   selector: 'app-question-new',
@@ -12,7 +13,9 @@ export class QuestionNewComponent implements OnInit {
     placeholder: "insert content..."
   };
 
-  constructor() { }
+  folders: Folder[];
+
+  constructor(@Inject('data') private dataService) { }
 
   onEditorBlured(quill) {
     console.log('editor blur!', quill);
@@ -32,10 +35,20 @@ export class QuestionNewComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.getFolders();
+    
     setTimeout(() => {
-      this.editorContent = '<h1>content changed!</h1>';
+      this.editorContent = '<h1>Input your content!</h1>';
       console.log('you can use the quill instance object to do something', this.editor);
       // this.editor.disable();
-    }, 2800)
+    }, 2800);
+
   }
+
+  getFolders(): void {
+    this.dataService.getFolders()
+      .subscribe(folders => this.folders = folders);
+  }
+
 }

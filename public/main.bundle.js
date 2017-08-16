@@ -89,6 +89,7 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_question_list_question_list_pipe__ = __webpack_require__("../../../../../src/app/components/question-list/question-list.pipe.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_question_new_question_new_component__ = __webpack_require__("../../../../../src/app/components/question-new/question-new.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_question_list_question_list_component__ = __webpack_require__("../../../../../src/app/components/question-list/question-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_question_detail_question_detail_component__ = __webpack_require__("../../../../../src/app/components/question-detail/question-detail.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -96,6 +97,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -127,7 +129,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_12__components_side_menu_side_menu_pipe__["a" /* SelectedCoursePipe */],
             __WEBPACK_IMPORTED_MODULE_13__components_question_list_question_list_pipe__["a" /* SelectedQuestionPipe */],
             __WEBPACK_IMPORTED_MODULE_14__components_question_new_question_new_component__["a" /* QuestionNewComponent */],
-            __WEBPACK_IMPORTED_MODULE_15__components_question_list_question_list_component__["a" /* QuestionListComponent */]
+            __WEBPACK_IMPORTED_MODULE_15__components_question_list_question_list_component__["a" /* QuestionListComponent */],
+            __WEBPACK_IMPORTED_MODULE_16__components_question_detail_question_detail_component__["a" /* QuestionDetailComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -160,7 +163,9 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_middle_board_middle_board_component__ = __webpack_require__("../../../../../src/app/components/middle-board/middle-board.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_question_list_question_list_component__ = __webpack_require__("../../../../../src/app/components/question-list/question-list.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_question_new_question_new_component__ = __webpack_require__("../../../../../src/app/components/question-new/question-new.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_question_detail_question_detail_component__ = __webpack_require__("../../../../../src/app/components/question-detail/question-detail.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return routing; });
+
 
 
 
@@ -178,12 +183,13 @@ var routes = [
         children: [
             { path: 'courses/:id', component: __WEBPACK_IMPORTED_MODULE_2__components_middle_board_middle_board_component__["a" /* MiddleBoardComponent */], outlet: 'courseBoard' },
             { path: 'questions', component: __WEBPACK_IMPORTED_MODULE_3__components_question_list_question_list_component__["a" /* QuestionListComponent */], outlet: 'questionBoard' },
-            { path: 'new-question', component: __WEBPACK_IMPORTED_MODULE_4__components_question_new_question_new_component__["a" /* QuestionNewComponent */], outlet: 'questionBoard' }
+            { path: 'new-question', component: __WEBPACK_IMPORTED_MODULE_4__components_question_new_question_new_component__["a" /* QuestionNewComponent */], outlet: 'questionBoard' },
+            { path: 'questions/:id', component: __WEBPACK_IMPORTED_MODULE_5__components_question_detail_question_detail_component__["a" /* QuestionDetailComponent */], outlet: 'questionBoard' }
         ]
     },
     {
         path: '**',
-        redirectTo: 'courses'
+        redirectTo: 'home'
     }
 ];
 var routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["a" /* RouterModule */].forRoot(routes);
@@ -329,15 +335,16 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 
 
 var MiddleBoardComponent = (function () {
-    function MiddleBoardComponent(route, data) {
+    function MiddleBoardComponent(route, dataService) {
         this.route = route;
-        this.data = data;
+        this.dataService = dataService;
     }
     MiddleBoardComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.subscribe(function (params) {
             // get course id from the activated router params
-            _this.course = _this.data.getCourse(+params['id']);
+            _this.dataService.getCourse(+params['id'])
+                .then(function (course) { return _this.course = course; });
         });
     };
     return MiddleBoardComponent;
@@ -354,6 +361,81 @@ MiddleBoardComponent = __decorate([
 
 var _a;
 //# sourceMappingURL=middle-board.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/question-detail/question-detail.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".side {\n    padding: 10px 15px;\n    max-width: 400px;\n    min-height: 100vh;\n    border-left: solid 1px #e2e2e2;\n}\n\n.board-head h1 {\n    margin-top: 0;\n    color: #c3c3c3;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/question-detail/question-detail.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container side\">\n  \n  <div class=\"row\">\n    <div class=\"col-xs-3\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['questions']}}]\" class=\"btn btn-primary\" type=\"button\">Cancel</button>\n    </div>\n    <div class=\"col-xs-9\">\n      <label class=\"board-head pull-right\"><h1>Question</h1></label>\n    </div>\n  </div>\n  \n  <div>\n    <h1>{{question.subject}}</h1>\n    <p>{{question.body}}</p>\n    <p>{{question.folder}}</p>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/question-detail/question-detail.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QuestionDetailComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
+
+var QuestionDetailComponent = (function () {
+    function QuestionDetailComponent(dataService, route) {
+        this.dataService = dataService;
+        this.route = route;
+    }
+    QuestionDetailComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.params.subscribe(function (params) {
+            _this.dataService.getQuestion(+params['id'])
+                .then(function (question) { return _this.question = question; });
+        });
+    };
+    return QuestionDetailComponent;
+}());
+QuestionDetailComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-question-detail',
+        template: __webpack_require__("../../../../../src/app/components/question-detail/question-detail.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/question-detail/question-detail.component.css")]
+    }),
+    __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])('data')),
+    __metadata("design:paramtypes", [Object, typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _a || Object])
+], QuestionDetailComponent);
+
+var _a;
+//# sourceMappingURL=question-detail.component.js.map
 
 /***/ }),
 
@@ -378,7 +460,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/question-list/question-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container side\">\n  <div class=\"row\">\n    <div class=\"col-xs-3\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['new-question']}}]\" class=\"btn btn-primary\" type=\"button\">New Post</button>\n    </div>\n\n    <div class=\"col-xs-9\">\n        <div class=\"input-group pull-right\">\n          <input type=\"text\" class=\"form-control\" placeholder=\"Search for...\">\n          <span class=\"input-group-btn\">\n            <button class=\"btn btn-default\" type=\"button\">Go!</button>\n          </span>\n        </div>\n    </div>\n  </div>\n\n  <div class=\"quesiton-list\">\n    <div class=\"question-folder\" *ngFor=\"let folder of folders\">\n      <div class=\"question-list\">\n        <div class=\"panel panel-info\">\n          <div class=\"panel-heading\">{{folder.name}}</div>\n        </div>\n\n        <div class=\"panel panel-default\" *ngFor=\"let question of (questions | selectedQuestion: folder.questions)\">\n          <div class=\"panel-heading\">{{question.subject}}</div>\n          <div class=\"panel-body\">{{question.body}}</div>\n        </div>\n      </div>\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"container side\">\n  <div class=\"row\">\n    <div class=\"col-xs-3\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['new-question']}}]\" class=\"btn btn-primary\" type=\"button\">New Post</button>\n    </div>\n\n    <div class=\"col-xs-9\">\n        <div class=\"input-group pull-right\">\n          <input type=\"text\" class=\"form-control\" placeholder=\"Search for...\">\n          <span class=\"input-group-btn\">\n            <button class=\"btn btn-default\" type=\"button\">Go!</button>\n          </span>\n        </div>\n    </div>\n  </div>\n\n  <div class=\"quesiton-list\">\n    <div class=\"question-folder\" *ngFor=\"let folder of folders\">\n      <div class=\"question-list\">\n        <div class=\"panel panel-info\">\n          <div class=\"panel-heading\">{{folder.name}}</div>\n        </div>\n\n        <div class=\"panel panel-default\" *ngFor=\"let question of (questions | selectedQuestion: folder.questions)\">\n          <div class=\"panel-heading\">{{question.subject}}</div>\n          <div class=\"panel-body\" [routerLink]=\"['/home', { outlets: {'questionBoard': ['questions', question.qid]}}]\">{{question.body}}</div>\n        </div>\n      </div>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -413,10 +495,14 @@ var QuestionListComponent = (function () {
         this.getFolders();
     };
     QuestionListComponent.prototype.getQuestions = function () {
-        this.questions = this.dataService.getQuestions();
+        var _this = this;
+        this.dataService.getQuestions()
+            .subscribe(function (questions) { return _this.questions = questions; });
     };
     QuestionListComponent.prototype.getFolders = function () {
-        this.folders = this.dataService.getFolders();
+        var _this = this;
+        this.dataService.getFolders()
+            .subscribe(function (folders) { return _this.folders = folders; });
     };
     QuestionListComponent.prototype._toggleSidebar = function () {
         this._opened = !this._opened;
@@ -491,7 +577,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".side {\n    padding: 10px 15px;\n    max-width: 400px;\n    min-height: 100vh;\n    border-left: solid 1px #e2e2e2;\n}", ""]);
+exports.push([module.i, ".side {\n    padding: 10px 15px;\n    max-width: 400px;\n    min-height: 100vh;\n    border-left: solid 1px #e2e2e2;\n}\n\n.board-head h1 {\n    margin-top: 0;\n    color: #c3c3c3;\n}", ""]);
 
 // exports
 
@@ -504,7 +590,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/question-new/question-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container side\">\n  <div class=\"row\">\n    <div class=\"col-xs-3\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['questions']}}]\" class=\"btn btn-primary\" type=\"button\">Cancel</button>\n    </div>\n\n    <div class=\"col-xs-9\">\n        <div class=\"input-group pull-right\">\n          <input type=\"text\" class=\"form-control\" placeholder=\"Search for...\">\n          <span class=\"input-group-btn\">\n            <button class=\"btn btn-default\" type=\"button\">Go!</button>\n          </span>\n        </div>\n    </div>\n  </div>\n  \n  <div>\n    <h1>New Post</h1>\n\n<quill-editor [(ngModel)]=\"editorContent\"\n                           [options]=\"editorConfig\"\n                           (blur)=\"onEditorBlured($event)\"\n                           (focus)=\"onEditorFocused($event)\"\n                           (ready)=\"onEditorCreated($event)\"\n                           (change)=\"onContentChanged($event)\">\n            </quill-editor>  \n    </div> \n</div>"
+module.exports = "<div class=\"container side\">\n  \n  <div class=\"row\">\n    <div class=\"col-xs-3\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['questions']}}]\" class=\"btn btn-primary\" type=\"button\">Cancel</button>\n    </div>\n    <div class=\"col-xs-9\">\n      <label class=\"board-head pull-right\"><h1>New Post</h1></label>\n    </div>\n  </div>\n  \n  <div>\n    <form>\n      <div class=\"form-group\">\n        <label for=\"questionTitle\">Title</label>\n        <input type=\"text\" class=\"form-control\" id=\"questionTitle\" placeholder=\"Input your question title\">\n      </div>\n\n      <div class=\"form-group\">\n          <label for=\"questionBody\">Body</label>\n          <quill-editor id=\"questionBody\"\n                        [(ngModel)]=\"editorContent\" \n                        [ngModelOptions]=\"{standalone: true}\"\n                        [options]=\"editorConfig\"\n                        (blur)=\"onEditorBlured($event)\"\n                        (focus)=\"onEditorFocused($event)\"\n                        (ready)=\"onEditorCreated($event)\"\n                        (change)=\"onContentChanged($event)\">\n          </quill-editor> \n      </div>\n\n      <div class=\"form-group\">\n        <label for=\"questionAttachment\">Attchment</label>\n        <input type=\"file\" id=\"questionAttachment\">\n        <p class=\"help-block\">Upload the attachment to support your question.</p>\n      </div>\n\n      <div class=\"form-group\">\n        <label for=\"folderGroup\">Folder</label>\n        <div *ngFor=\"let folder of folders\">\n          <div class=\"radio\">\n            <label>\n              <input type=\"radio\" name=\"folderSelect\"> {{folder.name}}\n            </label>\n          </div>         \n        </div>\n\n      </div>\n\n      <button type=\"submit\" class=\"btn btn-default\">Submit</button>\n    </form>\n  </div> \n\n</div>\n"
 
 /***/ }),
 
@@ -523,9 +609,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 
 var QuestionNewComponent = (function () {
-    function QuestionNewComponent() {
+    function QuestionNewComponent(dataService) {
+        this.dataService = dataService;
         this.editorContent = "<h3>I am Example content</h3>";
         this.editorOptions = {
             placeholder: "insert content..."
@@ -547,11 +637,17 @@ var QuestionNewComponent = (function () {
     };
     QuestionNewComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.getFolders();
         setTimeout(function () {
-            _this.editorContent = '<h1>content changed!</h1>';
+            _this.editorContent = '<h1>Input your content!</h1>';
             console.log('you can use the quill instance object to do something', _this.editor);
             // this.editor.disable();
         }, 2800);
+    };
+    QuestionNewComponent.prototype.getFolders = function () {
+        var _this = this;
+        this.dataService.getFolders()
+            .subscribe(function (folders) { return _this.folders = folders; });
     };
     return QuestionNewComponent;
 }());
@@ -561,7 +657,8 @@ QuestionNewComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/components/question-new/question-new.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/question-new/question-new.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])('data')),
+    __metadata("design:paramtypes", [Object])
 ], QuestionNewComponent);
 
 //# sourceMappingURL=question-new.component.js.map
@@ -624,10 +721,14 @@ var SideMenuComponent = (function () {
         this.getFolders();
     };
     SideMenuComponent.prototype.getFolders = function () {
-        this.folders = this.dataService.getFolders();
+        var _this = this;
+        this.dataService.getFolders()
+            .subscribe(function (folders) { return _this.folders = folders; });
     };
     SideMenuComponent.prototype.getCourses = function () {
-        this.courses = this.dataService.getCourses();
+        var _this = this;
+        this.dataService.getCourses()
+            .subscribe(function (courses) { return _this.courses = courses; });
     };
     SideMenuComponent.prototype.getCourse = function (id) {
         return this.course = this.dataService.getCourse(id);
@@ -678,10 +779,12 @@ var SelectedCoursePipe = (function () {
     }
     SelectedCoursePipe.prototype.transform = function (allCourses, cids) {
         var selectedCourses = [];
+        if (cids == null || cids.length == 0) {
+            return selectedCourses;
+        }
         for (var _i = 0, allCourses_1 = allCourses; _i < allCourses_1.length; _i++) {
             var course = allCourses_1[_i];
             if (cids.indexOf(course.cid) >= 0) {
-                console.log(course.cid);
                 selectedCourses.push(course);
             }
         }
@@ -697,162 +800,16 @@ SelectedCoursePipe = __decorate([
 
 /***/ }),
 
-/***/ "../../../../../src/app/mock-data/courseList.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return COURSES; });
-var COURSES = [
-    {
-        cid: 1,
-        name: 'Intro to Project Manager Class 1',
-        folder: 1,
-        desc: 'This course introduces the basic concepts of PM',
-        teacher: 'Payson Wu'
-    },
-    {
-        cid: 2,
-        name: 'Intro to Project Manager Class 2',
-        folder: 1,
-        desc: 'This course introduces the basic concepts of PM',
-        teacher: 'Payson Wu'
-    },
-    {
-        cid: 3,
-        name: 'Intro to Project Manager Class 3',
-        folder: 2,
-        desc: 'This course introduces the basic concepts of PM',
-        teacher: 'Payson Wu'
-    },
-    {
-        cid: 4,
-        name: 'Intro to Project Manager Class 4',
-        folder: 3,
-        desc: 'This course introduces the basic concepts of PM',
-        teacher: 'Payson Wu'
-    },
-    {
-        cid: 5,
-        name: 'Intro to Project Manager Class 5',
-        folder: 3,
-        desc: 'This course introduces the basic concepts of PM',
-        teacher: 'Payson Wu'
-    },
-    {
-        cid: 6,
-        name: 'Intro to Project Manager Class 6',
-        folder: 3,
-        desc: 'This course introduces the basic concepts of PM',
-        teacher: 'Payson Wu'
-    },
-    {
-        cid: 7,
-        name: 'Intro to Project Manager Class 7',
-        folder: 4,
-        desc: 'This course introduces the basic concepts of PM',
-        teacher: 'Payson Wu'
-    }
-];
-//# sourceMappingURL=courseList.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/mock-data/folderList.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FOLDERS; });
-var FOLDERS = [
-    {
-        fid: 1,
-        name: 'week1',
-        courses: [1, 2],
-        questions: [1, 2, 3]
-    },
-    {
-        fid: 2,
-        name: 'week2',
-        courses: [3],
-        questions: [4, 5]
-    },
-    {
-        fid: 3,
-        name: 'week3',
-        courses: [4, 5, 6],
-        questions: [6, 7]
-    },
-    {
-        fid: 4,
-        name: 'capstone',
-        courses: [7],
-        questions: []
-    }
-];
-//# sourceMappingURL=folderList.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/mock-data/questionList.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QUESTIONS; });
-var QUESTIONS = [
-    {
-        qid: 1,
-        subject: 'I have a question about the class',
-        body: 'I have an unordered list and for each list item I wish to have text on the left and then a right aligned button. I have tried to use pull-right but this completely messes up the alignment. What am I doing wrong?',
-        folder: 1,
-    },
-    {
-        qid: 2,
-        subject: 'I have a question about the class',
-        body: 'I have an unordered list and for each list item I wish to have text on the left and then a right aligned button. I have tried to use pull-right but this completely messes up the alignment. What am I doing wrong?',
-        folder: 1,
-    },
-    {
-        qid: 3,
-        subject: 'I have a question about the class',
-        body: 'I have an unordered list and for each list item I wish to have text on the left and then a right aligned button. I have tried to use pull-right but this completely messes up the alignment. What am I doing wrong?',
-        folder: 1,
-    },
-    {
-        qid: 4,
-        subject: 'I have a question about the class',
-        body: 'I have an unordered list and for each list item I wish to have text on the left and then a right aligned button. I have tried to use pull-right but this completely messes up the alignment. What am I doing wrong?',
-        folder: 2,
-    },
-    {
-        qid: 5,
-        subject: 'I have a question about the class',
-        body: 'I have an unordered list and for each list item I wish to have text on the left and then a right aligned button. I have tried to use pull-right but this completely messes up the alignment. What am I doing wrong?',
-        folder: 2,
-    },
-    {
-        qid: 6,
-        subject: 'I have a question about the class',
-        body: 'I have an unordered list and for each list item I wish to have text on the left and then a right aligned button. I have tried to use pull-right but this completely messes up the alignment. What am I doing wrong?',
-        folder: 3,
-    },
-    {
-        qid: 7,
-        subject: 'I have a question about the class',
-        body: 'I have an unordered list and for each list item I wish to have text on the left and then a right aligned button. I have tried to use pull-right but this completely messes up the alignment. What am I doing wrong?',
-        folder: 3,
-    }
-];
-//# sourceMappingURL=questionList.js.map
-
-/***/ }),
-
 /***/ "../../../../../src/app/services/data.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mock_data_folderList__ = __webpack_require__("../../../../../src/app/mock-data/folderList.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mock_data_courseList__ = __webpack_require__("../../../../../src/app/mock-data/courseList.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mock_data_questionList__ = __webpack_require__("../../../../../src/app/mock-data/questionList.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__ = __webpack_require__("../../../../rxjs/BehaviorSubject.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise__ = __webpack_require__("../../../../rxjs/add/operator/toPromise.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -868,30 +825,76 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var DataService = (function () {
-    function DataService() {
-        this.folders = __WEBPACK_IMPORTED_MODULE_1__mock_data_folderList__["a" /* FOLDERS */];
-        this.courses = __WEBPACK_IMPORTED_MODULE_2__mock_data_courseList__["a" /* COURSES */];
-        this.questions = __WEBPACK_IMPORTED_MODULE_3__mock_data_questionList__["a" /* QUESTIONS */];
+    // folders: Folder[] = FOLDERS;
+    // courses: Course[] = COURSES;
+    // questions: Question[] = QUESTIONS;
+    function DataService(http) {
+        this.http = http;
+        this._folderSource = new __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__["BehaviorSubject"]([]);
+        this._courseSource = new __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__["BehaviorSubject"]([]);
+        this._questionSource = new __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__["BehaviorSubject"]([]);
     }
     DataService.prototype.getFolders = function () {
-        return this.folders;
+        var _this = this;
+        // return this.folders;
+        this.http.get('api/v1/folders')
+            .toPromise()
+            .then(function (res) {
+            _this._folderSource.next(res.json());
+        })
+            .catch(this.handleError);
+        return this._folderSource.asObservable();
     };
     DataService.prototype.getCourses = function () {
-        return this.courses;
+        var _this = this;
+        this.http.get('api/v1/courses')
+            .toPromise()
+            .then(function (res) {
+            _this._courseSource.next(res.json());
+        })
+            .catch(this.handleError);
+        return this._courseSource.asObservable();
     };
     DataService.prototype.getQuestions = function () {
-        return this.questions;
+        var _this = this;
+        this.http.get('api/v1/questions')
+            .toPromise()
+            .then(function (res) {
+            _this._questionSource.next(res.json());
+        })
+            .catch(this.handleError);
+        return this._questionSource.asObservable();
     };
     DataService.prototype.getCourse = function (id) {
-        return this.courses.filter(function (course) { return course.cid === id; })[0];
+        return this.http.get("api/v1/courses/" + id)
+            .toPromise()
+            .then(function (res) {
+            return res.json();
+        })
+            .catch(this.handleError);
+        //return this.courses.filter(course => course.cid === id)[0];
+    };
+    DataService.prototype.getQuestion = function (id) {
+        return this.http.get("api/v1/questions/" + id)
+            .toPromise()
+            .then(function (res) {
+            return res.json();
+        })
+            .catch(this.handleError);
+        //return this.courses.filter(course => course.cid === id)[0];
+    };
+    DataService.prototype.handleError = function (error) {
+        console.error('An error occured', error);
+        return Promise.reject(error);
     };
     return DataService;
 }());
 DataService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
 ], DataService);
 
+var _a;
 //# sourceMappingURL=data.service.js.map
 
 /***/ }),

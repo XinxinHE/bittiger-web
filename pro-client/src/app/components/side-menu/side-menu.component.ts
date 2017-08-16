@@ -25,11 +25,13 @@ export class SideMenuComponent implements OnInit {
   }
 
   getFolders(): void {
-    this.folders = this.dataService.getFolders(); 
+    this.dataService.getFolders()
+      .subscribe(folders => this.folders = folders); 
   }
 
   getCourses(): void {
-    this.courses = this.dataService.getCourses();
+    this.dataService.getCourses()
+      .subscribe(courses => this.courses = courses);
   }
 
   getCourse(id: number): Course {

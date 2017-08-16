@@ -24,11 +24,13 @@ export class QuestionListComponent implements OnInit {
   }
   
   getQuestions(): void {
-    this.questions = this.dataService.getQuestions();
+    this.dataService.getQuestions()
+      .subscribe(questions => this.questions = questions);
   }
 
   getFolders(): void {
-    this.folders = this.dataService.getFolders();
+    this.dataService.getFolders()
+      .subscribe(folders => this.folders = folders);
   }
 
   _toggleSidebar() {

@@ -3,6 +3,9 @@ import pymongo
 from flask import Flask
 from pymongo import MongoClient
 
+import pprint
+from bson.json_util import dumps
+
 import datetime
 import json
 
@@ -40,20 +43,45 @@ class DB():
 		if self.checkExist(table_type, id):
 			return False
 
-		data['_id'] = id
-		if table_type == 'course':
-			data['course_id'] = id
-			#print(data)
+		if table_type == 'courses':
 			post_id = self.course_table.insert_one(data)
-		elif table_type == 'question':
-			data['question_id'] = id
+		elif table_type == 'questions':
 			post_id = self.question_table.insert_one(data)
-		else:
-			data['folder_id'] = id
+		elif table_type == 'folders':
 			post_id = self.folder_table.insert_one(data)
 
 		return True
 		
+
+	def readPosts(self, table_type, attr=None):
+		"""
+		Input parameter: 
+			table_type + s
+			attr: attributes want to query along with user_id, must be a key value pair JSON
+		Output parameter: 
+			return all the data back
+
+		Read data from DB with other attributes if exist. Return None if not exist.
+		"""
+		query_filter = {}
+		if attr:
+			attr_json = json.loads(attr)
+			for key, value in attr_json:
+				query_filter[key] = value
+
+		data = None
+		if table_type == 'courses':
+			data = eval(dumps(self.course_table.find(query_filter), separators=(',', ':')))
+		elif table_type == 'folders':
+			data = eval(dumps(self.folder_table.find(query_filter), separators=(',', ':')))
+		elif table_type == 'questions':
+			data = eval(dumps(self.question_table.find(query_filter), separators=(',', ':')))
+		else: 
+			data['status'] = 'No matched data!'
+        
+		pprint.pprint(data)
+		return data
+
 
 	def readPost(self, table_type, id, attr=None):
 		"""
@@ -65,28 +93,32 @@ class DB():
 
 		Read data from DB by primary key user_id, and with other attributes if exist. Return None if not exist.
 		"""
-
+  		print("readPost!")
 		if not self.checkExist(table_type, id):
-			return None
+			return False
 
-		query_filter = {'_id': id}
+		query_filter = {}
 		if attr:
 			attr_json = json.loads(attr);
 			for key, value in attr_json:
 				query_filter[key] = value
 
 		data = None
-		if table_type == 'course':
-			#query_filter['course_id'] = id
-			data = self.course_table.find_one(query_filter)
-		elif table_type == 'folder':
-			#query_filter['folder_id'] = id
-			data = self.folder_table.find_one(query_filter)
+
+		if table_type == 'courses':
+			query_filter['cid'] = int(id)
+			data = eval(dumps(self.course_table.find_one(query_filter), separators=(',', ':')))
+		elif table_type == 'folders':
+			query_filder['fid'] = int(id)
+			data = eval(dumps(self.folder_table.find_one(query_filter), separators=(',', ':')))
+		elif table_type == 'questions':
+			query_filter['qid'] = int(id)
+			data = eval(dumps(self.question_table.find_one(query_filter), separators=(',', ':')))
 		else:
-			#query_filter['question_id'] = id
-			data = self.question_table.find_one(query_filter)
+			data['status'] = 'No matched data!'
 
 		return data
+
 
 	def deletePost(self, table_type, id):
 		"""
@@ -98,18 +130,24 @@ class DB():
 		Remove a document from DB by user_id if user_id exist.
 		"""
 		if not self.checkExist(table_type, id):
-			return
+			return 'not exist'
 
-		query_filter = {'_id': id}
-		if table_type == 'course':
-			query_filter['course_id'] = id
+		query_filter = {}
+		if table_type == 'courses':
+			query_filter['cid'] = int(id)
 			self.course_table.remove(query_filter)
-		elif table_type == 'folder':
-			query_filter['folder_id'] = id
+		elif table_type == 'folders':
+			query_filter['fid'] = int(id)
 			self.folder_table.remove(query_filter)
-		else:
-			query_filter['question_id'] = id
+		elif table_type == 'questions':
+			query_filter['cid'] = int(id)
 			self.question_table.remove(query_filter)
+		else:
+			return 'No matched data!'
+		
+		return 'success'
+
+
 
 	def checkExist(self, table_type, id):
 		""" 
@@ -120,21 +158,24 @@ class DB():
 
 		Check if the document exist in DB or not. Ture means exist, false means no.
 		"""
-		query_filter = {'_id': id}
+
+		query_filter = {}
 		cnt = 0
-		if table_type == 'course':
-			#print("hehe")
+		if table_type == 'courses':
+			query_filter['cid'] = int(id)
 			cnt = self.course_table.find(query_filter).count()
-			#print(cnt)
-		elif table_type == 'folder':
+		elif table_type == 'folders':
+			query_filter['fid'] = int(id)
 			cnt = self.folder_table.find(query_filter).count()
-		else:
+		elif table_type == 'questions':
+			query_filter['qid'] = int(id)
 			cnt = self.question_table.find(query_filter).count()
 
 		if (cnt > 0):
 			return True
 
 		return False
+
 
 	def update(self, table_type, id, data):
 		"""
@@ -149,18 +190,17 @@ class DB():
 			#print("haha")
 			return False
 		query_filter = {}
-		query_filter['_id'] = id
 		input_data = {'$set': data}
 		print(data)
 		
-		if table_type == 'course':
-			#input_data['course_id'] = id
+		if table_type == 'courses':
+			query_filter['cid'] = id
 			self.course_table.update_one(query_filter, input_data)
-		elif table_type == 'folder':
-			#input_data['folder_id'] = id
+		elif table_type == 'folders':
+			query_filter['fid'] = id
 			self.folder_table.update_one(query_filter, input_data)
-		else:
-			#input_data['question_id'] = id
+		elif table_type == 'questions':
+			query_filter['qid'] = id
 			self.question_table.update_one(query_filter, input_data)
 
 		return True

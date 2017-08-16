@@ -1,0 +1,17 @@
+<div class="container side">
+  
+  <div class="row">
+    <div class="col-xs-3">
+      <button [routerLink]="['/home', { outlets: {'questionBoard': ['questions']}}]" class="btn btn-primary" type="button">Cancel</button>
+    </div>
+    <div class="col-xs-9">
+      <label class="board-head pull-right"><h1>Question</h1></label>
+    </div>
+  </div>
+  
+  <div>
+    <h1>{{question.subject}}</h1>
+    <p>{{question.body}}</p>
+    <p>{{question.folder}}</p>
+  </div>
+</div>

@@ -19,6 +19,7 @@ import { SelectedQuestionPipe } from './components/question-list/question-list.p
 
 import { QuestionNewComponent } from './components/question-new/question-new.component';
 import { QuestionListComponent } from './components/question-list/question-list.component';
+import { QuestionDetailComponent } from './components/question-detail/question-detail.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { QuestionListComponent } from './components/question-list/question-list.
     SelectedCoursePipe,
     SelectedQuestionPipe,
     QuestionNewComponent,
-    QuestionListComponent
+    QuestionListComponent,
+    QuestionDetailComponent
   ],
   imports: [
     BrowserModule,

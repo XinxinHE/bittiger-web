@@ -13,9 +13,12 @@ import { Course } from '../../data-structure/course';
 export class SelectedCoursePipe implements PipeTransform {
   transform(allCourses: Course[], cids: number[]) {
       let selectedCourses: Course[] = [];
+      if (cids == null || cids.length == 0) {
+        return selectedCourses;
+      }
+      
       for (let course of allCourses) {
         if (cids.indexOf(course.cid) >= 0) {
-            console.log(course.cid);
             selectedCourses.push(course);
         }
       }

@@ -1,0 +1,54 @@
+[
+    {
+        "cid": 1,
+        "name": "Intro to Project Manager Class 1",
+        "folder": 1,
+        "desc": "This course introduces the basic concepts of PM",
+        "teacher": "Jack Wu"
+    }, 
+    {
+        "cid": 2,
+        "name": "Intro to Project Manager Class 2",
+        "folder": 1,
+        "desc": "This course introduces the basic concepts of PM",
+        "teacher": "Brown Wu"
+    },
+    {
+        "cid": 3,
+        "name": "Intro to Project Manager Class 3",
+        "folder": 2,
+        "desc": "This course introduces the basic concepts of PM",
+        "teacher": "White Wu"
+    },
+    {    
+        "cid": 4,
+        "name": "Intro to Project Manager Class 4",
+        "folder": 3,
+        "desc": "This course introduces the basic concepts of PM",
+        "teacher": "Scarlett Wu"
+
+    },
+    {    
+        "cid": 5,
+        "name": "Intro to Project Manager Class 5",
+        "folder": 3,
+        "desc": "This course introduces the basic concepts of PM",
+        "teacher": "Pink Wu"
+    },
+    {    
+        "cid": 6,
+        "name": "Intro to Project Manager Class 6",
+        "folder": 3,
+        "desc": "This course introduces the basic concepts of PM",
+        "teacher": "Yellow Wu"
+
+    },
+    {    
+        "cid": 7,
+        "name": "Intro to Project Manager Class 7",
+        "folder": 4,
+        "desc": "This course introduces the basic concepts of PM",
+        "teacher": "Blue Wu"
+
+    }
+]

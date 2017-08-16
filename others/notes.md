@@ -24,7 +24,7 @@ https://github.com/arkon/ng-sidebar
 ssh -i "bittiger.pem" ubuntu@ec2-13-58-104-36.us-east-2.compute.amazonaws.com
 
 ## copy file to ecs
-scp -i ~/Practices/bittiger-web/others/bittiger.pem ~/Practices/bittiger-web/bittiger-web.tar.gz ubuntu@ec2-13-58-104-36.us-east-2.compute.amazonaws.com:~/bittiger
+scp -i ~/Practices/bittiger-web/others/bittiger.pem ~/Practices/bittiger-web/bittiger-web.tar.gz ubuntu@ec2-13-58-104-36.us-east-2.compute.amazonaws.com:~/bittiger-2
 
 scp -i ~/Practices/bittiger-web/others/bittiger.pem ~/Practices/bittiger-web/pro-client.tar.gz ubuntu@ec2-13-58-104-36.us-east-2.compute.amazonaws.com:~/bittiger/pro-client
 
@@ -63,3 +63,13 @@ npm install ngx-quill-editor --save
 ## install mongoDB
 
 https://www.howtoforge.com/tutorial/install-mongodb-on-ubuntu-16.04/
+
+
+export ENV_CONFIG_FILE=config.cfg   -- no space
+FLASK_APP=server.py flask run
+export FLASK_DEBUG=1    -- run with debug mode
+
+
+mongoimport --db bittiger --collection course_table --drop --file ./courseList.json --jsonArray
+mongoimport --db bittiger --collection folder_table --drop --file ./folderList.json --jsonArray
+mongoimport --db bittiger --collection question_table --drop --file ./questionList.json --jsonArray

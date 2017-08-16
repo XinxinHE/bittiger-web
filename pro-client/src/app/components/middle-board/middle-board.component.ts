@@ -14,14 +14,14 @@ export class MiddleBoardComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    @Inject('data') private data
+    @Inject('data') private dataService
   ) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       // get course id from the activated router params
-      this.course = this.data.getCourse(+params['id']);
+      this.dataService.getCourse(+params['id'])
+        .then(course => this.course = course);
     });
   }
-
 }
