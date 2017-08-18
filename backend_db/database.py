@@ -2,6 +2,7 @@
 import pymongo
 from flask import Flask
 from pymongo import MongoClient
+from pymongo import ReturnDocument
 
 import pprint
 from bson.json_util import dumps
@@ -27,7 +28,7 @@ class DB():
 		self.folder_table = self.db.folder_table
 		self.question_table = self.db.question_table
 
-	def insertPost(self, table_type, id, data):
+	def insertPost(self, table_type, data):
 		"""
 		Input parameter: 
 			user_data: string, must be key value pair JSON
@@ -36,21 +37,33 @@ class DB():
 
 		Converts input string to dictionary and insert it to the table.
 		"""
-
 		#print(data)
 		#data2 = json.loads(data)
 		#input_data = {}
-		if self.checkExist(table_type, id):
-			return False
 
 		if table_type == 'courses':
+			id = self.course_table.find().count() + 1
+		elif table_type == 'questions':
+			id = self.question_table.find().count() + 1
+		elif table_type == 'folders':
+			id = self.folder_table.find().count() + 1
+		else:
+			return None
+
+		if self.checkExist(table_type, id):
+			return None
+
+		if table_type == 'courses':
+			data['cid'] = id
 			post_id = self.course_table.insert_one(data)
 		elif table_type == 'questions':
+			data['qid'] = id
 			post_id = self.question_table.insert_one(data)
 		elif table_type == 'folders':
+			data['fid'] = id
 			post_id = self.folder_table.insert_one(data)
 
-		return True
+		return eval(dumps(data))
 		
 
 	def readPosts(self, table_type, attr=None):
@@ -149,6 +162,38 @@ class DB():
 
 
 
+	def update(self, table_type, id, data):
+		"""
+		Input parameter:
+		user_id: string
+		data: string, must be a kay value pair JSON
+		Output parameter:
+		boolean indicates if update is successful or not
+		"""
+
+		if not self.checkExist(table_type, id):
+			#print("haha")
+			return None
+		query_filter = {}
+			
+		input_data = {'$set': data}
+		updated_data = None
+		
+		if table_type == 'courses':
+			query_filter['cid'] = int(id)
+			updated_data = self.course_table.find_one_and_update(query_filter, input_data, return_document=ReturnDocument.AFTER)
+		elif table_type == 'folders':
+			query_filter['fid'] = int(id)
+			updated_data = self.folder_table.find_one_and_update(query_filter, input_data, return_document=ReturnDocument.AFTER)
+		elif table_type == 'questions':
+			query_filter['qid'] = int(id)
+			updated_data = self.question_table.find_one_and_update(query_filter, input_data, return_document=ReturnDocument.AFTER)
+		#print(id)
+		#print(updated_data)
+		#return eval(dumps(updated_data.raw_result))
+		return eval(dumps(updated_data))
+
+
 	def checkExist(self, table_type, id):
 		""" 
 		Input parameter: 
@@ -158,6 +203,9 @@ class DB():
 
 		Check if the document exist in DB or not. Ture means exist, false means no.
 		"""
+
+		if not id:
+			return False
 
 		query_filter = {}
 		cnt = 0
@@ -175,32 +223,3 @@ class DB():
 			return True
 
 		return False
-
-
-	def update(self, table_type, id, data):
-		"""
-		Input parameter:
-		user_id: string
-		data: string, must be a kay value pair JSON
-		Output parameter:
-		boolean indicates if update is successful or not
-		"""
-
-		if not self.checkExist(table_type, id):
-			#print("haha")
-			return False
-		query_filter = {}
-		input_data = {'$set': data}
-		print(data)
-		
-		if table_type == 'courses':
-			query_filter['cid'] = id
-			self.course_table.update_one(query_filter, input_data)
-		elif table_type == 'folders':
-			query_filter['fid'] = id
-			self.folder_table.update_one(query_filter, input_data)
-		elif table_type == 'questions':
-			query_filter['qid'] = id
-			self.question_table.update_one(query_filter, input_data)
-
-		return True

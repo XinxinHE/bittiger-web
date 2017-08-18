@@ -11,12 +11,12 @@ import { Question } from '../../data-structure/question';
 */
 @Pipe({name: 'selectedQuestion'})
 export class SelectedQuestionPipe implements PipeTransform {
-  transform(allQuestions: Question[], qids: number[]) {
+  transform(allQuestions: Question[], fid: number) {
       let selectedQuestions: Question[] = [];
+
       for (let question of allQuestions) {
-        if (qids.indexOf(question.qid) >= 0) {
-            console.log(question.qid);
-            selectedQuestions.push(question);
+        if (question.folder === fid) {
+          selectedQuestions.push(question);
         }
       }
       return selectedQuestions;

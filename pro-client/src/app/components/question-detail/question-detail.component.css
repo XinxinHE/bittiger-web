@@ -9,3 +9,13 @@
     margin-top: 0;
     color: #c3c3c3;
 }
+
+.question-title {
+    padding-bottom: 10px;
+    font-size: 24px;
+    border-bottom: solid 1px #e4e4e4;
+}
+
+.question-body {
+    padding: 10px 0;
+}

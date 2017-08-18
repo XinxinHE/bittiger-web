@@ -1,1 +1,2 @@
 export ENV_CONFIG_FILE=config.cfg
+pip install -U flask-cors

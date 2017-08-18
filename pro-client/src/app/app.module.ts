@@ -15,11 +15,13 @@ import { BoardComponent } from './components/board/board.component';
 import { MiddleBoardComponent } from './components/middle-board/middle-board.component';
 
 import { SelectedCoursePipe } from './components/side-menu/side-menu.pipe';
-import { SelectedQuestionPipe } from './components/question-list/question-list.pipe';
+import { SelectedQuestionPipe } from './components/question-list/selected-questions.pipe';
+import { HtmlToPlainTextPipe } from './components/question-list/html-to-plain.pipe';
 
 import { QuestionNewComponent } from './components/question-new/question-new.component';
 import { QuestionListComponent } from './components/question-list/question-list.component';
 import { QuestionDetailComponent } from './components/question-detail/question-detail.component';
+import { QuestionPostComponent } from './components/question-post/question-post.component';
 
 
 @NgModule({
@@ -30,9 +32,11 @@ import { QuestionDetailComponent } from './components/question-detail/question-d
     MiddleBoardComponent,
     SelectedCoursePipe,
     SelectedQuestionPipe,
+    HtmlToPlainTextPipe,
     QuestionNewComponent,
     QuestionListComponent,
-    QuestionDetailComponent
+    QuestionDetailComponent,
+    QuestionPostComponent
   ],
   imports: [
     BrowserModule,

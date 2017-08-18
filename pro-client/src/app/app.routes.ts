@@ -18,6 +18,7 @@ const routes: Routes = [
          { path: 'courses/:id', component: MiddleBoardComponent, outlet: 'courseBoard' },
          { path: 'questions', component: QuestionListComponent, outlet: 'questionBoard'},
          { path: 'new-question', component: QuestionNewComponent, outlet: 'questionBoard'},
+         { path: 'new-question/:id', component: QuestionNewComponent, outlet: 'questionBoard'},
          { path: 'questions/:id', component: QuestionDetailComponent, outlet: 'questionBoard'}
      ]
  },

@@ -3127,20 +3127,22 @@ var QuillEditorComponent = QuillEditorComponent_1 = (function () {
         this.elementRef = elementRef;
         this.defaultModules = {
             toolbar: [
+                //[{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
                 ['bold', 'italic', 'underline', 'strike'],
-                ['blockquote', 'code-block'],
-                [{ 'header': 1 }, { 'header': 2 }],
+                [{ 'header': [1, 2, 3, false] }],
+                //['blockquote', 'code-block'],
+                //[{ 'header': 1 }, { 'header': 2 }],               // custom button values
                 [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-                [{ 'script': 'sub' }, { 'script': 'super' }],
-                [{ 'indent': '-1' }, { 'indent': '+1' }],
-                [{ 'direction': 'rtl' }],
-                [{ 'size': ['small', false, 'large', 'huge'] }],
-                [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                //[{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+                //[{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+                //[{ 'direction': 'rtl' }],                         // text direction
                 [{ 'color': [] }, { 'background': [] }],
-                [{ 'font': [] }],
-                [{ 'align': [] }],
+                //[{ 'font': [] }],
+                //[{ 'align': [] }],
+                ['code-block'],
                 ['clean'],
-                ['link', 'image', 'video'] // link and image, video
+                ['image']
+                //['link', 'image', 'video']                         // link and image, video
             ]
         };
         // 派发事件
@@ -72358,15 +72360,15 @@ ReactiveFormsModule.ctorParameters = function () { return []; };
 /* unused harmony export XHRBackend */
 /* unused harmony export XHRConnection */
 /* unused harmony export BaseRequestOptions */
-/* unused harmony export RequestOptions */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return RequestOptions; });
 /* unused harmony export BaseResponseOptions */
 /* unused harmony export ResponseOptions */
 /* unused harmony export ReadyState */
 /* unused harmony export RequestMethod */
 /* unused harmony export ResponseContentType */
 /* unused harmony export ResponseType */
-/* unused harmony export Headers */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Http; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Headers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return Http; });
 /* unused harmony export Jsonp */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HttpModule; });
 /* unused harmony export JsonpModule */
@@ -79305,7 +79307,7 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_2__angular_core__["Version"]('4.3.3'
 /* unused harmony export RouteConfigLoadStart */
 /* unused harmony export RoutesRecognized */
 /* unused harmony export RouteReuseStrategy */
-/* unused harmony export Router */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Router; });
 /* unused harmony export ROUTES */
 /* unused harmony export ROUTER_CONFIGURATION */
 /* unused harmony export ROUTER_INITIALIZER */
@@ -79317,7 +79319,7 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_2__angular_core__["Version"]('4.3.3'
 /* unused harmony export PreloadAllModules */
 /* unused harmony export PreloadingStrategy */
 /* unused harmony export RouterPreloader */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ActivatedRoute; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return ActivatedRoute; });
 /* unused harmony export ActivatedRouteSnapshot */
 /* unused harmony export RouterState */
 /* unused harmony export RouterStateSnapshot */

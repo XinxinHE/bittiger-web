@@ -86,10 +86,12 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_board_board_component__ = __webpack_require__("../../../../../src/app/components/board/board.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_middle_board_middle_board_component__ = __webpack_require__("../../../../../src/app/components/middle-board/middle-board.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_side_menu_side_menu_pipe__ = __webpack_require__("../../../../../src/app/components/side-menu/side-menu.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_question_list_question_list_pipe__ = __webpack_require__("../../../../../src/app/components/question-list/question-list.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_question_new_question_new_component__ = __webpack_require__("../../../../../src/app/components/question-new/question-new.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_question_list_question_list_component__ = __webpack_require__("../../../../../src/app/components/question-list/question-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_question_detail_question_detail_component__ = __webpack_require__("../../../../../src/app/components/question-detail/question-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_question_list_selected_questions_pipe__ = __webpack_require__("../../../../../src/app/components/question-list/selected-questions.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_question_list_html_to_plain_pipe__ = __webpack_require__("../../../../../src/app/components/question-list/html-to-plain.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_question_new_question_new_component__ = __webpack_require__("../../../../../src/app/components/question-new/question-new.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_question_list_question_list_component__ = __webpack_require__("../../../../../src/app/components/question-list/question-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_question_detail_question_detail_component__ = __webpack_require__("../../../../../src/app/components/question-detail/question-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_question_post_question_post_component__ = __webpack_require__("../../../../../src/app/components/question-post/question-post.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -97,6 +99,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -127,10 +131,12 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_10__components_board_board_component__["a" /* BoardComponent */],
             __WEBPACK_IMPORTED_MODULE_11__components_middle_board_middle_board_component__["a" /* MiddleBoardComponent */],
             __WEBPACK_IMPORTED_MODULE_12__components_side_menu_side_menu_pipe__["a" /* SelectedCoursePipe */],
-            __WEBPACK_IMPORTED_MODULE_13__components_question_list_question_list_pipe__["a" /* SelectedQuestionPipe */],
-            __WEBPACK_IMPORTED_MODULE_14__components_question_new_question_new_component__["a" /* QuestionNewComponent */],
-            __WEBPACK_IMPORTED_MODULE_15__components_question_list_question_list_component__["a" /* QuestionListComponent */],
-            __WEBPACK_IMPORTED_MODULE_16__components_question_detail_question_detail_component__["a" /* QuestionDetailComponent */]
+            __WEBPACK_IMPORTED_MODULE_13__components_question_list_selected_questions_pipe__["a" /* SelectedQuestionPipe */],
+            __WEBPACK_IMPORTED_MODULE_14__components_question_list_html_to_plain_pipe__["a" /* HtmlToPlainTextPipe */],
+            __WEBPACK_IMPORTED_MODULE_15__components_question_new_question_new_component__["a" /* QuestionNewComponent */],
+            __WEBPACK_IMPORTED_MODULE_16__components_question_list_question_list_component__["a" /* QuestionListComponent */],
+            __WEBPACK_IMPORTED_MODULE_17__components_question_detail_question_detail_component__["a" /* QuestionDetailComponent */],
+            __WEBPACK_IMPORTED_MODULE_18__components_question_post_question_post_component__["a" /* QuestionPostComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -184,6 +190,7 @@ var routes = [
             { path: 'courses/:id', component: __WEBPACK_IMPORTED_MODULE_2__components_middle_board_middle_board_component__["a" /* MiddleBoardComponent */], outlet: 'courseBoard' },
             { path: 'questions', component: __WEBPACK_IMPORTED_MODULE_3__components_question_list_question_list_component__["a" /* QuestionListComponent */], outlet: 'questionBoard' },
             { path: 'new-question', component: __WEBPACK_IMPORTED_MODULE_4__components_question_new_question_new_component__["a" /* QuestionNewComponent */], outlet: 'questionBoard' },
+            { path: 'new-question/:id', component: __WEBPACK_IMPORTED_MODULE_4__components_question_new_question_new_component__["a" /* QuestionNewComponent */], outlet: 'questionBoard' },
             { path: 'questions/:id', component: __WEBPACK_IMPORTED_MODULE_5__components_question_detail_question_detail_component__["a" /* QuestionDetailComponent */], outlet: 'questionBoard' }
         ]
     },
@@ -356,7 +363,7 @@ MiddleBoardComponent = __decorate([
         styles: [__webpack_require__("../../../../../src/app/components/middle-board/middle-board.component.css")]
     }),
     __param(1, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])('data')),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _a || Object, Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */]) === "function" && _a || Object, Object])
 ], MiddleBoardComponent);
 
 var _a;
@@ -372,7 +379,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".side {\n    padding: 10px 15px;\n    max-width: 400px;\n    min-height: 100vh;\n    border-left: solid 1px #e2e2e2;\n}\n\n.board-head h1 {\n    margin-top: 0;\n    color: #c3c3c3;\n}", ""]);
+exports.push([module.i, ".side {\n    padding: 10px 15px;\n    max-width: 400px;\n    min-height: 100vh;\n    border-left: solid 1px #e2e2e2;\n}\n\n.board-head h1 {\n    margin-top: 0;\n    color: #c3c3c3;\n}\n\n.question-title {\n    padding-bottom: 10px;\n    font-size: 24px;\n    border-bottom: solid 1px #e4e4e4;\n}\n\n.question-body {\n    padding: 10px 0;\n}", ""]);
 
 // exports
 
@@ -385,7 +392,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/question-detail/question-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container side\">\n  \n  <div class=\"row\">\n    <div class=\"col-xs-3\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['questions']}}]\" class=\"btn btn-primary\" type=\"button\">Cancel</button>\n    </div>\n    <div class=\"col-xs-9\">\n      <label class=\"board-head pull-right\"><h1>Question</h1></label>\n    </div>\n  </div>\n  \n  <div>\n    <h1>{{question.subject}}</h1>\n    <p>{{question.body}}</p>\n    <p>{{question.folder}}</p>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container side\">\n  \n  <div class=\"row\">\n    <div class=\"col-xs-2\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['questions']}}]\" class=\"btn btn-primary\" type=\"button\">Back</button>\n    </div>\n    <div class=\"col-xs-2\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['new-question', questionId]}}]\" class=\"btn btn-primary\" type=\"button\">Edit</button>\n    </div>\n    <div class=\"col-xs-8\">\n      <label class=\"board-head pull-right\"><h1>Question</h1></label>\n    </div>\n  </div>\n  \n  <div *ngIf=\"question\">\n    <h1 class=\"question-title\">{{question.subject}}</h1>\n    <a href=\"#\">Iris Li, 3 weeks ago </a><span class=\"label label-primary\">Week {{question.folder}}</span>\n    <div class=\"question-body\" [innerHTML]=\"question.body\"></div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -418,6 +425,7 @@ var QuestionDetailComponent = (function () {
     QuestionDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.subscribe(function (params) {
+            _this.questionId = +params['id'];
             _this.dataService.getQuestion(+params['id'])
                 .then(function (question) { return _this.question = question; });
         });
@@ -431,11 +439,40 @@ QuestionDetailComponent = __decorate([
         styles: [__webpack_require__("../../../../../src/app/components/question-detail/question-detail.component.css")]
     }),
     __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])('data')),
-    __metadata("design:paramtypes", [Object, typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [Object, typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */]) === "function" && _a || Object])
 ], QuestionDetailComponent);
 
 var _a;
 //# sourceMappingURL=question-detail.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/question-list/html-to-plain.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HtmlToPlainTextPipe; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var HtmlToPlainTextPipe = (function () {
+    function HtmlToPlainTextPipe() {
+    }
+    HtmlToPlainTextPipe.prototype.transform = function (text) {
+        return text ? String(text).replace(/<[^>]+>/gm, '') : '';
+    };
+    return HtmlToPlainTextPipe;
+}());
+HtmlToPlainTextPipe = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({ name: 'htmlToPlainText' })
+], HtmlToPlainTextPipe);
+
+//# sourceMappingURL=html-to-plain.pipe.js.map
 
 /***/ }),
 
@@ -460,7 +497,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/question-list/question-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container side\">\n  <div class=\"row\">\n    <div class=\"col-xs-3\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['new-question']}}]\" class=\"btn btn-primary\" type=\"button\">New Post</button>\n    </div>\n\n    <div class=\"col-xs-9\">\n        <div class=\"input-group pull-right\">\n          <input type=\"text\" class=\"form-control\" placeholder=\"Search for...\">\n          <span class=\"input-group-btn\">\n            <button class=\"btn btn-default\" type=\"button\">Go!</button>\n          </span>\n        </div>\n    </div>\n  </div>\n\n  <div class=\"quesiton-list\">\n    <div class=\"question-folder\" *ngFor=\"let folder of folders\">\n      <div class=\"question-list\">\n        <div class=\"panel panel-info\">\n          <div class=\"panel-heading\">{{folder.name}}</div>\n        </div>\n\n        <div class=\"panel panel-default\" *ngFor=\"let question of (questions | selectedQuestion: folder.questions)\">\n          <div class=\"panel-heading\">{{question.subject}}</div>\n          <div class=\"panel-body\" [routerLink]=\"['/home', { outlets: {'questionBoard': ['questions', question.qid]}}]\">{{question.body}}</div>\n        </div>\n      </div>\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"container side\">\n  <div class=\"row\">\n    <div class=\"col-xs-3\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['new-question']}}]\" class=\"btn btn-primary\" type=\"button\">New Post</button>\n    </div>\n\n    <div class=\"col-xs-9\">\n        <div class=\"input-group pull-right\">\n          <input type=\"text\" class=\"form-control\" placeholder=\"Search for...\">\n          <span class=\"input-group-btn\">\n            <button class=\"btn btn-default\" type=\"button\">Go!</button>\n          </span>\n        </div>\n    </div>\n  </div>\n\n  <div class=\"quesiton-list\">\n    <div class=\"question-folder\" *ngFor=\"let folder of folders\">\n      <div class=\"question-list\">\n        <div class=\"panel panel-info\">\n          <div class=\"panel-heading\">{{folder.name}}</div>\n        </div>\n\n        <div class=\"panel panel-default\" *ngFor=\"let question of (questions | selectedQuestion: folder.fid)\">\n          <div class=\"panel-heading\">{{question.subject}}</div>\n          <div class=\"panel-body\" \n               [routerLink]=\"['/home', { outlets: {'questionBoard': ['questions', question.qid]}}]\">\n               {{question.body | htmlToPlainText}}</div>\n        </div>\n      </div>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -523,7 +560,7 @@ QuestionListComponent = __decorate([
 
 /***/ }),
 
-/***/ "../../../../../src/app/components/question-list/question-list.pipe.ts":
+/***/ "../../../../../src/app/components/question-list/selected-questions.pipe.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -548,12 +585,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var SelectedQuestionPipe = (function () {
     function SelectedQuestionPipe() {
     }
-    SelectedQuestionPipe.prototype.transform = function (allQuestions, qids) {
+    SelectedQuestionPipe.prototype.transform = function (allQuestions, fid) {
         var selectedQuestions = [];
         for (var _i = 0, allQuestions_1 = allQuestions; _i < allQuestions_1.length; _i++) {
             var question = allQuestions_1[_i];
-            if (qids.indexOf(question.qid) >= 0) {
-                console.log(question.qid);
+            if (question.folder === fid) {
                 selectedQuestions.push(question);
             }
         }
@@ -565,7 +601,7 @@ SelectedQuestionPipe = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({ name: 'selectedQuestion' })
 ], SelectedQuestionPipe);
 
-//# sourceMappingURL=question-list.pipe.js.map
+//# sourceMappingURL=selected-questions.pipe.js.map
 
 /***/ }),
 
@@ -590,7 +626,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/question-new/question-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container side\">\n  \n  <div class=\"row\">\n    <div class=\"col-xs-3\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['questions']}}]\" class=\"btn btn-primary\" type=\"button\">Cancel</button>\n    </div>\n    <div class=\"col-xs-9\">\n      <label class=\"board-head pull-right\"><h1>New Post</h1></label>\n    </div>\n  </div>\n  \n  <div>\n    <form>\n      <div class=\"form-group\">\n        <label for=\"questionTitle\">Title</label>\n        <input type=\"text\" class=\"form-control\" id=\"questionTitle\" placeholder=\"Input your question title\">\n      </div>\n\n      <div class=\"form-group\">\n          <label for=\"questionBody\">Body</label>\n          <quill-editor id=\"questionBody\"\n                        [(ngModel)]=\"editorContent\" \n                        [ngModelOptions]=\"{standalone: true}\"\n                        [options]=\"editorConfig\"\n                        (blur)=\"onEditorBlured($event)\"\n                        (focus)=\"onEditorFocused($event)\"\n                        (ready)=\"onEditorCreated($event)\"\n                        (change)=\"onContentChanged($event)\">\n          </quill-editor> \n      </div>\n\n      <div class=\"form-group\">\n        <label for=\"questionAttachment\">Attchment</label>\n        <input type=\"file\" id=\"questionAttachment\">\n        <p class=\"help-block\">Upload the attachment to support your question.</p>\n      </div>\n\n      <div class=\"form-group\">\n        <label for=\"folderGroup\">Folder</label>\n        <div *ngFor=\"let folder of folders\">\n          <div class=\"radio\">\n            <label>\n              <input type=\"radio\" name=\"folderSelect\"> {{folder.name}}\n            </label>\n          </div>         \n        </div>\n\n      </div>\n\n      <button type=\"submit\" class=\"btn btn-default\">Submit</button>\n    </form>\n  </div> \n\n</div>\n"
+module.exports = "<div class=\"container side\">\n  \n  <div class=\"row\">\n    <div class=\"col-xs-3\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['questions']}}]\" class=\"btn btn-primary\" type=\"button\">Cancel</button>\n    </div>\n    <div class=\"col-xs-9\">\n      <label class=\"board-head pull-right\"><h1>New Post</h1></label>\n    </div>\n  </div>\n  \n  <div>\n    <form>\n      <div class=\"form-group\">\n        <label for=\"questionTitle\">Title</label>\n        <input type=\"text\" class=\"form-control\" id=\"questionTitle\" \n               placeholder=\"Input your question title\" required\n               [(ngModel)]=\"newQuestion.subject\"\n               [ngModelOptions]=\"{standalone: true}\">\n      </div>\n\n      <div class=\"form-group\">\n          <label for=\"questionBody\">Body</label>\n          <quill-editor id=\"questionBody\"\n                        [(ngModel)]=\"newQuestion.body\" \n                        [ngModelOptions]=\"{standalone: true}\"\n                        [options]=\"editorConfig\"\n                        (blur)=\"onEditorBlured($event)\"\n                        (focus)=\"onEditorFocused($event)\"\n                        (ready)=\"onEditorCreated($event)\"\n                        (change)=\"onContentChanged($event)\">\n          </quill-editor>\n      </div>\n\n      <div class=\"form-group\">\n        <label for=\"questionAttachment\">Attchment</label>\n        <input type=\"file\" id=\"questionAttachment\">\n        <p class=\"help-block\">Upload the attachment to support your question.</p>\n      </div>\n\n      <div class=\"form-group\">\n        <label for=\"folderGroup\">Folder</label>\n        <div *ngFor=\"let folder of folders; let idx = index\">\n          <div class=\"radio\">\n            <label>\n              <input type=\"radio\" name=\"folderSelect\" \n                     [value]=\"folder.id\"\n                     [checked]=\"idx === 0\"\n                     (change)=\"onSelectionChange(folder)\"> {{folder.name}}\n            </label>\n          </div>         \n        </div>\n\n      </div>\n\n      <button type=\"submit\" class=\"btn btn-default\" (click)=\"postQuestion()\">Submit</button>\n    </form>\n  </div> \n\n</div>\n"
 
 /***/ }),
 
@@ -599,6 +635,7 @@ module.exports = "<div class=\"container side\">\n  \n  <div class=\"row\">\n   
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QuestionNewComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -613,14 +650,40 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 
+
+var DEFAULT_QUESTION = Object.freeze({
+    qid: 0,
+    subject: '',
+    body: "",
+    folder: 1
+});
 var QuestionNewComponent = (function () {
-    function QuestionNewComponent(dataService) {
+    function QuestionNewComponent(dataService, router, activatedRoute) {
         this.dataService = dataService;
-        this.editorContent = "<h3>I am Example content</h3>";
+        this.router = router;
+        this.activatedRoute = activatedRoute;
         this.editorOptions = {
-            placeholder: "insert content..."
+            placeholder: 'insert content...',
+            modules: {
+                toolbar: '#toolbar'
+            }
         };
+        this.newQuestion = Object.assign({}, DEFAULT_QUESTION);
     }
+    QuestionNewComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.getFolders();
+        this.activatedRoute.params.subscribe(function (params) {
+            if (params.id) {
+                _this.dataService.getQuestion(+params['id'])
+                    .then(function (question) {
+                    delete question._id; // TODO: why $oid cannot be updated
+                    _this.newQuestion = Object.assign({}, question);
+                    // console.dir(this.newQuestion);
+                });
+            }
+        });
+    };
     QuestionNewComponent.prototype.onEditorBlured = function (quill) {
         console.log('editor blur!', quill);
     };
@@ -635,19 +698,41 @@ var QuestionNewComponent = (function () {
         var quill = _a.quill, html = _a.html, text = _a.text;
         console.log('quill content is changed!', quill, html, text);
     };
-    QuestionNewComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.getFolders();
-        setTimeout(function () {
-            _this.editorContent = '<h1>Input your content!</h1>';
-            console.log('you can use the quill instance object to do something', _this.editor);
-            // this.editor.disable();
-        }, 2800);
+    QuestionNewComponent.prototype.onSelectionChange = function (folder) {
+        this.newQuestion.folder = folder.fid;
     };
     QuestionNewComponent.prototype.getFolders = function () {
         var _this = this;
         this.dataService.getFolders()
             .subscribe(function (folders) { return _this.folders = folders; });
+    };
+    QuestionNewComponent.prototype.postQuestion = function () {
+        if (this.newQuestion.qid === 0) {
+            this.addQuestion();
+        }
+        else {
+            this.updateQuestion(this.newQuestion.qid);
+        }
+    };
+    QuestionNewComponent.prototype.addQuestion = function () {
+        var _this = this;
+        this.dataService.addQuestion(this.newQuestion)
+            .then(function (question) {
+            _this.postedQuestion = question;
+            _this.router.navigateByUrl("/home/(questionBoard:questions/" + _this.postedQuestion.qid + "//courseBoard:courses/2)");
+        })
+            .catch(function (err) { return console.log(err.body); });
+        this.newQuestion = Object.assign({}, DEFAULT_QUESTION);
+    };
+    QuestionNewComponent.prototype.updateQuestion = function (id) {
+        var _this = this;
+        this.dataService.updateQuestion(this.newQuestion, id)
+            .then(function (question) {
+            _this.postedQuestion = question;
+            //console.log(question);
+            _this.router.navigateByUrl("/home/(questionBoard:questions/" + _this.postedQuestion.qid + "//courseBoard:courses/2)");
+        })
+            .catch(function (err) { return console.log(err.body); });
     };
     return QuestionNewComponent;
 }());
@@ -658,10 +743,128 @@ QuestionNewComponent = __decorate([
         styles: [__webpack_require__("../../../../../src/app/components/question-new/question-new.component.css")]
     }),
     __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])('data')),
-    __metadata("design:paramtypes", [Object])
+    __metadata("design:paramtypes", [Object, typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */]) === "function" && _b || Object])
 ], QuestionNewComponent);
 
+var _a, _b;
 //# sourceMappingURL=question-new.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/question-post/question-post.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/question-post/question-post.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div>\n  <form>\n    <div class=\"form-group\">\n      <label for=\"questionTitle\">Title</label>\n      <input type=\"text\" class=\"form-control\" id=\"questionTitle\" \n            placeholder=\"Input your question title\" required\n            [(ngModel)]=\"newQuestion.subject\"\n            [ngModelOptions]=\"{standalone: true}\">\n    </div>\n\n    <div class=\"form-group\">\n        <label for=\"questionBody\">Body</label>\n        <quill-editor id=\"questionBody\"\n                      [(ngModel)]=\"newQuestion.body\" \n                      [ngModelOptions]=\"{standalone: true}\"\n                      [options]=\"editorConfig\"\n                      (blur)=\"onEditorBlured($event)\"\n                      (focus)=\"onEditorFocused($event)\"\n                      (ready)=\"onEditorCreated($event)\"\n                      (change)=\"onContentChanged($event)\">\n        </quill-editor>\n    </div>\n\n    <div class=\"form-group\">\n      <label for=\"questionAttachment\">Attchment</label>\n      <input type=\"file\" id=\"questionAttachment\">\n      <p class=\"help-block\">Upload the attachment to support your question.</p>\n    </div>\n\n    <div class=\"form-group\">\n      <label for=\"folderGroup\">Folder</label>\n      <div *ngFor=\"let folder of folders; let idx = index\">\n        <div class=\"radio\">\n          <label>\n            <input type=\"radio\" name=\"folderSelect\" \n                  [value]=\"folder.id\"\n                  [checked]=\"idx === 0\"\n                  (change)=\"onSelectionChange(folder)\"> {{folder.name}}\n          </label>\n        </div>         \n      </div>\n\n    </div>\n\n    <button type=\"submit\" class=\"btn btn-default\" (click)=\"addQuestion()\">Submit</button>\n  </form>\n</div> "
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/question-post/question-post.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QuestionPostComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
+
+var DEFAULT_QUESTION = Object.freeze({
+    qid: 0,
+    subject: '',
+    body: "",
+    folder: 1
+});
+var QuestionPostComponent = (function () {
+    function QuestionPostComponent(dataService, router) {
+        this.dataService = dataService;
+        this.router = router;
+        this.editorOptions = {
+            placeholder: 'insert content...',
+            modules: {
+                toolbar: '#toolbar'
+            }
+        };
+        this.newQuestion = Object.assign({}, DEFAULT_QUESTION);
+    }
+    QuestionPostComponent.prototype.ngOnInit = function () {
+        this.getFolders();
+    };
+    QuestionPostComponent.prototype.onEditorBlured = function (quill) {
+        console.log('editor blur!', quill);
+    };
+    QuestionPostComponent.prototype.onEditorFocused = function (quill) {
+        console.log('editor focus!', quill);
+    };
+    QuestionPostComponent.prototype.onEditorCreated = function (quill) {
+        this.editor = quill;
+        console.log('quill is ready! this is current quill instance object', quill);
+    };
+    QuestionPostComponent.prototype.onContentChanged = function (_a) {
+        var quill = _a.quill, html = _a.html, text = _a.text;
+        console.log('quill content is changed!', quill, html, text);
+    };
+    QuestionPostComponent.prototype.onSelectionChange = function (folder) {
+        this.newQuestion.folder = folder.fid;
+    };
+    QuestionPostComponent.prototype.getFolders = function () {
+        var _this = this;
+        this.dataService.getFolders()
+            .subscribe(function (folders) { return _this.folders = folders; });
+    };
+    QuestionPostComponent.prototype.addQuestion = function () {
+        var _this = this;
+        this.dataService.addQuestion(this.newQuestion)
+            .then(function (question) {
+            _this.postedQuestion = question;
+            console.log(_this.postedQuestion);
+            _this.router.navigateByUrl("/home/(questionBoard:questions/" + _this.postedQuestion.qid + "//courseBoard:courses/2)");
+        })
+            .catch(function (err) { return console.log(err.body); });
+        this.newQuestion = Object.assign({}, DEFAULT_QUESTION);
+    };
+    return QuestionPostComponent;
+}());
+QuestionPostComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-question-post',
+        template: __webpack_require__("../../../../../src/app/components/question-post/question-post.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/question-post/question-post.component.css")]
+    }),
+    __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])('data')),
+    __metadata("design:paramtypes", [Object, typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _a || Object])
+], QuestionPostComponent);
+
+var _a;
+//# sourceMappingURL=question-post.component.js.map
 
 /***/ }),
 
@@ -883,6 +1086,28 @@ var DataService = (function () {
             .catch(this.handleError);
         //return this.courses.filter(course => course.cid === id)[0];
     };
+    DataService.prototype.addQuestion = function (question) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'content-type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({ headers: headers });
+        return this.http.post('api/v1/questions', question, options)
+            .toPromise()
+            .then(function (res) {
+            // console.dir(res.json());
+            return res.json();
+        })
+            .catch(this.handleError);
+    };
+    DataService.prototype.updateQuestion = function (question, id) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'content-type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({ headers: headers });
+        return this.http.put("api/v1/questions/" + id, question, options)
+            .toPromise()
+            .then(function (res) {
+            console.dir(res.json());
+            return res.json();
+        })
+            .catch(this.handleError);
+    };
     DataService.prototype.handleError = function (error) {
         console.error('An error occured', error);
         return Promise.reject(error);
@@ -891,7 +1116,7 @@ var DataService = (function () {
 }());
 DataService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */]) === "function" && _a || Object])
 ], DataService);
 
 var _a;

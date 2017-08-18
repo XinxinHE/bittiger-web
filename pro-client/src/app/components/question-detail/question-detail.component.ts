@@ -10,11 +10,13 @@ import { Question } from '../../data-structure/question';
 export class QuestionDetailComponent implements OnInit {
 
   question: Question;
+  questionId: number;
   constructor(@Inject('data') private dataService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
+      this.questionId = +params['id'];
       this.dataService.getQuestion(+params['id'])
         .then(question => this.question = question)
     });

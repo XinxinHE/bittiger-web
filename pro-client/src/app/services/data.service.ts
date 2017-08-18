@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers } from "@angular/http";
+import { Http, Response, RequestOptions, Headers } from "@angular/http";
 
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Observable } from "rxjs/Rx";
@@ -76,6 +76,32 @@ export class DataService {
     })
     .catch(this.handleError);
     //return this.courses.filter(course => course.cid === id)[0];
+  }
+
+  addQuestion(question: Question) {
+    const headers = new Headers({'content-type': 'application/json'});
+    const options = new RequestOptions({headers: headers});
+
+    return this.http.post('api/v1/questions', question, options)
+      .toPromise()
+      .then((res: Response) => {
+        // console.dir(res.json());
+        return res.json();
+      })
+      .catch(this.handleError);
+  }
+
+  updateQuestion(question: Question, id: number) {
+    const headers = new Headers({'content-type': 'application/json'});
+    const options = new RequestOptions({headers: headers});
+
+    return this.http.put(`api/v1/questions/${id}`, question, options)
+      .toPromise()
+      .then((res: Response) => {
+        console.dir(res.json());
+        return res.json();
+      })
+      .catch(this.handleError);
   }
   
   private handleError(error: any): Promise<any> {

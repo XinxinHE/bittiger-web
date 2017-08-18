@@ -49,9 +49,25 @@ router.get('/questions/:id', function(req, res) {
     }); 
 });
 
-router.post('/folders/:id', function(req, res) {
-    const id = req.params.id;
-    restClient.post(BACKEND_SERVER_URL + 'folders/:id', req.body, function (data, response) {
+router.post('/questions', jsonParser, function(req, res) {
+    let args = {};
+    args.data = req.body;
+    args.headers = {'Content-Type': 'application/json'}; // add headers
+
+    restClient.post(BACKEND_SERVER_URL + 'questions', args, function (data, response) {
+        res.json(data);
+    });
+});
+
+router.put('/questions/:id', jsonParser, function(req, res) {
+    let id = req.params.id;
+    let args = {};
+    args.data = req.body;
+    args.headers = {'Content-Type': 'application/json'}; // add headers
+
+    restClient.put(BACKEND_SERVER_URL + `questions/${id}`, args, function (data, response) {
+        console.log("----------------- PUT rest: " + req.body);
+        console.log("------------------PUT rest response: " + data);
         res.json(data);
     });
 });

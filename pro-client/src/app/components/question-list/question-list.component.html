@@ -21,9 +21,11 @@
           <div class="panel-heading">{{folder.name}}</div>
         </div>
 
-        <div class="panel panel-default" *ngFor="let question of (questions | selectedQuestion: folder.questions)">
+        <div class="panel panel-default" *ngFor="let question of (questions | selectedQuestion: folder.fid)">
           <div class="panel-heading">{{question.subject}}</div>
-          <div class="panel-body" [routerLink]="['/home', { outlets: {'questionBoard': ['questions', question.qid]}}]">{{question.body}}</div>
+          <div class="panel-body" 
+               [routerLink]="['/home', { outlets: {'questionBoard': ['questions', question.qid]}}]">
+               {{question.body | htmlToPlainText}}</div>
         </div>
       </div>
   </div>

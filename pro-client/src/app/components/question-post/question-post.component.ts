@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router'
+import { Router } from '@angular/router'
 import { Folder } from '../../data-structure/folder';
 import { Question } from '../../data-structure/question';
 
@@ -11,11 +11,11 @@ const DEFAULT_QUESTION: Question = Object.freeze({
 });
 
 @Component({
-  selector: 'app-question-new',
-  templateUrl: './question-new.component.html',
-  styleUrls: ['./question-new.component.css']
+  selector: 'app-question-post',
+  templateUrl: './question-post.component.html',
+  styleUrls: ['./question-post.component.css']
 })
-export class QuestionNewComponent implements OnInit {
+export class QuestionPostComponent implements OnInit {
   public editor;
   public editorOptions = {
     placeholder: 'insert content...',
@@ -29,22 +29,12 @@ export class QuestionNewComponent implements OnInit {
   postedQuestion: Question;
 
   constructor(@Inject('data') private dataService,
-              private router: Router,
-              private activatedRoute: ActivatedRoute) { }
+              private router: Router) { }
 
   ngOnInit() {
 
     this.getFolders();
-    this.activatedRoute.params.subscribe((params: Params) => {
-      if (params.id) {
-        this.dataService.getQuestion(+params['id'])
-          .then(question => {
-            delete question._id;  // TODO: why $oid cannot be updated
-            this.newQuestion = Object.assign({}, question);
-            // console.dir(this.newQuestion);
-          });
-      }
-    });
+
   }
 
   onEditorBlured(quill) {
@@ -73,18 +63,11 @@ export class QuestionNewComponent implements OnInit {
       .subscribe(folders => this.folders = folders);
   }
 
-  postQuestion() {
-    if (this.newQuestion.qid === 0) {
-      this.addQuestion();
-    } else {
-      this.updateQuestion(this.newQuestion.qid);
-    }
-  }
-
   addQuestion() {
     this.dataService.addQuestion(this.newQuestion)
       .then(question => {
           this.postedQuestion = question;
+          console.log(this.postedQuestion);
           this.router.navigateByUrl(`/home/(questionBoard:questions/${this.postedQuestion.qid}//courseBoard:courses/2)`);
         })
       .catch(err => console.log(err.body));
@@ -92,13 +75,4 @@ export class QuestionNewComponent implements OnInit {
     this.newQuestion = Object.assign({}, DEFAULT_QUESTION);
   }
 
-  updateQuestion(id: number) {
-    this.dataService.updateQuestion(this.newQuestion, id)
-      .then(question => {
-        this.postedQuestion = question;
-        //console.log(question);
-        this.router.navigateByUrl(`/home/(questionBoard:questions/${this.postedQuestion.qid}//courseBoard:courses/2)`);
-      })
-      .catch(err => console.log(err.body));
-  }
 }

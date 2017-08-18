@@ -13,20 +13,23 @@
     <form>
       <div class="form-group">
         <label for="questionTitle">Title</label>
-        <input type="text" class="form-control" id="questionTitle" placeholder="Input your question title">
+        <input type="text" class="form-control" id="questionTitle" 
+               placeholder="Input your question title" required
+               [(ngModel)]="newQuestion.subject"
+               [ngModelOptions]="{standalone: true}">
       </div>
 
       <div class="form-group">
           <label for="questionBody">Body</label>
           <quill-editor id="questionBody"
-                        [(ngModel)]="editorContent" 
+                        [(ngModel)]="newQuestion.body" 
                         [ngModelOptions]="{standalone: true}"
                         [options]="editorConfig"
                         (blur)="onEditorBlured($event)"
                         (focus)="onEditorFocused($event)"
                         (ready)="onEditorCreated($event)"
                         (change)="onContentChanged($event)">
-          </quill-editor> 
+          </quill-editor>
       </div>
 
       <div class="form-group">
@@ -37,17 +40,20 @@
 
       <div class="form-group">
         <label for="folderGroup">Folder</label>
-        <div *ngFor="let folder of folders">
+        <div *ngFor="let folder of folders; let idx = index">
           <div class="radio">
             <label>
-              <input type="radio" name="folderSelect"> {{folder.name}}
+              <input type="radio" name="folderSelect" 
+                     [value]="folder.id"
+                     [checked]="idx === 0"
+                     (change)="onSelectionChange(folder)"> {{folder.name}}
             </label>
           </div>         
         </div>
 
       </div>
 
-      <button type="submit" class="btn btn-default">Submit</button>
+      <button type="submit" class="btn btn-default" (click)="postQuestion()">Submit</button>
     </form>
   </div> 
 

@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify, abort
 from flask_restful import Api, Resource
+from flask_cors import CORS, cross_origin
 
 from database import DB
 
 app = Flask(__name__)
+CORS(app)
 app.config.from_envvar('ENV_CONFIG_FILE')
 
 mongo_host = app.config['MONGO_HOST']
@@ -39,18 +41,18 @@ def get_post(table_type, id):
 	return jsonify(data), 200
 
 
-@app.route("/<table_type>/<id>", methods=["POST"])
-def insert_data(table_type, id):
+@app.route("/<table_type>", methods=["POST"])
+def insert_data(table_type):
 	if not request.json:
 		abort(404)
 	json_data = request.json
 	
 
-	resp = db.insertPost(table_type, id, json_data)
-	if resp == False:
+	resp = db.insertPost(table_type, json_data)
+	if resp == None:
 		return jsonify({'status': 'failure'}), 404
 
-	return jsonify({'status': 'success'}), 200
+	return jsonify(resp), 200
 
 
 @app.route("/<table_type>/<id>", methods=["PUT"])
@@ -60,10 +62,11 @@ def update_data(table_type, id):
 
 	resp = db.update(table_type, id, request.json)
 
-	if not resp:
+	if resp == None:
 		return jsonify({'error': 'Record not found'}), 404
-
-	return jsonify({'status': 'success'}), 200
+	print("-----------------------------------")
+	print(resp)
+	return jsonify(resp), 200
 
 @app.route("/<table_type>/<id>", methods=["DELETE"])
 def delete_record(table_type, id):
