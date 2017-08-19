@@ -7,7 +7,9 @@ const DEFAULT_QUESTION: Question = Object.freeze({
   qid: 0,
   subject: '',
   body: ``,
-  folder: 1
+  folder: 1,
+  date: new Date(),
+  comments: []
 });
 
 @Component({
@@ -82,6 +84,7 @@ export class QuestionNewComponent implements OnInit {
   }
 
   addQuestion() {
+    this.newQuestion.date = new Date();
     this.dataService.addQuestion(this.newQuestion)
       .then(question => {
           this.postedQuestion = question;
@@ -93,6 +96,7 @@ export class QuestionNewComponent implements OnInit {
   }
 
   updateQuestion(id: number) {
+    this.newQuestion.date = new Date();
     this.dataService.updateQuestion(this.newQuestion, id)
       .then(question => {
         this.postedQuestion = question;

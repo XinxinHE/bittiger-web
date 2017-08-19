@@ -10,6 +10,7 @@ import "rxjs/add/operator/toPromise";
 import { Folder } from '../data-structure/folder';
 import { Course } from '../data-structure/course';
 import { Question } from '../data-structure/question';
+import { Comment } from '../data-structure/comment';
 
 @Injectable()
 export class DataService {
@@ -85,19 +86,21 @@ export class DataService {
     return this.http.post('api/v1/questions', question, options)
       .toPromise()
       .then((res: Response) => {
-        // console.dir(res.json());
+        console.log("add a question -- dataService");
+        console.dir(res.json());
         return res.json();
       })
       .catch(this.handleError);
   }
 
   updateQuestion(question: Question, id: number) {
-    const headers = new Headers({'content-type': 'application/json'});
+    const headers = new Headers({'content-type': 'application/json; charset=utf-8'});
     const options = new RequestOptions({headers: headers});
 
     return this.http.put(`api/v1/questions/${id}`, question, options)
       .toPromise()
       .then((res: Response) => {
+        console.log("update a question -- dataService");
         console.dir(res.json());
         return res.json();
       })

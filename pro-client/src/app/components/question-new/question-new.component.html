@@ -5,7 +5,7 @@
       <button [routerLink]="['/home', { outlets: {'questionBoard': ['questions']}}]" class="btn btn-primary" type="button">Cancel</button>
     </div>
     <div class="col-xs-9">
-      <label class="board-head pull-right"><h1>New Post</h1></label>
+      <label class="board-head pull-right"><h1>Question</h1></label>
     </div>
   </div>
   
@@ -14,9 +14,9 @@
       <div class="form-group">
         <label for="questionTitle">Title</label>
         <input type="text" class="form-control" id="questionTitle" 
-               placeholder="Input your question title" required
+               placeholder="Input your question title"
                [(ngModel)]="newQuestion.subject"
-               [ngModelOptions]="{standalone: true}">
+               [ngModelOptions]="{standalone: true}" required>
       </div>
 
       <div class="form-group">
@@ -28,7 +28,7 @@
                         (blur)="onEditorBlured($event)"
                         (focus)="onEditorFocused($event)"
                         (ready)="onEditorCreated($event)"
-                        (change)="onContentChanged($event)">
+                        (change)="onContentChanged($event)" required>
           </quill-editor>
       </div>
 
@@ -53,7 +53,7 @@
 
       </div>
 
-      <button type="submit" class="btn btn-default" (click)="postQuestion()">Submit</button>
+      <button type="submit" class="btn btn-default" (click)="postQuestion()">Post Question</button>
     </form>
   </div> 
 

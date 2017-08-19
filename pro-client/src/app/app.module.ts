@@ -21,8 +21,6 @@ import { HtmlToPlainTextPipe } from './components/question-list/html-to-plain.pi
 import { QuestionNewComponent } from './components/question-new/question-new.component';
 import { QuestionListComponent } from './components/question-list/question-list.component';
 import { QuestionDetailComponent } from './components/question-detail/question-detail.component';
-import { QuestionPostComponent } from './components/question-post/question-post.component';
-
 
 @NgModule({
   declarations: [
@@ -35,8 +33,7 @@ import { QuestionPostComponent } from './components/question-post/question-post.
     HtmlToPlainTextPipe,
     QuestionNewComponent,
     QuestionListComponent,
-    QuestionDetailComponent,
-    QuestionPostComponent
+    QuestionDetailComponent
   ],
   imports: [
     BrowserModule,

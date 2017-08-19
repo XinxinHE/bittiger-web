@@ -1,54 +1,54 @@
 [
     {
         "cid": 1,
-        "name": "Intro to Project Manager Class 1",
+        "name": "PM501 产品经理直通车（第二期）",
         "folder": 1,
-        "desc": "This course introduces the basic concepts of PM",
-        "teacher": "Jack Wu"
+        "desc": "产品经理（Product Manager，简称PM）是硅谷最抢手的职业之一，不仅因为它有着非常可观的薪水和就业市场，也因为它跨越了技术和非技术之间的鸿沟，实现跨部门的统筹和产出，是综合性人才在科技时代的最佳体现。",
+        "teacher": "Nate & BigJoe"
     }, 
     {
         "cid": 2,
-        "name": "Intro to Project Manager Class 2",
+        "name": "学生成绩计算方法",
         "folder": 1,
-        "desc": "This course introduces the basic concepts of PM",
-        "teacher": "Brown Wu"
+        "desc": "出勤15%+作业15%+期中考试30%+Capstone40%=100%",
+        "teacher": "Nate & BigJoe"
     },
     {
         "cid": 3,
-        "name": "Intro to Project Manager Class 3",
+        "name": "第一阶段目标",
         "folder": 2,
-        "desc": "This course introduces the basic concepts of PM",
-        "teacher": "White Wu"
+        "desc": "采用1+1的形式（一节知识课 + 一节求职课），精讲从idea到产品上线过程中的核心要点，配有针对知识点的相应的求职课。在知识课中你不仅会学习市场分析、KPI的选择和追踪、设计的MVP原则等产品设计相关原则，同时也会学到敏捷开发、roadmap、瀑布流开发等产品开发的知识。此外在求职课中，Google的产品经理会亲自指导求职课，提供一手的职场资讯并讲授市场规模估算、产品信息的数据化、产品设计等高频面试考点。",
+        "teacher": "Nate & BigJoe"
     },
     {    
         "cid": 4,
-        "name": "Intro to Project Manager Class 4",
-        "folder": 3,
-        "desc": "This course introduces the basic concepts of PM",
-        "teacher": "Scarlett Wu"
+        "name": "第二阶段目标",
+        "folder": 2,
+        "desc": "在项目中，学生将模拟产品经理。由老师带领，学员将从概念入手，头脑风暴式地进行用户需求分析，设计prototype，针对KPI进行敏捷开发和产品路线图的设计。学生与导师同步前进、深度思考，解决更细节、具体、专业的问题，训练分析思维、打下实践基础。",
+        "teacher": "Nate & BigJoe"
 
     },
     {    
         "cid": 5,
-        "name": "Intro to Project Manager Class 5",
+        "name": "第三阶段目标",
         "folder": 3,
-        "desc": "This course introduces the basic concepts of PM",
-        "teacher": "Pink Wu"
+        "desc": "作为对产品负有根本责任的管理者，产品经理这一角色对求职者软实力的要求极高。这个阶段旨在为学员提供软实力的培训，学会如何和stakeholders沟通，协调多方资源，提升领导力和影响力，在面试中脱颖而出。",
+        "teacher": "Nate & BigJoe"
     },
     {    
         "cid": 6,
-        "name": "Intro to Project Manager Class 6",
+        "name": "第四阶段目标",
         "folder": 3,
-        "desc": "This course introduces the basic concepts of PM",
-        "teacher": "Yellow Wu"
+        "desc": "学员需要展示自己独立完成的项目，模拟该项目产品经理的角色，运用之前所学的内容，从用户需求分析到原型设计、KPI、一直到产品开发和生命周期的完善，经历产品从概念到成型的整个过程。老师会亲自指导和带领整个过程，提供修改建议完善产品设计。阶段最后每名学员需要产出至少一个产品需求文档（PRD），既夯实基础又扩充简历。",
+        "teacher": "Nate & BigJoe"
 
     },
     {    
         "cid": 7,
-        "name": "Intro to Project Manager Class 7",
+        "name": "实战课",
         "folder": 4,
-        "desc": "This course introduces the basic concepts of PM",
-        "teacher": "Blue Wu"
+        "desc": "学员展示自己独立完成的项目",
+        "teacher": "Nate & BigJoe"
 
     }
 ]

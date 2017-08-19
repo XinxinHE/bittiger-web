@@ -1,11 +1,13 @@
 <aside class="side">
-  <p>Sidebar contents</p>
+  <div class="title">
+    <img class="title-image" src="../../assets/bittiger.png"> <h1 class="title-heading"> Bittiger</h1>
+  </div>
 
   <ul class="side-menu">
     <li class="side-menu-item" *ngFor="let folder of folders">
       <span>{{folder.name}}</span>
       <ul>
-        <li *ngFor="let course of (courses | selectedCourse: folder.courses)">
+        <li *ngFor="let course of (courses | selectedCourse: folder.fid)">
           <a [routerLink]="['/home', {outlets: {'courseBoard':['courses', course.cid], 'questionBoard': ['questions']}}]">
             {{course.name}}</a>
         </li>

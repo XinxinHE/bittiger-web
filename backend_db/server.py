@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, abort
 from flask_restful import Api, Resource
 from flask_cors import CORS, cross_origin
+from flask import Response
 
 from database import DB
 
@@ -64,8 +65,8 @@ def update_data(table_type, id):
 
 	if resp == None:
 		return jsonify({'error': 'Record not found'}), 404
-	print("-----------------------------------")
-	print(resp)
+	
+	print("*****---------------------------")
 	return jsonify(resp), 200
 
 @app.route("/<table_type>/<id>", methods=["DELETE"])

@@ -1,9 +1,8 @@
+
 import pymongo
 from flask import Flask
 from pymongo import MongoClient
 from pymongo import ReturnDocument
-
-import pprint
 from bson.json_util import dumps
 
 import datetime
@@ -57,12 +56,12 @@ class DB():
 			post_id = self.course_table.insert_one(data)
 		elif table_type == 'questions':
 			data['qid'] = id
-			post_id = self.question_table.insert_one(data)
+			post_id = self.question_table.insert_one(eval(dumps(data, ensure_ascii=False)))
 		elif table_type == 'folders':
 			data['fid'] = id
 			post_id = self.folder_table.insert_one(data)
 
-		return eval(dumps(data))
+		return eval(dumps(data, ensure_ascii=False))
 		
 
 	def readPosts(self, table_type, attr=None):
@@ -83,15 +82,13 @@ class DB():
 
 		data = None
 		if table_type == 'courses':
-			data = eval(dumps(self.course_table.find(query_filter), separators=(',', ':')))
+			data = eval(dumps(self.course_table.find(query_filter), separators=(',', ':'), ensure_ascii=False))
 		elif table_type == 'folders':
-			data = eval(dumps(self.folder_table.find(query_filter), separators=(',', ':')))
+			data = eval(dumps(self.folder_table.find(query_filter), separators=(',', ':'), ensure_ascii=False))
 		elif table_type == 'questions':
-			data = eval(dumps(self.question_table.find(query_filter), separators=(',', ':')))
+			data = eval(dumps(self.question_table.find(query_filter), separators=(',', ':'), ensure_ascii=False))
 		else: 
 			data['status'] = 'No matched data!'
-        
-		pprint.pprint(data)
 		return data
 
 
@@ -105,7 +102,6 @@ class DB():
 
 		Read data from DB by primary key user_id, and with other attributes if exist. Return None if not exist.
 		"""
-  		print("readPost!")
 		if not self.checkExist(table_type, id):
 			return False
 
@@ -119,13 +115,13 @@ class DB():
 
 		if table_type == 'courses':
 			query_filter['cid'] = int(id)
-			data = eval(dumps(self.course_table.find_one(query_filter), separators=(',', ':')))
+			data = eval(dumps(self.course_table.find_one(query_filter), separators=(',', ':'), ensure_ascii=False))
 		elif table_type == 'folders':
 			query_filder['fid'] = int(id)
-			data = eval(dumps(self.folder_table.find_one(query_filter), separators=(',', ':')))
+			data = eval(dumps(self.folder_table.find_one(query_filter), separators=(',', ':'), ensure_ascii=False))
 		elif table_type == 'questions':
 			query_filter['qid'] = int(id)
-			data = eval(dumps(self.question_table.find_one(query_filter), separators=(',', ':')))
+			data = eval(dumps(self.question_table.find_one(query_filter), separators=(',', ':'), ensure_ascii=False))
 		else:
 			data['status'] = 'No matched data!'
 
@@ -187,10 +183,11 @@ class DB():
 		elif table_type == 'questions':
 			query_filter['qid'] = int(id)
 			updated_data = self.question_table.find_one_and_update(query_filter, input_data, return_document=ReturnDocument.AFTER)
+			# updated_data['body'] = updated_data['body'].encode('utf-8')
 		#print(id)
 		#print(updated_data)
-		#return eval(dumps(updated_data.raw_result))
-		return eval(dumps(updated_data))
+		#return eval(dumps(updated_data.raw_result)
+		return eval(dumps(updated_data, ensure_ascii=False))
 
 
 	def checkExist(self, table_type, id):

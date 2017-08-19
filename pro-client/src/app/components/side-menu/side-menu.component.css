@@ -17,3 +17,23 @@
 .side-menu .side-menu-item a {
     font-size:14px;
 }
+
+.title {
+    margin-bottom: 10px;
+    padding: 10px 0 5px 0;
+    border-bottom: solid 1px whitesmoke;
+}
+
+.title .title-image {
+    margin-bottom: 5px;
+    width: 40px;
+    height: 40px;
+}
+
+.title .title-heading {
+    display: inline-block;
+    font-size: 24px;
+    padding-left: 10px;
+    margin-top: 0px;
+    font-weight: bold;
+}

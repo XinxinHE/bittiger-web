@@ -91,7 +91,6 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_question_new_question_new_component__ = __webpack_require__("../../../../../src/app/components/question-new/question-new.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_question_list_question_list_component__ = __webpack_require__("../../../../../src/app/components/question-list/question-list.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_question_detail_question_detail_component__ = __webpack_require__("../../../../../src/app/components/question-detail/question-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_question_post_question_post_component__ = __webpack_require__("../../../../../src/app/components/question-post/question-post.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -99,7 +98,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -135,8 +133,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_14__components_question_list_html_to_plain_pipe__["a" /* HtmlToPlainTextPipe */],
             __WEBPACK_IMPORTED_MODULE_15__components_question_new_question_new_component__["a" /* QuestionNewComponent */],
             __WEBPACK_IMPORTED_MODULE_16__components_question_list_question_list_component__["a" /* QuestionListComponent */],
-            __WEBPACK_IMPORTED_MODULE_17__components_question_detail_question_detail_component__["a" /* QuestionDetailComponent */],
-            __WEBPACK_IMPORTED_MODULE_18__components_question_post_question_post_component__["a" /* QuestionPostComponent */]
+            __WEBPACK_IMPORTED_MODULE_17__components_question_detail_question_detail_component__["a" /* QuestionDetailComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -316,7 +313,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/middle-board/middle-board.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"middle\" *ngIf=\"course\">\n  <h1>{{course.name}}</h1>\n  <p>{{course.teacher}}</p>\n</div>\n"
+module.exports = "<div class=\"middle\" *ngIf=\"course\">\n  <h1>{{course.name}}</h1>\n  <p>{{course.teacher}}</p>\n  <p>{{course.desc}}</p>\n</div>\n"
 
 /***/ }),
 
@@ -363,7 +360,7 @@ MiddleBoardComponent = __decorate([
         styles: [__webpack_require__("../../../../../src/app/components/middle-board/middle-board.component.css")]
     }),
     __param(1, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])('data')),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */]) === "function" && _a || Object, Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _a || Object, Object])
 ], MiddleBoardComponent);
 
 var _a;
@@ -379,7 +376,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".side {\n    padding: 10px 15px;\n    max-width: 400px;\n    min-height: 100vh;\n    border-left: solid 1px #e2e2e2;\n}\n\n.board-head h1 {\n    margin-top: 0;\n    color: #c3c3c3;\n}\n\n.question-title {\n    padding-bottom: 10px;\n    font-size: 24px;\n    border-bottom: solid 1px #e4e4e4;\n}\n\n.question-body {\n    padding: 10px 0;\n}\n\n.media {\n    background-color: whitesmoke;\n    padding: 5px;\n}\n.media-object {\n    width: 100px;\n    height: 100px;\n}", ""]);
+exports.push([module.i, ".side {\n    padding: 10px 15px;\n    max-width: 400px;\n    min-height: 100vh;\n    border-left: solid 1px #e2e2e2;\n}\n\n.board-head h1 {\n    margin-top: 0;\n    color: #c3c3c3;\n}\n\n.question-title {\n    padding-bottom: 10px;\n    font-size: 24px;\n    border-bottom: solid 1px #e4e4e4;\n}\n\n.question-body {\n    padding: 10px 0;\n}\n\n.media {\n    background-color: whitesmoke;\n    padding: 5px;\n}\n.media-object {\n    width: 50px;\n    height: 50px;\n}", ""]);
 
 // exports
 
@@ -392,7 +389,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/question-detail/question-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container side\">\n  \n  <div class=\"row\">\n    <div class=\"col-xs-2\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['questions']}}]\" class=\"btn btn-primary\" type=\"button\">Back</button>\n    </div>\n    <div class=\"col-xs-2\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['new-question', questionId]}}]\" class=\"btn btn-primary\" type=\"button\">Edit</button>\n    </div>\n    <div class=\"col-xs-8\">\n      <label class=\"board-head pull-right\"><h1>Question</h1></label>\n    </div>\n  </div>\n  \n  <div *ngIf=\"question\">\n    <h1 class=\"question-title\">{{question.subject}}</h1>\n    <a href=\"#\">Iris Li, 3 weeks ago </a><span class=\"label label-primary\">Week {{question.folder}}</span>\n    <div class=\"question-body\" [innerHTML]=\"question.body\"></div>\n  </div>\n\n  <div class=\"media\">\n    <div class=\"media-left\">\n      <a href=\"#\">\n        <img class=\"media-object\" src=\"../../assets/profile.png\" alt=\"profile image\">\n      </a>\n    </div>\n    <div class=\"media-body\">\n      This is the comment field.\n    </div>\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"container side\">\n  \n  <div class=\"row\">\n    <div class=\"col-xs-2\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['questions']}}]\" class=\"btn btn-primary\" type=\"button\">Back</button>\n    </div>\n    <div class=\"col-xs-2\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['new-question', question.qid]}}]\" class=\"btn btn-primary\" type=\"button\">Edit</button>\n    </div>\n    <div class=\"col-xs-8\">\n      <label class=\"board-head pull-right\"><h1>Question</h1></label>\n    </div>\n  </div>\n  \n  <div *ngIf=\"question\">\n    <div>\n      <h1 class=\"question-title\">{{question.subject}}</h1>\n      <span style=\"color: #337ab7\">Iris Li, {{question.date | date: 'medium' }} </span><span class=\"label label-primary\">Week {{question.folder}}</span>\n      <div class=\"question-body\" [innerHTML]=\"question.body\"></div>\n    </div>\n\n    <div class=\"media\" *ngFor=\"let comment of question.comments\">\n      <div class=\"media-left\">\n        <img class=\"media-object\" [src]=\"comment.profile\" alt=\"profile image\">\n      </div>\n      <div class=\"media-body\">\n        <span style=\"color: #337ab7\">Iris Li, {{comment.date | date: 'medium' }} </span><br/>\n        {{comment.desc}} \n      </div>\n    </div>\n\n    <div class=\"media\">\n      <div class=\"media-body\">\n        <div class=\"input-group\">\n          <input type=\"text\" class=\"form-control\" placeholder=\"Input comment...\"\n                [(ngModel)]=\"comment.desc\">\n\n          <span class=\"input-group-btn\">\n            <button class=\"btn btn-default\" type=\"button\" (click)=\"addComment()\">Submit</button>\n          </span>\n        </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -417,18 +414,52 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 
 
+var DEFAULT_COMMENT = {
+    commid: 0,
+    desc: '',
+    question: 0,
+    profile: '../../assets/profile.png',
+    date: new Date()
+};
 var QuestionDetailComponent = (function () {
     function QuestionDetailComponent(dataService, route) {
         this.dataService = dataService;
         this.route = route;
+        this.comment = Object.assign({}, DEFAULT_COMMENT);
     }
     QuestionDetailComponent.prototype.ngOnInit = function () {
+        this.getQuestion();
+    };
+    QuestionDetailComponent.prototype.getQuestion = function () {
         var _this = this;
         this.route.params.subscribe(function (params) {
-            _this.questionId = +params['id'];
             _this.dataService.getQuestion(+params['id'])
-                .then(function (question) { return _this.question = question; });
+                .then(function (question) {
+                delete question._id;
+                _this.question = question;
+                _this.initComment();
+            });
         });
+    };
+    QuestionDetailComponent.prototype.initComment = function () {
+        this.comment.commid = this.question.comments.length + 1;
+        this.comment.question = this.question.qid;
+    };
+    QuestionDetailComponent.prototype.addComment = function () {
+        this.comment.date = new Date();
+        this.question.comments.push(this.comment);
+        console.log("add comment to question -- question detail");
+        console.dir(this.question);
+        this.updateQuestion(this.question.qid);
+        this.getQuestion();
+    };
+    QuestionDetailComponent.prototype.updateQuestion = function (id) {
+        var _this = this;
+        this.dataService.updateQuestion(this.question, id)
+            .then(function (question) {
+            _this.postedQuestion = question;
+        })
+            .catch(function (err) { return console.log(err.body); });
     };
     return QuestionDetailComponent;
 }());
@@ -439,7 +470,7 @@ QuestionDetailComponent = __decorate([
         styles: [__webpack_require__("../../../../../src/app/components/question-detail/question-detail.component.css")]
     }),
     __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])('data')),
-    __metadata("design:paramtypes", [Object, typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [Object, typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _a || Object])
 ], QuestionDetailComponent);
 
 var _a;
@@ -484,7 +515,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".side {\n    padding: 10px 15px;\n    max-width: 400px;\n    min-height: 100vh;\n    border-left: solid 1px #e2e2e2;\n}\n\n.question-list {\n    padding-top: 10px;\n}", ""]);
+exports.push([module.i, ".side {\n    padding: 10px 15px;\n    max-width: 400px;\n    min-height: 100vh;\n    border-left: solid 1px #e2e2e2;\n}\n\n.question-list {\n    padding-top: 10px;\n}\n\n.folder-name {\n    background-color: #e4e4e4;\n    margin: 0;\n    margin-top: 20px;\n    padding: 3px 5px;\n    font-weight: bold; \n}\n\n.media {\n    border-top: solid 1px #d2d2d2;\n    padding: 5px;\n    margin: 0;\n}\n\n.media-heading {\n    background-color: white;\n}\n\n.max-lines {\n    text-overflow: ellipsis;\n    word-wrap: break-word;\n    overflow: hidden;\n    max-height: 3em;\n}", ""]);
 
 // exports
 
@@ -497,7 +528,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/question-list/question-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container side\">\n  <div class=\"row\">\n    <div class=\"col-xs-3\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['new-question']}}]\" class=\"btn btn-primary\" type=\"button\">New Post</button>\n    </div>\n\n    <div class=\"col-xs-9\">\n        <div class=\"input-group pull-right\">\n          <input type=\"text\" class=\"form-control\" placeholder=\"Search for...\">\n          <span class=\"input-group-btn\">\n            <button class=\"btn btn-default\" type=\"button\">Go!</button>\n          </span>\n        </div>\n    </div>\n  </div>\n\n  <div class=\"quesiton-list\">\n    <div class=\"question-folder\" *ngFor=\"let folder of folders\">\n      <div class=\"question-list\">\n        <div class=\"panel panel-info\">\n          <div class=\"panel-heading\">{{folder.name}}</div>\n        </div>\n\n        <div class=\"panel panel-default\" *ngFor=\"let question of (questions | selectedQuestion: folder.fid)\">\n          <div class=\"panel-heading\">{{question.subject}}</div>\n          <div class=\"panel-body\" \n               [routerLink]=\"['/home', { outlets: {'questionBoard': ['questions', question.qid]}}]\">\n               {{question.body | htmlToPlainText}}</div>\n        </div>\n      </div>\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"container side\">\n  <div class=\"row\">\n    <div class=\"col-xs-4\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['new-question']}}]\" \n              class=\"btn btn-primary\" type=\"button\">Ask Question</button>\n    </div>\n\n    <div class=\"col-xs-8\">\n        <div class=\"input-group pull-right\">\n          <input type=\"text\" class=\"form-control\" placeholder=\"Search for...\">\n          <span class=\"input-group-btn\">\n            <button class=\"btn btn-default\" type=\"button\">Go!</button>\n          </span>\n        </div>\n    </div>\n  </div>\n\n  <div class=\"quesiton-list\">\n    <div class=\"question-folder\" *ngFor=\"let folder of folders\">\n        \n        <div class=\"folder-name\"><span>{{folder.name}}</span></div>\n\n        <div class=\"media\" *ngFor=\"let question of (questions | selectedQuestion: folder.fid)\">\n          <div class=\"media-body\">\n              <h4 class=\"media-heading\">{{question.subject}}</h4>\n              <div class=\"max-lines\" \n                   [routerLink]=\"['/home', { outlets: {'questionBoard': ['questions', question.qid]}}]\">\n                   {{question.body | htmlToPlainText}}</div>\n          </div>\n        </div>\n    </div>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -626,7 +657,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/question-new/question-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container side\">\n  \n  <div class=\"row\">\n    <div class=\"col-xs-3\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['questions']}}]\" class=\"btn btn-primary\" type=\"button\">Cancel</button>\n    </div>\n    <div class=\"col-xs-9\">\n      <label class=\"board-head pull-right\"><h1>New Post</h1></label>\n    </div>\n  </div>\n  \n  <div>\n    <form>\n      <div class=\"form-group\">\n        <label for=\"questionTitle\">Title</label>\n        <input type=\"text\" class=\"form-control\" id=\"questionTitle\" \n               placeholder=\"Input your question title\" required\n               [(ngModel)]=\"newQuestion.subject\"\n               [ngModelOptions]=\"{standalone: true}\">\n      </div>\n\n      <div class=\"form-group\">\n          <label for=\"questionBody\">Body</label>\n          <quill-editor id=\"questionBody\"\n                        [(ngModel)]=\"newQuestion.body\" \n                        [ngModelOptions]=\"{standalone: true}\"\n                        [options]=\"editorConfig\"\n                        (blur)=\"onEditorBlured($event)\"\n                        (focus)=\"onEditorFocused($event)\"\n                        (ready)=\"onEditorCreated($event)\"\n                        (change)=\"onContentChanged($event)\">\n          </quill-editor>\n      </div>\n\n      <div class=\"form-group\">\n        <label for=\"questionAttachment\">Attchment</label>\n        <input type=\"file\" id=\"questionAttachment\">\n        <p class=\"help-block\">Upload the attachment to support your question.</p>\n      </div>\n\n      <div class=\"form-group\">\n        <label for=\"folderGroup\">Folder</label>\n        <div *ngFor=\"let folder of folders; let idx = index\">\n          <div class=\"radio\">\n            <label>\n              <input type=\"radio\" name=\"folderSelect\" \n                     [value]=\"folder.id\"\n                     [checked]=\"idx === 0\"\n                     (change)=\"onSelectionChange(folder)\"> {{folder.name}}\n            </label>\n          </div>         \n        </div>\n\n      </div>\n\n      <button type=\"submit\" class=\"btn btn-default\" (click)=\"postQuestion()\">Submit</button>\n    </form>\n  </div> \n\n</div>\n"
+module.exports = "<div class=\"container side\">\n  \n  <div class=\"row\">\n    <div class=\"col-xs-3\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['questions']}}]\" class=\"btn btn-primary\" type=\"button\">Cancel</button>\n    </div>\n    <div class=\"col-xs-9\">\n      <label class=\"board-head pull-right\"><h1>Question</h1></label>\n    </div>\n  </div>\n  \n  <div>\n    <form>\n      <div class=\"form-group\">\n        <label for=\"questionTitle\">Title</label>\n        <input type=\"text\" class=\"form-control\" id=\"questionTitle\" \n               placeholder=\"Input your question title\"\n               [(ngModel)]=\"newQuestion.subject\"\n               [ngModelOptions]=\"{standalone: true}\" required>\n      </div>\n\n      <div class=\"form-group\">\n          <label for=\"questionBody\">Body</label>\n          <quill-editor id=\"questionBody\"\n                        [(ngModel)]=\"newQuestion.body\" \n                        [ngModelOptions]=\"{standalone: true}\"\n                        [options]=\"editorConfig\"\n                        (blur)=\"onEditorBlured($event)\"\n                        (focus)=\"onEditorFocused($event)\"\n                        (ready)=\"onEditorCreated($event)\"\n                        (change)=\"onContentChanged($event)\" required>\n          </quill-editor>\n      </div>\n\n      <div class=\"form-group\">\n        <label for=\"questionAttachment\">Attchment</label>\n        <input type=\"file\" id=\"questionAttachment\">\n        <p class=\"help-block\">Upload the attachment to support your question.</p>\n      </div>\n\n      <div class=\"form-group\">\n        <label for=\"folderGroup\">Folder</label>\n        <div *ngFor=\"let folder of folders; let idx = index\">\n          <div class=\"radio\">\n            <label>\n              <input type=\"radio\" name=\"folderSelect\" \n                     [value]=\"folder.id\"\n                     [checked]=\"idx === 0\"\n                     (change)=\"onSelectionChange(folder)\"> {{folder.name}}\n            </label>\n          </div>         \n        </div>\n\n      </div>\n\n      <button type=\"submit\" class=\"btn btn-default\" (click)=\"postQuestion()\">Post Question</button>\n    </form>\n  </div> \n\n</div>\n"
 
 /***/ }),
 
@@ -655,7 +686,9 @@ var DEFAULT_QUESTION = Object.freeze({
     qid: 0,
     subject: '',
     body: "",
-    folder: 1
+    folder: 1,
+    date: new Date(),
+    comments: []
 });
 var QuestionNewComponent = (function () {
     function QuestionNewComponent(dataService, router, activatedRoute) {
@@ -716,6 +749,7 @@ var QuestionNewComponent = (function () {
     };
     QuestionNewComponent.prototype.addQuestion = function () {
         var _this = this;
+        this.newQuestion.date = new Date();
         this.dataService.addQuestion(this.newQuestion)
             .then(function (question) {
             _this.postedQuestion = question;
@@ -726,6 +760,7 @@ var QuestionNewComponent = (function () {
     };
     QuestionNewComponent.prototype.updateQuestion = function (id) {
         var _this = this;
+        this.newQuestion.date = new Date();
         this.dataService.updateQuestion(this.newQuestion, id)
             .then(function (question) {
             _this.postedQuestion = question;
@@ -743,128 +778,11 @@ QuestionNewComponent = __decorate([
         styles: [__webpack_require__("../../../../../src/app/components/question-new/question-new.component.css")]
     }),
     __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])('data')),
-    __metadata("design:paramtypes", [Object, typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [Object, typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _b || Object])
 ], QuestionNewComponent);
 
 var _a, _b;
 //# sourceMappingURL=question-new.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/question-post/question-post.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/question-post/question-post.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div>\n  <form>\n    <div class=\"form-group\">\n      <label for=\"questionTitle\">Title</label>\n      <input type=\"text\" class=\"form-control\" id=\"questionTitle\" \n            placeholder=\"Input your question title\" required\n            [(ngModel)]=\"newQuestion.subject\"\n            [ngModelOptions]=\"{standalone: true}\">\n    </div>\n\n    <div class=\"form-group\">\n        <label for=\"questionBody\">Body</label>\n        <quill-editor id=\"questionBody\"\n                      [(ngModel)]=\"newQuestion.body\" \n                      [ngModelOptions]=\"{standalone: true}\"\n                      [options]=\"editorConfig\"\n                      (blur)=\"onEditorBlured($event)\"\n                      (focus)=\"onEditorFocused($event)\"\n                      (ready)=\"onEditorCreated($event)\"\n                      (change)=\"onContentChanged($event)\">\n        </quill-editor>\n    </div>\n\n    <div class=\"form-group\">\n      <label for=\"questionAttachment\">Attchment</label>\n      <input type=\"file\" id=\"questionAttachment\">\n      <p class=\"help-block\">Upload the attachment to support your question.</p>\n    </div>\n\n    <div class=\"form-group\">\n      <label for=\"folderGroup\">Folder</label>\n      <div *ngFor=\"let folder of folders; let idx = index\">\n        <div class=\"radio\">\n          <label>\n            <input type=\"radio\" name=\"folderSelect\" \n                  [value]=\"folder.id\"\n                  [checked]=\"idx === 0\"\n                  (change)=\"onSelectionChange(folder)\"> {{folder.name}}\n          </label>\n        </div>         \n      </div>\n\n    </div>\n\n    <button type=\"submit\" class=\"btn btn-default\" (click)=\"addQuestion()\">Submit</button>\n  </form>\n</div> "
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/question-post/question-post.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QuestionPostComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-
-
-var DEFAULT_QUESTION = Object.freeze({
-    qid: 0,
-    subject: '',
-    body: "",
-    folder: 1
-});
-var QuestionPostComponent = (function () {
-    function QuestionPostComponent(dataService, router) {
-        this.dataService = dataService;
-        this.router = router;
-        this.editorOptions = {
-            placeholder: 'insert content...',
-            modules: {
-                toolbar: '#toolbar'
-            }
-        };
-        this.newQuestion = Object.assign({}, DEFAULT_QUESTION);
-    }
-    QuestionPostComponent.prototype.ngOnInit = function () {
-        this.getFolders();
-    };
-    QuestionPostComponent.prototype.onEditorBlured = function (quill) {
-        console.log('editor blur!', quill);
-    };
-    QuestionPostComponent.prototype.onEditorFocused = function (quill) {
-        console.log('editor focus!', quill);
-    };
-    QuestionPostComponent.prototype.onEditorCreated = function (quill) {
-        this.editor = quill;
-        console.log('quill is ready! this is current quill instance object', quill);
-    };
-    QuestionPostComponent.prototype.onContentChanged = function (_a) {
-        var quill = _a.quill, html = _a.html, text = _a.text;
-        console.log('quill content is changed!', quill, html, text);
-    };
-    QuestionPostComponent.prototype.onSelectionChange = function (folder) {
-        this.newQuestion.folder = folder.fid;
-    };
-    QuestionPostComponent.prototype.getFolders = function () {
-        var _this = this;
-        this.dataService.getFolders()
-            .subscribe(function (folders) { return _this.folders = folders; });
-    };
-    QuestionPostComponent.prototype.addQuestion = function () {
-        var _this = this;
-        this.dataService.addQuestion(this.newQuestion)
-            .then(function (question) {
-            _this.postedQuestion = question;
-            console.log(_this.postedQuestion);
-            _this.router.navigateByUrl("/home/(questionBoard:questions/" + _this.postedQuestion.qid + "//courseBoard:courses/2)");
-        })
-            .catch(function (err) { return console.log(err.body); });
-        this.newQuestion = Object.assign({}, DEFAULT_QUESTION);
-    };
-    return QuestionPostComponent;
-}());
-QuestionPostComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-question-post',
-        template: __webpack_require__("../../../../../src/app/components/question-post/question-post.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/components/question-post/question-post.component.css")]
-    }),
-    __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])('data')),
-    __metadata("design:paramtypes", [Object, typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _a || Object])
-], QuestionPostComponent);
-
-var _a;
-//# sourceMappingURL=question-post.component.js.map
 
 /***/ }),
 
@@ -876,7 +794,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".side {\n    padding: 5px 15px;\n    max-width: 300px;\n    min-height: 100vh;\n    border-right: solid 1px #e2e2e2;\n}\n\n.side-menu {\n    margin: 0;\n    padding: 0;\n}\n\n.side-menu .side-menu-item {\n    list-style-type: none;\n}\n\n.side-menu .side-menu-item a {\n    font-size:14px;\n}", ""]);
+exports.push([module.i, ".side {\n    padding: 5px 15px;\n    max-width: 300px;\n    min-height: 100vh;\n    border-right: solid 1px #e2e2e2;\n}\n\n.side-menu {\n    margin: 0;\n    padding: 0;\n}\n\n.side-menu .side-menu-item {\n    list-style-type: none;\n}\n\n.side-menu .side-menu-item a {\n    font-size:14px;\n}\n\n.title {\n    margin-bottom: 10px;\n    padding: 10px 0 5px 0;\n    border-bottom: solid 1px whitesmoke;\n}\n\n.title .title-image {\n    margin-bottom: 5px;\n    width: 40px;\n    height: 40px;\n}\n\n.title .title-heading {\n    display: inline-block;\n    font-size: 24px;\n    padding-left: 10px;\n    margin-top: 0px;\n    font-weight: bold;\n}", ""]);
 
 // exports
 
@@ -889,7 +807,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/side-menu/side-menu.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<aside class=\"side\">\n  <p>Sidebar contents</p>\n\n  <ul class=\"side-menu\">\n    <li class=\"side-menu-item\" *ngFor=\"let folder of folders\">\n      <span>{{folder.name}}</span>\n      <ul>\n        <li *ngFor=\"let course of (courses | selectedCourse: folder.courses)\">\n          <a [routerLink]=\"['/home', {outlets: {'courseBoard':['courses', course.cid], 'questionBoard': ['questions']}}]\">\n            {{course.name}}</a>\n        </li>\n      </ul>\n    </li>\n  </ul>  \n</aside>"
+module.exports = "<aside class=\"side\">\n  <div class=\"title\">\n    <img class=\"title-image\" src=\"../../assets/bittiger.png\"> <h1 class=\"title-heading\"> Bittiger</h1>\n  </div>\n\n  <ul class=\"side-menu\">\n    <li class=\"side-menu-item\" *ngFor=\"let folder of folders\">\n      <span>{{folder.name}}</span>\n      <ul>\n        <li *ngFor=\"let course of (courses | selectedCourse: folder.fid)\">\n          <a [routerLink]=\"['/home', {outlets: {'courseBoard':['courses', course.cid], 'questionBoard': ['questions']}}]\">\n            {{course.name}}</a>\n        </li>\n      </ul>\n    </li>\n  </ul>  \n</aside>"
 
 /***/ }),
 
@@ -980,14 +898,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var SelectedCoursePipe = (function () {
     function SelectedCoursePipe() {
     }
-    SelectedCoursePipe.prototype.transform = function (allCourses, cids) {
+    SelectedCoursePipe.prototype.transform = function (allCourses, fid) {
         var selectedCourses = [];
-        if (cids == null || cids.length == 0) {
-            return selectedCourses;
-        }
         for (var _i = 0, allCourses_1 = allCourses; _i < allCourses_1.length; _i++) {
             var course = allCourses_1[_i];
-            if (cids.indexOf(course.cid) >= 0) {
+            if (course.folder == fid) {
                 selectedCourses.push(course);
             }
         }
@@ -1092,17 +1007,19 @@ var DataService = (function () {
         return this.http.post('api/v1/questions', question, options)
             .toPromise()
             .then(function (res) {
-            // console.dir(res.json());
+            console.log("add a question -- dataService");
+            console.dir(res.json());
             return res.json();
         })
             .catch(this.handleError);
     };
     DataService.prototype.updateQuestion = function (question, id) {
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'content-type': 'application/json' });
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'content-type': 'application/json; charset=utf-8' });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({ headers: headers });
         return this.http.put("api/v1/questions/" + id, question, options)
             .toPromise()
             .then(function (res) {
+            console.log("update a question -- dataService");
             console.dir(res.json());
             return res.json();
         })

@@ -5,7 +5,7 @@
       <button [routerLink]="['/home', { outlets: {'questionBoard': ['questions']}}]" class="btn btn-primary" type="button">Back</button>
     </div>
     <div class="col-xs-2">
-      <button [routerLink]="['/home', { outlets: {'questionBoard': ['new-question', questionId]}}]" class="btn btn-primary" type="button">Edit</button>
+      <button [routerLink]="['/home', { outlets: {'questionBoard': ['new-question', question.qid]}}]" class="btn btn-primary" type="button">Edit</button>
     </div>
     <div class="col-xs-8">
       <label class="board-head pull-right"><h1>Question</h1></label>
@@ -13,20 +13,32 @@
   </div>
   
   <div *ngIf="question">
-    <h1 class="question-title">{{question.subject}}</h1>
-    <a href="#">Iris Li, 3 weeks ago </a><span class="label label-primary">Week {{question.folder}}</span>
-    <div class="question-body" [innerHTML]="question.body"></div>
-  </div>
-
-  <div class="media">
-    <div class="media-left">
-      <a href="#">
-        <img class="media-object" src="../../assets/profile.png" alt="profile image">
-      </a>
+    <div>
+      <h1 class="question-title">{{question.subject}}</h1>
+      <span style="color: #337ab7">Iris Li, {{question.date | date: 'medium' }} </span><span class="label label-primary">Week {{question.folder}}</span>
+      <div class="question-body" [innerHTML]="question.body"></div>
     </div>
-    <div class="media-body">
-      This is the comment field.
+
+    <div class="media" *ngFor="let comment of question.comments">
+      <div class="media-left">
+        <img class="media-object" [src]="comment.profile" alt="profile image">
+      </div>
+      <div class="media-body">
+        <span style="color: #337ab7">Iris Li, {{comment.date | date: 'medium' }} </span><br/>
+        {{comment.desc}} 
+      </div>
+    </div>
+
+    <div class="media">
+      <div class="media-body">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Input comment..."
+                [(ngModel)]="comment.desc">
+
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button" (click)="addComment()">Submit</button>
+          </span>
+        </div>
     </div>
   </div>
-
 </div>

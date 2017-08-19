@@ -11,14 +11,11 @@ import { Course } from '../../data-structure/course';
 */
 @Pipe({name: 'selectedCourse'})
 export class SelectedCoursePipe implements PipeTransform {
-  transform(allCourses: Course[], cids: number[]) {
+  transform(allCourses: Course[], fid: number) {
       let selectedCourses: Course[] = [];
-      if (cids == null || cids.length == 0) {
-        return selectedCourses;
-      }
       
       for (let course of allCourses) {
-        if (cids.indexOf(course.cid) >= 0) {
+        if (course.folder == fid) {
             selectedCourses.push(course);
         }
       }

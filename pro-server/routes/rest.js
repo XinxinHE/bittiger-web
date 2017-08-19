@@ -52,9 +52,11 @@ router.get('/questions/:id', function(req, res) {
 router.post('/questions', jsonParser, function(req, res) {
     let args = {};
     args.data = req.body;
-    args.headers = {'Content-Type': 'application/json'}; // add headers
+    args.headers = {'Content-Type': 'application/json; charset=utf-8'}; // add headers
 
     restClient.post(BACKEND_SERVER_URL + 'questions', args, function (data, response) {
+        console.log("update a question --restjs");
+        console.dir(data);
         res.json(data);
     });
 });
@@ -63,7 +65,7 @@ router.put('/questions/:id', jsonParser, function(req, res) {
     let id = req.params.id;
     let args = {};
     args.data = req.body;
-    args.headers = {'Content-Type': 'application/json'}; // add headers
+    args.headers = {'Content-Type': 'application/json; charset=utf-8'}; // add headers
 
     restClient.put(BACKEND_SERVER_URL + `questions/${id}`, args, function (data, response) {
         console.log("----------------- PUT rest: " + req.body);

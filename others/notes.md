@@ -16,6 +16,10 @@ webpack: Failed to compile.
 ^Z
 [1]  + 30695 suspended  ng serve
 
+### Internal watch is not working
+
+echo fs.inotify.max_user_watches=582222 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+
 
 ## Sidebar npm package
 https://github.com/arkon/ng-sidebar
