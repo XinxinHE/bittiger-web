@@ -389,7 +389,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/question-detail/question-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container side\">\n  \n  <div class=\"row\">\n    <div class=\"col-xs-2\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['questions']}}]\" class=\"btn btn-primary\" type=\"button\">Back</button>\n    </div>\n    <div class=\"col-xs-2\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['new-question', question.qid]}}]\" class=\"btn btn-primary\" type=\"button\">Edit</button>\n    </div>\n    <div class=\"col-xs-8\">\n      <label class=\"board-head pull-right\"><h1>Question</h1></label>\n    </div>\n  </div>\n  \n  <div *ngIf=\"question\">\n    <div>\n      <h1 class=\"question-title\">{{question.subject}}</h1>\n      <span style=\"color: #337ab7\">Iris Li, {{question.date | date: 'medium' }} </span><span class=\"label label-primary\">Week {{question.folder}}</span>\n      <div class=\"question-body\" [innerHTML]=\"question.body\"></div>\n    </div>\n\n    <div class=\"media\" *ngFor=\"let comment of question.comments\">\n      <div class=\"media-left\">\n        <img class=\"media-object\" [src]=\"comment.profile\" alt=\"profile image\">\n      </div>\n      <div class=\"media-body\">\n        <span style=\"color: #337ab7\">Iris Li, {{comment.date | date: 'medium' }} </span><br/>\n        {{comment.desc}} \n      </div>\n    </div>\n\n    <div class=\"media\">\n      <div class=\"media-body\">\n        <div class=\"input-group\">\n          <input type=\"text\" class=\"form-control\" placeholder=\"Input comment...\"\n                [(ngModel)]=\"comment.desc\">\n\n          <span class=\"input-group-btn\">\n            <button class=\"btn btn-default\" type=\"button\" (click)=\"addComment()\">Submit</button>\n          </span>\n        </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container side\">\n  \n  <div class=\"row\" *ngIf=\"question\">\n    <div class=\"col-xs-2\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['questions']}}]\" class=\"btn btn-primary\" type=\"button\">Back</button>\n    </div>\n    <div class=\"col-xs-2\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['new-question', question.qid]}}]\" class=\"btn btn-primary\" type=\"button\">Edit</button>\n    </div>\n    <div class=\"col-xs-8\">\n      <label class=\"board-head pull-right\"><h1>Question</h1></label>\n    </div>\n  </div>\n  \n  <div *ngIf=\"question\">\n    <div>\n      <h1 class=\"question-title\">{{question.subject}}</h1>\n      <span style=\"color: #337ab7\">Iris Li, {{question.date | date: 'medium' }} </span><span class=\"label label-primary\">Week {{question.folder}}</span>\n      <div class=\"question-body\" [innerHTML]=\"question.body\"></div>\n    </div>\n\n    <div class=\"media\" *ngFor=\"let comment of question.comments\">\n      <div class=\"media-left\">\n        <img class=\"media-object\" [src]=\"comment.profile\" alt=\"profile image\">\n      </div>\n      <div class=\"media-body\">\n        <span style=\"color: #337ab7\">Iris Li, {{comment.date | date: 'medium' }} </span><br/>\n        {{comment.desc}} \n      </div>\n    </div>\n\n    <div class=\"media\">\n      <div class=\"media-body\">\n        <div class=\"input-group\">\n          <input type=\"text\" class=\"form-control\" placeholder=\"Input comment...\"\n                [(ngModel)]=\"comment.desc\">\n\n          <span class=\"input-group-btn\">\n            <button class=\"btn btn-default\" type=\"button\" (click)=\"addComment()\">Submit</button>\n          </span>\n        </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -716,6 +716,10 @@ var QuestionNewComponent = (function () {
                 });
             }
         });
+        this.activatedRoute.parent.firstChild.params.subscribe(function (params) {
+            console.log("this is course params");
+            _this.courseParam = +params['id'];
+        });
     };
     QuestionNewComponent.prototype.onEditorBlured = function (quill) {
         console.log('editor blur!', quill);
@@ -753,7 +757,7 @@ var QuestionNewComponent = (function () {
         this.dataService.addQuestion(this.newQuestion)
             .then(function (question) {
             _this.postedQuestion = question;
-            _this.router.navigateByUrl("/home/(questionBoard:questions/" + _this.postedQuestion.qid + "//courseBoard:courses/2)");
+            _this.router.navigateByUrl("/home/(questionBoard:questions/" + _this.postedQuestion.qid + "//courseBoard:courses/" + _this.courseParam + ")");
         })
             .catch(function (err) { return console.log(err.body); });
         this.newQuestion = Object.assign({}, DEFAULT_QUESTION);
@@ -765,7 +769,7 @@ var QuestionNewComponent = (function () {
             .then(function (question) {
             _this.postedQuestion = question;
             //console.log(question);
-            _this.router.navigateByUrl("/home/(questionBoard:questions/" + _this.postedQuestion.qid + "//courseBoard:courses/2)");
+            _this.router.navigateByUrl("/home/(questionBoard:questions/" + _this.postedQuestion.qid + "//courseBoard:courses/" + _this.courseParam + ")");
         })
             .catch(function (err) { return console.log(err.body); });
     };

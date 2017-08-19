@@ -29,7 +29,7 @@ export class QuestionNewComponent implements OnInit {
   newQuestion: Question = Object.assign({}, DEFAULT_QUESTION);
   folders: Folder[];
   postedQuestion: Question;
-
+  courseParam: any;
   constructor(@Inject('data') private dataService,
               private router: Router,
               private activatedRoute: ActivatedRoute) { }
@@ -46,6 +46,11 @@ export class QuestionNewComponent implements OnInit {
             // console.dir(this.newQuestion);
           });
       }
+    });
+    
+    this.activatedRoute.parent.firstChild.params.subscribe((params: Params) => {
+        console.log("this is course params");
+        this.courseParam = +params['id'];
     });
   }
 
@@ -88,7 +93,7 @@ export class QuestionNewComponent implements OnInit {
     this.dataService.addQuestion(this.newQuestion)
       .then(question => {
           this.postedQuestion = question;
-          this.router.navigateByUrl(`/home/(questionBoard:questions/${this.postedQuestion.qid}//courseBoard:courses/2)`);
+          this.router.navigateByUrl(`/home/(questionBoard:questions/${this.postedQuestion.qid}//courseBoard:courses/${this.courseParam})`);
         })
       .catch(err => console.log(err.body));
     
@@ -101,7 +106,7 @@ export class QuestionNewComponent implements OnInit {
       .then(question => {
         this.postedQuestion = question;
         //console.log(question);
-        this.router.navigateByUrl(`/home/(questionBoard:questions/${this.postedQuestion.qid}//courseBoard:courses/2)`);
+        this.router.navigateByUrl(`/home/(questionBoard:questions/${this.postedQuestion.qid}//courseBoard:courses/${this.courseParam})`);
       })
       .catch(err => console.log(err.body));
   }
