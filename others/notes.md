@@ -57,7 +57,7 @@ REDIRECT --to-port 8080
 
 ng g component new-cmp
 
-http://ec2-13-58-104-36.us-east-2.compute.amazonaws.com:8080/
+http://ec2-13-58-104-36.us-east-2.compute.amazonaws.com:3000/
 
 ## install quill
 npm install quill --save (? hold)
