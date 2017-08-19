@@ -379,7 +379,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".side {\n    padding: 10px 15px;\n    max-width: 400px;\n    min-height: 100vh;\n    border-left: solid 1px #e2e2e2;\n}\n\n.board-head h1 {\n    margin-top: 0;\n    color: #c3c3c3;\n}\n\n.question-title {\n    padding-bottom: 10px;\n    font-size: 24px;\n    border-bottom: solid 1px #e4e4e4;\n}\n\n.question-body {\n    padding: 10px 0;\n}", ""]);
+exports.push([module.i, ".side {\n    padding: 10px 15px;\n    max-width: 400px;\n    min-height: 100vh;\n    border-left: solid 1px #e2e2e2;\n}\n\n.board-head h1 {\n    margin-top: 0;\n    color: #c3c3c3;\n}\n\n.question-title {\n    padding-bottom: 10px;\n    font-size: 24px;\n    border-bottom: solid 1px #e4e4e4;\n}\n\n.question-body {\n    padding: 10px 0;\n}\n\n.media {\n    background-color: whitesmoke;\n    padding: 5px;\n}\n.media-object {\n    width: 100px;\n    height: 100px;\n}", ""]);
 
 // exports
 
@@ -392,7 +392,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/question-detail/question-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container side\">\n  \n  <div class=\"row\">\n    <div class=\"col-xs-2\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['questions']}}]\" class=\"btn btn-primary\" type=\"button\">Back</button>\n    </div>\n    <div class=\"col-xs-2\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['new-question', questionId]}}]\" class=\"btn btn-primary\" type=\"button\">Edit</button>\n    </div>\n    <div class=\"col-xs-8\">\n      <label class=\"board-head pull-right\"><h1>Question</h1></label>\n    </div>\n  </div>\n  \n  <div *ngIf=\"question\">\n    <h1 class=\"question-title\">{{question.subject}}</h1>\n    <a href=\"#\">Iris Li, 3 weeks ago </a><span class=\"label label-primary\">Week {{question.folder}}</span>\n    <div class=\"question-body\" [innerHTML]=\"question.body\"></div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container side\">\n  \n  <div class=\"row\">\n    <div class=\"col-xs-2\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['questions']}}]\" class=\"btn btn-primary\" type=\"button\">Back</button>\n    </div>\n    <div class=\"col-xs-2\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['new-question', questionId]}}]\" class=\"btn btn-primary\" type=\"button\">Edit</button>\n    </div>\n    <div class=\"col-xs-8\">\n      <label class=\"board-head pull-right\"><h1>Question</h1></label>\n    </div>\n  </div>\n  \n  <div *ngIf=\"question\">\n    <h1 class=\"question-title\">{{question.subject}}</h1>\n    <a href=\"#\">Iris Li, 3 weeks ago </a><span class=\"label label-primary\">Week {{question.folder}}</span>\n    <div class=\"question-body\" [innerHTML]=\"question.body\"></div>\n  </div>\n\n  <div class=\"media\">\n    <div class=\"media-left\">\n      <a href=\"#\">\n        <img class=\"media-object\" src=\"../../assets/profile.png\" alt=\"profile image\">\n      </a>\n    </div>\n    <div class=\"media-body\">\n      This is the comment field.\n    </div>\n  </div>\n\n</div>\n"
 
 /***/ }),
 

@@ -24,7 +24,7 @@ https://github.com/arkon/ng-sidebar
 ssh -i "bittiger.pem" ubuntu@ec2-13-58-104-36.us-east-2.compute.amazonaws.com
 
 ## copy file to ecs
-scp -i ~/Practices/bittiger-web/others/bittiger.pem ~/Practices/bittiger-web/bittiger-web.tar.gz ubuntu@ec2-13-58-104-36.us-east-2.compute.amazonaws.com:~/bittiger-2
+scp -i ~/Practices/bittiger-web/others/bittiger.pem ~/Practices/bittiger-web/bittiger-web.tar.gz ubuntu@ec2-13-58-104-36.us-east-2.compute.amazonaws.com:~/bittiger-3
 
 scp -i ~/Practices/bittiger-web/others/bittiger.pem ~/Practices/bittiger-web/pro-client.tar.gz ubuntu@ec2-13-58-104-36.us-east-2.compute.amazonaws.com:~/bittiger/pro-client
 

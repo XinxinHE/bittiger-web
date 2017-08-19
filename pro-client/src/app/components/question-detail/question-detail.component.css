@@ -19,3 +19,12 @@
 .question-body {
     padding: 10px 0;
 }
+
+.media {
+    background-color: whitesmoke;
+    padding: 5px;
+}
+.media-object {
+    width: 100px;
+    height: 100px;
+}

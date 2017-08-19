@@ -1,2 +1,5 @@
+sudo pip install Flask
+sudo pip install flask-restful
+sudo pip install -U flask-cors
+sudo python -m pip install pymongo
 export ENV_CONFIG_FILE=config.cfg
-pip install -U flask-cors
