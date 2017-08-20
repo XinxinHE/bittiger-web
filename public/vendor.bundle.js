@@ -1,5 +1,152 @@
 webpackJsonp([4],{
 
+/***/ "../../../../angular-font-awesome/angular-font-awesome.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__("../../../../angular-font-awesome/index.ts");
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__index__["a"]; });
+
+//# sourceMappingURL=angular-font-awesome.js.map
+
+/***/ }),
+
+/***/ "../../../../angular-font-awesome/index.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lib_angular_font_awesome_component__ = __webpack_require__("../../../../angular-font-awesome/lib/angular-font-awesome.component.ts");
+/* unused harmony namespace reexport */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AngularFontAwesomeModule; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var AngularFontAwesomeModule = (function () {
+    function AngularFontAwesomeModule() {
+    }
+    return AngularFontAwesomeModule;
+}());
+AngularFontAwesomeModule = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"]
+        ],
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_2__lib_angular_font_awesome_component__["a" /* AngularFontAwesomeComponent */]
+        ],
+        exports: [
+            __WEBPACK_IMPORTED_MODULE_2__lib_angular_font_awesome_component__["a" /* AngularFontAwesomeComponent */]
+        ]
+    })
+], AngularFontAwesomeModule);
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "../../../../angular-font-awesome/lib/angular-font-awesome.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AngularFontAwesomeComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AngularFontAwesomeComponent = (function () {
+    function AngularFontAwesomeComponent() {
+        this._optionalClasses = [];
+    }
+    AngularFontAwesomeComponent.prototype.ngOnInit = function () {
+        if (!this.name) {
+            throw new Error('Missing "name" property for Angular2 Font Awesome component');
+        }
+        if (this.size) {
+            this.addToOptionalClasses("fa-" + this.size);
+        }
+        if (this.fixed) {
+            this.addToOptionalClasses("fa-fw");
+        }
+        if (this.animation) {
+            this.addToOptionalClasses("fa-" + this.animation);
+        }
+        if (this.rotate) {
+            var rotateClass = (typeof this.rotate === 'number') ? "fa-rotate-" + this.rotate
+                : "fa-flip-" + this.rotate;
+            this.addToOptionalClasses(rotateClass);
+        }
+        if (this.inverse) {
+            this.addToOptionalClasses("fa-inverse");
+        }
+    };
+    Object.defineProperty(AngularFontAwesomeComponent.prototype, "optionalClasses", {
+        get: function () {
+            return this._optionalClasses;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    AngularFontAwesomeComponent.prototype.addToOptionalClasses = function (addClass) {
+        this._optionalClasses.push(addClass);
+    };
+    return AngularFontAwesomeComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", String)
+], AngularFontAwesomeComponent.prototype, "name", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", String)
+], AngularFontAwesomeComponent.prototype, "title", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", String)
+], AngularFontAwesomeComponent.prototype, "size", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Boolean)
+], AngularFontAwesomeComponent.prototype, "fixed", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", String)
+], AngularFontAwesomeComponent.prototype, "animation", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], AngularFontAwesomeComponent.prototype, "rotate", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Boolean)
+], AngularFontAwesomeComponent.prototype, "inverse", void 0);
+AngularFontAwesomeComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'fa, ng2-fa, ng4-fa, ng-fa',
+        template: "\n    <i class=\"fa fa-{{name}}\" [ngClass]=\"optionalClasses\" aria-hidden=\"true\"></i>\n  "
+    }),
+    __metadata("design:paramtypes", [])
+], AngularFontAwesomeComponent);
+
+//# sourceMappingURL=angular-font-awesome.component.js.map
+
+/***/ }),
+
 /***/ "../../../../base64-js/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 

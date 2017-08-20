@@ -24,7 +24,7 @@
         <img class="media-object" [src]="comment.profile" alt="profile image">
       </div>
       <div class="media-body">
-        <span style="color: #337ab7">Iris Li, {{comment.date | date: 'medium' }} </span><br/>
+        <span style="color: #337ab7">{{comment.name}}, {{comment.date | date: 'medium' }} </span><br/>
         {{comment.desc}} 
       </div>
     </div>

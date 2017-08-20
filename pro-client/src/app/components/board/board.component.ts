@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Folder } from 'app/data-structure/folder';
 import { Course } from 'app/data-structure/course';
+
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
@@ -10,8 +11,8 @@ export class BoardComponent implements OnInit {
   folders: Folder[];
   courses: Course[];
 
-  _leftopened: boolean = false;
-  _rightopened: boolean = true;
+  _leftopened: boolean = true;
+  _rightopened: boolean = false;
 
   _mode: string = 'push';
   _position: string = 'right';

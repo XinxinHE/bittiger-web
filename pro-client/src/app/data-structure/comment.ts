@@ -3,5 +3,6 @@ export class Comment {
     desc: string;
     question: number;
     profile: string;
+    name: string;
     date: Date;
 }

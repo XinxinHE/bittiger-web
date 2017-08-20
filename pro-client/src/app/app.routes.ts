@@ -8,7 +8,7 @@ import { QuestionDetailComponent } from './components/question-detail/question-d
 const routes: Routes = [
  {
      path: '',
-     redirectTo: 'home',
+     redirectTo: 'home/(courseBoard:courses/1//questionBoard:questions)',
      pathMatch: 'full'
  },
  {
@@ -24,7 +24,7 @@ const routes: Routes = [
  },
  {
      path: '**',
-     redirectTo: 'home'
+     redirectTo: 'home/(courseBoard:courses/1//questionBoard:questions)'
  }
 ];
 

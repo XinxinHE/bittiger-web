@@ -22,6 +22,8 @@ import { QuestionNewComponent } from './components/question-new/question-new.com
 import { QuestionListComponent } from './components/question-list/question-list.component';
 import { QuestionDetailComponent } from './components/question-detail/question-detail.component';
 
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,8 @@ import { QuestionDetailComponent } from './components/question-detail/question-d
     routing,
     HttpModule,
     FormsModule,
-    QuillEditorModule
+    QuillEditorModule,
+    AngularFontAwesomeModule
   ],
   providers: [
     {  

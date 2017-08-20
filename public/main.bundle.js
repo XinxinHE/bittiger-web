@@ -91,6 +91,7 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_question_new_question_new_component__ = __webpack_require__("../../../../../src/app/components/question-new/question-new.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_question_list_question_list_component__ = __webpack_require__("../../../../../src/app/components/question-list/question-list.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_question_detail_question_detail_component__ = __webpack_require__("../../../../../src/app/components/question-detail/question-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_angular_font_awesome_angular_font_awesome__ = __webpack_require__("../../../../angular-font-awesome/angular-font-awesome.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -98,6 +99,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -141,7 +143,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_7__app_routes__["a" /* routing */],
             __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormsModule */],
-            __WEBPACK_IMPORTED_MODULE_5_ngx_quill_editor__["a" /* QuillEditorModule */]
+            __WEBPACK_IMPORTED_MODULE_5_ngx_quill_editor__["a" /* QuillEditorModule */],
+            __WEBPACK_IMPORTED_MODULE_18_angular_font_awesome_angular_font_awesome__["a" /* AngularFontAwesomeModule */]
         ],
         providers: [
             {
@@ -177,7 +180,7 @@ AppModule = __decorate([
 var routes = [
     {
         path: '',
-        redirectTo: 'home',
+        redirectTo: 'home/(courseBoard:courses/1//questionBoard:questions)',
         pathMatch: 'full'
     },
     {
@@ -193,7 +196,7 @@ var routes = [
     },
     {
         path: '**',
-        redirectTo: 'home'
+        redirectTo: 'home/(courseBoard:courses/1//questionBoard:questions)'
     }
 ];
 var routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["a" /* RouterModule */].forRoot(routes);
@@ -209,7 +212,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "ng-sidebar-container {\n    height: 100vh;\n}\n\n/*vh: 1/100th view point height*/\n\n.side {\n    height: 100%;\n    width: 100%;\n}\n\n.btn {\n    background-color: white;\n}", ""]);
+exports.push([module.i, "ng-sidebar-container {\n    height: 100vh;\n}\n\n/*vh: 1/100th view point height*/\n\n.side {\n    height: 100%;\n    width: 100%;\n}\n\n.btn {\n    background-color: white;\n    margin-right: 10px;\n}", ""]);
 
 // exports
 
@@ -222,7 +225,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/board/board.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Container for sidebar(s) + page content -->\n<ng-sidebar-container>\n  \n  <ng-sidebar [(opened)]=\"_leftopened\" [mode]=\"_mode\">\n    <div class=\"side\">\n      <app-side-menu></app-side-menu>\n    </div>\n  </ng-sidebar>\n\n  <!-- left toggle button -->\n  <div ng-sidebar-content>\n    \n    <button type=\"button\" class=\"btn\" aria-label=\"Left Align\" (click)=\"_toggleLeftSidebar()\">\n      <span class=\"glyphicon glyphicon-menu-hamburger\" aria-hidden=\"true\"></span>\n    </button>\n\n    <button type=\"button\" class=\"btn pull-right\" aria-label=\"Right Align\" (click)=\"_toggleRightSidebar()\">\n      <span class=\"glyphicon glyphicon-menu-hamburger\" aria-hidden=\"true\"></span>\n    </button>\n\n    <section>\n      <router-outlet name=\"courseBoard\"></router-outlet>\n    </section>\n\n  </div>\n\n  <ng-sidebar [(opened)]=\"_rightopened\" [mode]=\"_mode\" [position]=\"_position\">\n    <div class=\"side\">\n      <router-outlet name=\"questionBoard\"></router-outlet>\n    </div>\n  </ng-sidebar>\n\n</ng-sidebar-container>"
+module.exports = "<!-- Container for sidebar(s) + page content -->\n<ng-sidebar-container>\n  \n  <ng-sidebar [(opened)]=\"_leftopened\" [mode]=\"_mode\">\n    <div class=\"side\">\n      <app-side-menu></app-side-menu>\n    </div>\n  </ng-sidebar>\n\n  <!-- left toggle button -->\n  <div ng-sidebar-content>\n    \n    <button type=\"button\" class=\"btn\" aria-label=\"Left Align\" (click)=\"_toggleLeftSidebar()\">\n      <span class=\"glyphicon glyphicon-menu-hamburger\" aria-hidden=\"true\"></span>\n    </button>\n\n    <button type=\"button\" class=\"btn pull-right\" aria-label=\"Right Align\" (click)=\"_toggleRightSidebar()\">\n      <span><i class=\"fa fa-commenting-o fa-lg\"></i> </span>\n    </button>\n\n    <section>\n      <router-outlet name=\"courseBoard\"></router-outlet>\n    </section>\n\n  </div>\n\n  <ng-sidebar [(opened)]=\"_rightopened\" [mode]=\"_mode\" [position]=\"_position\">\n    <div class=\"side\">\n      <router-outlet name=\"questionBoard\"></router-outlet>\n    </div>\n  </ng-sidebar>\n\n</ng-sidebar-container>"
 
 /***/ }),
 
@@ -248,8 +251,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var BoardComponent = (function () {
     function BoardComponent(dataService) {
         this.dataService = dataService;
-        this._leftopened = false;
-        this._rightopened = true;
+        this._leftopened = true;
+        this._rightopened = false;
         this._mode = 'push';
         this._position = 'right';
     }
@@ -300,7 +303,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".middle {\n    padding: 5px 50px;\n}", ""]);
+exports.push([module.i, ".middle {\n    padding: 5px 50px;\n}\n\n.course {\n    margin-left: 10px;\n}\n\n.course a {\n    font-size: 24px;\n}", ""]);
 
 // exports
 
@@ -313,7 +316,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/middle-board/middle-board.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"middle\" *ngIf=\"course\">\n  <h1>{{course.name}}</h1>\n  <p>{{course.teacher}}</p>\n  <p>{{course.desc}}</p>\n</div>\n"
+module.exports = "<div class=\"middle\" *ngIf=\"course\">\n  <h1>{{course.name}}</h1>\n  \n  <div class=\"course\">\n    <p>{{course.teacher}}</p>\n    <p>{{course.desc}}</p>\n    <a>PPT下载</a>\n  </div>\n  <img src=\"../../assets/video.png\">\n</div>\n"
 
 /***/ }),
 
@@ -389,7 +392,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/question-detail/question-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container side\">\n  \n  <div class=\"row\" *ngIf=\"question\">\n    <div class=\"col-xs-2\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['questions']}}]\" class=\"btn btn-primary\" type=\"button\">Back</button>\n    </div>\n    <div class=\"col-xs-2\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['new-question', question.qid]}}]\" class=\"btn btn-primary\" type=\"button\">Edit</button>\n    </div>\n    <div class=\"col-xs-8\">\n      <label class=\"board-head pull-right\"><h1>Question</h1></label>\n    </div>\n  </div>\n  \n  <div *ngIf=\"question\">\n    <div>\n      <h1 class=\"question-title\">{{question.subject}}</h1>\n      <span style=\"color: #337ab7\">Iris Li, {{question.date | date: 'medium' }} </span><span class=\"label label-primary\">Week {{question.folder}}</span>\n      <div class=\"question-body\" [innerHTML]=\"question.body\"></div>\n    </div>\n\n    <div class=\"media\" *ngFor=\"let comment of question.comments\">\n      <div class=\"media-left\">\n        <img class=\"media-object\" [src]=\"comment.profile\" alt=\"profile image\">\n      </div>\n      <div class=\"media-body\">\n        <span style=\"color: #337ab7\">Iris Li, {{comment.date | date: 'medium' }} </span><br/>\n        {{comment.desc}} \n      </div>\n    </div>\n\n    <div class=\"media\">\n      <div class=\"media-body\">\n        <div class=\"input-group\">\n          <input type=\"text\" class=\"form-control\" placeholder=\"Input comment...\"\n                [(ngModel)]=\"comment.desc\">\n\n          <span class=\"input-group-btn\">\n            <button class=\"btn btn-default\" type=\"button\" (click)=\"addComment()\">Submit</button>\n          </span>\n        </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container side\">\n  \n  <div class=\"row\" *ngIf=\"question\">\n    <div class=\"col-xs-2\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['questions']}}]\" class=\"btn btn-primary\" type=\"button\">Back</button>\n    </div>\n    <div class=\"col-xs-2\">\n      <button [routerLink]=\"['/home', { outlets: {'questionBoard': ['new-question', question.qid]}}]\" class=\"btn btn-primary\" type=\"button\">Edit</button>\n    </div>\n    <div class=\"col-xs-8\">\n      <label class=\"board-head pull-right\"><h1>Question</h1></label>\n    </div>\n  </div>\n  \n  <div *ngIf=\"question\">\n    <div>\n      <h1 class=\"question-title\">{{question.subject}}</h1>\n      <span style=\"color: #337ab7\">Iris Li, {{question.date | date: 'medium' }} </span><span class=\"label label-primary\">Week {{question.folder}}</span>\n      <div class=\"question-body\" [innerHTML]=\"question.body\"></div>\n    </div>\n\n    <div class=\"media\" *ngFor=\"let comment of question.comments\">\n      <div class=\"media-left\">\n        <img class=\"media-object\" [src]=\"comment.profile\" alt=\"profile image\">\n      </div>\n      <div class=\"media-body\">\n        <span style=\"color: #337ab7\">{{comment.name}}, {{comment.date | date: 'medium' }} </span><br/>\n        {{comment.desc}} \n      </div>\n    </div>\n\n    <div class=\"media\">\n      <div class=\"media-body\">\n        <div class=\"input-group\">\n          <input type=\"text\" class=\"form-control\" placeholder=\"Input comment...\"\n                [(ngModel)]=\"comment.desc\">\n\n          <span class=\"input-group-btn\">\n            <button class=\"btn btn-default\" type=\"button\" (click)=\"addComment()\">Submit</button>\n          </span>\n        </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -419,6 +422,7 @@ var DEFAULT_COMMENT = {
     desc: '',
     question: 0,
     profile: '../../assets/profile.png',
+    name: 'Iris Li',
     date: new Date()
 };
 var QuestionDetailComponent = (function () {
@@ -448,10 +452,9 @@ var QuestionDetailComponent = (function () {
     QuestionDetailComponent.prototype.addComment = function () {
         this.comment.date = new Date();
         this.question.comments.push(this.comment);
-        console.log("add comment to question -- question detail");
-        console.dir(this.question);
         this.updateQuestion(this.question.qid);
         this.getQuestion();
+        this.comment = Object.assign({}, DEFAULT_COMMENT);
     };
     QuestionDetailComponent.prototype.updateQuestion = function (id) {
         var _this = this;
@@ -515,7 +518,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".side {\n    padding: 10px 15px;\n    max-width: 400px;\n    min-height: 100vh;\n    border-left: solid 1px #e2e2e2;\n}\n\n.question-list {\n    padding-top: 10px;\n}\n\n.folder-name {\n    background-color: #e4e4e4;\n    margin: 0;\n    margin-top: 20px;\n    padding: 3px 5px;\n    font-weight: bold; \n}\n\n.media {\n    border-top: solid 1px #d2d2d2;\n    padding: 5px;\n    margin: 0;\n}\n\n.media-heading {\n    background-color: white;\n}\n\n.max-lines {\n    text-overflow: ellipsis;\n    word-wrap: break-word;\n    overflow: hidden;\n    max-height: 3em;\n}", ""]);
+exports.push([module.i, ".side {\n    padding: 10px 15px;\n    max-width: 400px;\n    min-height: 100vh;\n    border-left: solid 1px #e2e2e2;\n}\n\n.question-list {\n    padding-top: 10px;\n}\n\n.folder-name {\n    background-color: #e4e4e4;\n    margin: 0;\n    margin-top: 20px;\n    padding: 3px 5px;\n    font-weight: bold; \n}\n\n.media {\n    border-top: solid 1px #d2d2d2;\n    padding: 5px;\n    margin: 0;\n}\n\n.media-heading {\n    background-color: white;\n}\n\n.media-body {\n    padding-top: 10px;\n}\n\n.max-lines {\n    text-overflow: ellipsis;\n    word-wrap: break-word;\n    overflow: hidden;\n    max-height: 3em;\n    cursor: pointer;\n}", ""]);
 
 // exports
 

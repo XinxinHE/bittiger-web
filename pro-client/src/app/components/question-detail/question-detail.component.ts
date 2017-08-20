@@ -8,6 +8,7 @@ const DEFAULT_COMMENT: Comment = {
   desc: '',
   question: 0,
   profile: '../../assets/profile.png',
+  name: 'Iris Li',
   date: new Date()
 }
 
@@ -48,10 +49,11 @@ export class QuestionDetailComponent implements OnInit {
   addComment() {
     this.comment.date = new Date();
     this.question.comments.push(this.comment);
-    console.log("add comment to question -- question detail");
-    console.dir(this.question);
+
     this.updateQuestion(this.question.qid);
     this.getQuestion();
+
+    this.comment = Object.assign({}, DEFAULT_COMMENT)
   }
 
   updateQuestion(id: number) {

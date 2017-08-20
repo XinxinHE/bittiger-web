@@ -27,9 +27,14 @@
     background-color: white;
 }
 
+.media-body {
+    padding-top: 10px;
+}
+
 .max-lines {
     text-overflow: ellipsis;
     word-wrap: break-word;
     overflow: hidden;
     max-height: 3em;
+    cursor: pointer;
 }

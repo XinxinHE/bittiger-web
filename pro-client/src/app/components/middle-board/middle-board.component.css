@@ -1,3 +1,11 @@
 .middle {
     padding: 5px 50px;
 }
+
+.course {
+    margin-left: 10px;
+}
+
+.course a {
+    font-size: 24px;
+}
