@@ -4,8 +4,8 @@ fuser -k 5000/tcp
 cd  ./pro-server
 npm start &
 
-cd ../pro-client
-ng build --watch &
+# cd ../pro-client
+# ng build --watch &
 
 cd ../backend_db
 
