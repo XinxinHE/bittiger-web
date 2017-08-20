@@ -11,8 +11,8 @@ export class BoardComponent implements OnInit {
   folders: Folder[];
   courses: Course[];
 
-  _leftopened: boolean = true;
-  _rightopened: boolean = false;
+  _leftopened: boolean = false;
+  _rightopened: boolean = true;
 
   _mode: string = 'push';
   _position: string = 'right';
