@@ -303,7 +303,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".middle {\n    padding: 5px 50px;\n}\n\n.course {\n    margin-left: 10px;\n}\n\n.course a {\n    font-size: 24px;\n}", ""]);
+exports.push([module.i, ".middle {\n    padding: 5px 50px;\n}\n\n.course {\n    width: 750px;\n    margin-left: 10px;\n}\n\n.course a {\n    font-size: 24px;\n}", ""]);
 
 // exports
 
