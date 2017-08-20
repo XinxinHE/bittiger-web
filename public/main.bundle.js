@@ -251,8 +251,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var BoardComponent = (function () {
     function BoardComponent(dataService) {
         this.dataService = dataService;
-        this._leftopened = true;
-        this._rightopened = false;
+        this._leftopened = false;
+        this._rightopened = true;
         this._mode = 'push';
         this._position = 'right';
     }
@@ -303,7 +303,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".middle {\n    padding: 5px 50px;\n}\n\n.course {\n    width: 750px;\n    margin-left: 10px;\n}\n\n.course a {\n    font-size: 24px;\n}", ""]);
+exports.push([module.i, ".middle {\n    padding: 5px 50px;\n}\n\na {\n    font-size: 24px;\n}\n\nimg {\n    width: 700px;\n    height: auto;\n}", ""]);
 
 // exports
 
@@ -316,7 +316,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/middle-board/middle-board.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"middle\" *ngIf=\"course\">\n  <h1>{{course.name}}</h1>\n  \n  <div class=\"course\">\n    <p>{{course.teacher}}</p>\n    <p>{{course.desc}}</p>\n    <a>PPT下载</a>\n  </div>\n  <img src=\"../../assets/video.png\">\n</div>\n"
+module.exports = "<div class=\"container middle\" *ngIf=\"course\">\n  <h1>{{course.name}}</h1>\n  <p>{{course.teacher}}</p>\n  <p>{{course.desc}}</p>\n  <p><a>PPT下载</a><p>\n  <img src=\"../../assets/video.png\">\n</div>\n"
 
 /***/ }),
 
